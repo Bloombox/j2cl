@@ -147,7 +147,7 @@ def setup_j2cl_workspace():
     )
 
     http_archive(
-        name = "com_google_gwt",
+        name = "org_gwtproject_gwt",
         url = "https://gwt.googlesource.com/gwt/+archive/724f696ee01c7374a01741b3bee2ae13440c9da9.tar.gz",
         sha256 = "551aed2fc4df6f13004c154aad515422d39f8b049e981a54421eab4fd1011fa7"
     )
