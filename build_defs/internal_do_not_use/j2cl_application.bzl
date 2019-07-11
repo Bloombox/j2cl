@@ -10,7 +10,8 @@ def j2cl_application(
         jre_logging_log_level = "OFF",
         jre_checks_check_level = "NORMAL",
         closure_defines = dict(),
-        extra_dev_resources = []):
+        extra_dev_resources = [],
+        **kwargs):
     """Create a J2CL application target.
 
     This generates couple of convenient pre-configured targets:
@@ -61,6 +62,7 @@ def j2cl_application(
             "--rewrite_polyfills=%s" % rewrite_polyfills,
         ],
         deps = [":%s_config" % name] + deps,
+        **kwargs
     )
 
     #### Development binary setup ####
