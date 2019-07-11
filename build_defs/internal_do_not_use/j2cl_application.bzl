@@ -96,6 +96,7 @@ def j2cl_application(
         entry_point_defs = entry_point_defs,
         deps = deps,
         dev_resources = dev_resources,
+        **kwargs
     )
 
 def _define_js(name, defines, user_overrides):
