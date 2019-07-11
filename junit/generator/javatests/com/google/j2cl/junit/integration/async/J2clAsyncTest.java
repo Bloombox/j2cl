@@ -82,7 +82,9 @@ public class J2clAsyncTest extends IntegrationTestBase {
     TestResult testResult =
         newTestResultBuilder()
             .testClassName(testName)
-            .addTestSuccess("testResolvesAfterDelay")
+            .addTestSuccess("testResolvesAfterDelay1")
+            .addTestSuccess("testResolvesAfterDelay2")
+            .addTestSuccess("testResolvesAfterDelay3")
             .build();
 
     List<String> logLines = runTest(testName);
@@ -214,7 +216,7 @@ public class J2clAsyncTest extends IntegrationTestBase {
             .testClassName(testName)
             .addTestFailure(
                 "initializationError",
-                J2clAsyncTestRunner.ErrorMessage.EXPECTED_EXCEPTION.format("test"))
+                J2clAsyncTestRunner.ErrorMessage.ASYNC_HAS_EXPECTED_EXCEPTION.format("test"))
             .build();
 
     List<String> logLines = runTest(testName);
@@ -236,7 +238,7 @@ public class J2clAsyncTest extends IntegrationTestBase {
             .testClassName(testName)
             .addTestFailure(
                 "initializationError",
-                J2clAsyncTestRunner.ErrorMessage.TIME_OUT_SET.format("doesNotHaveTimeout"))
+                J2clAsyncTestRunner.ErrorMessage.ASYNC_NO_TIMEOUT.format("doesNotHaveTimeout"))
             .build();
 
     List<String> logLines = runTest(testName);

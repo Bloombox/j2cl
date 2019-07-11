@@ -1,12 +1,15 @@
-By Integration tests size report:
+Integration tests size report:
 **************************************
-There are 0 optimized size changes.
-Total size (of already existing tests) did not change.
+There are 1 optimized size changes.
+Total optimized size (of already existing tests) changed from
+  1135440 to 1135430 bytes (100%->100.0%) and from
+  418119 to 418117 bytes (100%->100.0%) gzipped.
 
 
 Shrinkage report highlights:
 **************************************
-  none
+        old      new
+      13968    13966 jsinteroptests (-0.0%)
 
 
 Expansion report highlights:
@@ -17,10 +20,10 @@ Expansion report highlights:
 Uncompiled bundle reports:
 **************************************
         old      new
-    5026599  5026590 box2d_default (-0.0%)
-    3144178  3144169 box2d_default.minified (-0.0%)
-    3193229  3193220 emptyclass (-0.0%)
-    2120007  2119998 emptyclass.minified (-0.0%)
+    4826124  4826104 box2d_default (-0.0%)
+    2943703  2943683 box2d_default.minified (-0.0%)
+    3042754  3042734 emptyclass (-0.0%)
+    1969532  1969512 emptyclass.minified (-0.0%)
 
 
 All reports:
@@ -73,7 +76,7 @@ All reports:
        1048     1048 circularcompiletimeconstant (unchanged)
        1221     1221 classcastexception (unchanged)
        3227     3227 classliteral (unchanged)
-       1039     1039 classliteralobfuscated (unchanged)
+       1038     1038 classliteralobfuscated (unchanged)
        2123     2123 classliteralstripped (unchanged)
        1173     1173 compiletimeconstant (unchanged)
        1118     1118 complexcascadingconstructor (unchanged)
@@ -139,7 +142,7 @@ All reports:
        1437     1437 jsfunctionbridge (unchanged)
        1902     1902 jsfunctiontypeannotation (unchanged)
        1096     1096 jsinnerclass (unchanged)
-      13968    13968 jsinteroptests (unchanged)
+      13968    13966 jsinteroptests (-0.0%)
        1106     1106 jsmethodoverride (unchanged)
        1021     1021 jsoverlay (unchanged)
        1034     1034 jsoverlaystaticrefs (unchanged)
