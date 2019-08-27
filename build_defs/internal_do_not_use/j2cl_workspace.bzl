@@ -148,8 +148,8 @@ def setup_j2cl_workspace():
 
     http_archive(
         name = "org_gwtproject_gwt",
-        url = "https://gwt.googlesource.com/gwt/+archive/9b4eebc985208b52f177bfc7388e2f7ec2da9698.tar.gz",
-        sha256 = "96a8d691dfd7e4a48a89306d54c7449062fdc56d42b3ed59b491c129773fee08",
+        url = "https://storage.googleapis.com/bloom-software/frontend/gwt-9b4eebc985208b52f177bfc7388e2f7ec2da9698.tar.gz",
+        sha256 = "474ce8b5aae933b3fd9bacb78ec6f8f557547adfa9846bb90c2407994e530ac8",
     )
 
     # proto_library and java_proto_library rules implicitly depend on
