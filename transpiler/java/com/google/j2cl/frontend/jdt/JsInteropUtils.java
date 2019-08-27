@@ -43,9 +43,6 @@ public class JsInteropUtils {
       annotation = JsInteropAnnotationUtils.getJsPropertyAnnotation(methodBinding);
     }
 
-    // TODO(b/134486605): Decide whether a method is a property accessor taking into account its
-    //  overridden methods, otherwise a public method of a JsType that is not annotated is
-    //  considered a JsMethod even if it overrides a JsProperty.
     boolean isPropertyAccessor =
         JsInteropAnnotationUtils.getJsPropertyAnnotation(methodBinding) != null;
     return getJsInfo(
@@ -103,22 +100,6 @@ public class JsInteropUtils {
         .setSupportsComparable(!hasCustomValue || isJsNativeType(typeBinding))
         .setSupportsOrdinal(!hasCustomValue && !isJsNativeType(typeBinding))
         .build();
-  }
-
-  public static boolean isOrOverridesJsFunctionMethod(IMethodBinding methodBinding) {
-    ITypeBinding declaringType = methodBinding.getDeclaringClass();
-    if (isJsFunction(declaringType)
-        && declaringType.getFunctionalInterfaceMethod() != null
-        && methodBinding.getMethodDeclaration()
-            == declaringType.getFunctionalInterfaceMethod().getMethodDeclaration()) {
-      return true;
-    }
-    for (IMethodBinding overriddenMethodBinding : JdtUtils.getOverriddenMethods(methodBinding)) {
-      if (isOrOverridesJsFunctionMethod(overriddenMethodBinding)) {
-        return true;
-      }
-    }
-    return false;
   }
 
   private static JsMemberType getJsMemberType(IBinding member, boolean isPropertyAccessor) {

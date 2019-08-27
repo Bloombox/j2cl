@@ -16,9 +16,10 @@
 package com.google.j2cl.ast;
 
 import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.collect.ImmutableList.toImmutableList;
 
 import com.google.j2cl.ast.annotations.Visitable;
+import com.google.j2cl.ast.processors.common.Processor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -79,7 +80,7 @@ public class VariableDeclarationExpression extends Expression {
       fragments.add(
           VariableDeclarationFragment.newBuilder()
               .setVariable(variable)
-              .setInitializer(checkNotNull(initializer))
+              .setInitializer(initializer)
               .build());
       return this;
     }
@@ -89,9 +90,20 @@ public class VariableDeclarationExpression extends Expression {
     }
 
     public Builder addVariableDeclarations(Collection<Variable> variables) {
-      for (Variable variable : variables) {
-        fragments.add(VariableDeclarationFragment.newBuilder().setVariable(variable).build());
-      }
+      return addVariableDeclarationFragments(
+          variables.stream()
+              .map(v -> VariableDeclarationFragment.newBuilder().setVariable(v).build())
+              .collect(toImmutableList()));
+    }
+
+    public Builder addVariableDeclarationFragments(
+        VariableDeclarationFragment... variableDeclarationFragments) {
+      return addVariableDeclarationFragments(Arrays.asList(variableDeclarationFragments));
+    }
+
+    public Builder addVariableDeclarationFragments(
+        Collection<VariableDeclarationFragment> variableDeclarationFragment) {
+      fragments.addAll(variableDeclarationFragment);
       return this;
     }
 

@@ -18,6 +18,7 @@ package com.google.j2cl.ast;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.j2cl.ast.annotations.Visitable;
+import com.google.j2cl.ast.processors.common.Processor;
 
 /** Refers a constructor in Javascript. */
 @Visitable
@@ -35,6 +36,11 @@ public class JavaScriptConstructorReference extends Expression {
 
   @Override
   public boolean isIdempotent() {
+    return true;
+  }
+
+  @Override
+  public boolean isEffectivelyInvariant() {
     return true;
   }
 

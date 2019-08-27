@@ -13,6 +13,7 @@
  */
 package com.google.j2cl.transpiler;
 
+import com.google.common.base.Ascii;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.j2cl.bazel.BazelWorker;
@@ -21,6 +22,7 @@ import com.google.j2cl.common.FrontendUtils.FileInfo;
 import com.google.j2cl.common.J2clUtils;
 import com.google.j2cl.common.Problems;
 import com.google.j2cl.common.Problems.FatalError;
+import com.google.j2cl.frontend.Frontend;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -79,6 +81,10 @@ final class BazelJ2clBuilder extends BazelWorker {
   @Option(name = "-generatekytheindexingmetadata", hidden = true)
   protected boolean generateKytheIndexingMetadata = false;
 
+  /** Temporary flag to select the frontend during the transition to javac. */
+  private static final Frontend FRONTEND =
+      Frontend.valueOf(Ascii.toUpperCase(System.getProperty("j2cl.frontend", "jdt")));
+
   @Override
   protected Problems run() {
     return J2clTranspiler.transpile(createOptions());
@@ -129,6 +135,7 @@ final class BazelJ2clBuilder extends BazelWorker {
         .setEmitReadableSourceMap(this.readableSourceMaps)
         .setDeclareLegacyNamespace(this.declareLegacyNamespaces)
         .setGenerateKytheIndexingMetadata(this.generateKytheIndexingMetadata)
+        .setFrontend(FRONTEND)
         .build();
   }
 

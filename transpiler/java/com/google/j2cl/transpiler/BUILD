@@ -29,6 +29,7 @@ java_library(
         "//third_party:auto_value",
         "//third_party:guava",
         "//transpiler/java/com/google/j2cl/common",
+        "//transpiler/java/com/google/j2cl/frontend",
     ],
 )
 
@@ -52,6 +53,7 @@ java_library(
         "//third_party:guava",
         "//transpiler/java/com/google/j2cl/bazel",
         "//transpiler/java/com/google/j2cl/common",
+        "//transpiler/java/com/google/j2cl/frontend",
     ],
 )
 
@@ -60,8 +62,30 @@ java_binary(
     jvm_flags = [
         "-XX:+TieredCompilation",
         "-Dj2cl.deterministicTimestamps=true",
-    ],
+    ] + select({
+        ":javac": [
+            "-Dj2cl.frontend=javac",
+        ],
+        ":jdt": [
+            "-Dj2cl.frontend=jdt",
+        ],
+        "//conditions:default": [
+            "-Dj2cl.frontend=jdt",
+        ],
+    }),
     main_class = "com.google.j2cl.transpiler.BazelJ2clBuilder",
     visibility = ["//build_defs/internal_do_not_use:__pkg__"],
     runtime_deps = [":bazelbuilder_lib"],
+)
+
+# Temporary support for selecting frontend. Once javac becomes the frontend for J2CL this will be
+# removed.
+config_setting(
+    name = "jdt",
+    values = {"define": "j2cl_frontend=jdt"},
+)
+
+config_setting(
+    name = "javac",
+    values = {"define": "j2cl_frontend=javac"},
 )

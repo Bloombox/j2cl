@@ -18,6 +18,7 @@ package com.google.j2cl.ast;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.j2cl.ast.annotations.Visitable;
+import com.google.j2cl.ast.processors.common.Processor;
 import com.google.j2cl.common.J2clUtils;
 
 /** String literal node. */
@@ -31,6 +32,11 @@ public class StringLiteral extends Literal {
 
   public String getEscapedValue() {
     return "\"" + J2clUtils.escapeJavaString(value) + "\"";
+  }
+
+  @Override
+  public boolean isNonNullString() {
+    return true;
   }
 
   @Override

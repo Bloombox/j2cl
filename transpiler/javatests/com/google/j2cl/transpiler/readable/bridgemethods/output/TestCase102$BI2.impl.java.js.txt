@@ -13,13 +13,13 @@ class BI2 {
   /**
    * @abstract
    * @param {?string} value
-   * @return {?string}
+   * @return {void}
    * @public
    */
-  get(value) {}
+  set(value) {}
 
   /**
-   * @param {?function(?string):?string} fn
+   * @param {?function(?string):void} fn
    * @return {BI2}
    * @public
    */

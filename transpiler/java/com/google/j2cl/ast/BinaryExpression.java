@@ -19,6 +19,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.j2cl.ast.annotations.Visitable;
+import com.google.j2cl.ast.processors.common.Processor;
 
 /**
  * Binary operator expression.
@@ -101,6 +102,11 @@ public class BinaryExpression extends Expression {
     return !operator.hasSideEffect()
         && leftOperand.isCompileTimeConstant()
         && rightOperand.isCompileTimeConstant();
+  }
+
+  @Override
+  public boolean isNonNullString() {
+    return AstUtils.matchesStringContext(this);
   }
 
   @Override

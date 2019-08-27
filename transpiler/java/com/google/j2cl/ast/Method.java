@@ -23,6 +23,7 @@ import static java.util.stream.Collectors.joining;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.j2cl.ast.annotations.Visitable;
+import com.google.j2cl.ast.processors.common.Processor;
 import com.google.j2cl.common.SourcePosition;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -119,8 +120,8 @@ public class Method extends Member implements MethodLike {
 
   @Override
   public String getReadableDescription() {
-    // TODO(b/36493405): once a parameter abstraction is implemented in MethodDescriptor that
-    // stores parameter names, this method should just delegate to it.
+    // TODO(b/138398080): Add name to the parameter abstraction in MethodDescriptor and just
+    //  delegate to ParameterDescriptor for the description.
     String parameterString =
         getParameters().stream().map(this::getParameterReadableDescription).collect(joining(", "));
 

@@ -16,6 +16,7 @@
 package com.google.j2cl.ast;
 
 import com.google.j2cl.ast.annotations.Visitable;
+import com.google.j2cl.ast.processors.common.Processor;
 import com.google.j2cl.common.SourcePosition;
 
 /** Base class for expressions. */
@@ -116,6 +117,11 @@ public abstract class Expression extends Node implements Cloneable<Expression> {
    * the meaning of expressions enclosing it.
    */
   public boolean areEnclosingParenthesisUnnecessary() {
+    return false;
+  }
+
+  /** Returns true if the expression is guaranteed to be a non null string. */
+  public boolean isNonNullString() {
     return false;
   }
 
