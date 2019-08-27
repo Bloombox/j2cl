@@ -148,7 +148,8 @@ def setup_j2cl_workspace():
 
     http_archive(
         name = "org_gwtproject_gwt",
-        url = "https://gwt.googlesource.com/gwt/+archive/master.tar.gz",
+        url = "https://gwt.googlesource.com/gwt/+archive/2.8.2.tar.gz",
+        sha256 = None,
     )
 
     # proto_library and java_proto_library rules implicitly depend on
