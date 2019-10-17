@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.declarelegacynamespace.DeclareLegacyNamespaceJsType$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $1 = goog.forwardDeclare('com.google.j2cl.transpiler.readable.declarelegacynamespace.DeclareLegacyNamespaceJsType.$1$impl');
-
 
 /**
  * @abstract
@@ -19,22 +17,18 @@ class DeclareLegacyNamespaceJsType extends j_l_Object {
     super();
     this.$ctor__com_google_j2cl_transpiler_readable_declarelegacynamespace_DeclareLegacyNamespaceJsType__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_declarelegacynamespace_DeclareLegacyNamespaceJsType__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @abstract
    * @return {boolean}
    * @public
    */
   foo() {}
-
   /**
    * @return {DeclareLegacyNamespaceJsType}
    * @public
@@ -45,32 +39,17 @@ class DeclareLegacyNamespaceJsType extends j_l_Object {
         DeclareLegacyNamespaceJsType
             .$f_TRUTHY__com_google_j2cl_transpiler_readable_declarelegacynamespace_DeclareLegacyNamespaceJsType);
   }
-
   /**
-   * @param {DeclareLegacyNamespaceJsType} value
-   * @return {void}
-   * @public
-   */
-  static set TRUTHY(value) {
-    (DeclareLegacyNamespaceJsType.$clinit(),
-     DeclareLegacyNamespaceJsType
-         .$f_TRUTHY__com_google_j2cl_transpiler_readable_declarelegacynamespace_DeclareLegacyNamespaceJsType =
-         value);
-  }
-
-  /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    DeclareLegacyNamespaceJsType.$clinit = (() => {});
+    DeclareLegacyNamespaceJsType.$clinit = () => {};
     DeclareLegacyNamespaceJsType.$loadModules();
     j_l_Object.$clinit();
     DeclareLegacyNamespaceJsType
         .$f_TRUTHY__com_google_j2cl_transpiler_readable_declarelegacynamespace_DeclareLegacyNamespaceJsType =
         new $1();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -79,16 +58,6 @@ class DeclareLegacyNamespaceJsType extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof DeclareLegacyNamespaceJsType;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, DeclareLegacyNamespaceJsType);
-  }
-
   /**
    * @public
    */
@@ -96,18 +65,14 @@ class DeclareLegacyNamespaceJsType extends j_l_Object {
     $1 = goog.module.get(
         'com.google.j2cl.transpiler.readable.declarelegacynamespace.DeclareLegacyNamespaceJsType.$1$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     DeclareLegacyNamespaceJsType,
     'com.google.j2cl.transpiler.readable.declarelegacynamespace.DeclareLegacyNamespaceJsType');
 
-
 /** @private {DeclareLegacyNamespaceJsType} */
 DeclareLegacyNamespaceJsType
     .$f_TRUTHY__com_google_j2cl_transpiler_readable_declarelegacynamespace_DeclareLegacyNamespaceJsType;
-
-
 
 exports = DeclareLegacyNamespaceJsType;
 //# sourceMappingURL=DeclareLegacyNamespaceJsType.js.map

@@ -43,6 +43,14 @@ public class ManglingNameUtils {
     return ((DeclaredTypeDescriptor) rawTypeDescriptor).getQualifiedSourceName().replace('.', '_');
   }
 
+  /** Returns the mangled name of a member. */
+  public static String getMangledName(MemberDescriptor memberDescriptor) {
+    if (memberDescriptor instanceof MethodDescriptor) {
+      return getMangledName((MethodDescriptor) memberDescriptor);
+    }
+    return getMangledName((FieldDescriptor) memberDescriptor);
+  }
+
   /** Returns the mangled name of a method. */
   public static String getMangledName(MethodDescriptor methodDescriptor) {
     if (methodDescriptor.isConstructor()) {
@@ -63,26 +71,29 @@ public class ManglingNameUtils {
 
     // All special cases have been handled. Go ahead and construct the mangled name for a plain
     // Java method.
-    String suffix;
-    switch (methodDescriptor.getVisibility()) {
-      case PRIVATE:
-        // To ensure that private methods never override each other.
-        suffix = "_$p_" + getMangledName(methodDescriptor.getEnclosingTypeDescriptor());
-        break;
-      case PACKAGE_PRIVATE:
-        // To ensure that package private methods only override one another when
-        // they are in the same package.
-        suffix =
-            "_$pp_"
-                + methodDescriptor
-                    .getEnclosingTypeDescriptor()
-                    .getTypeDeclaration()
-                    .getPackageName()
-                    .replace('.', '_');
-        break;
-      default:
-        suffix = "";
-        break;
+    String suffix = "";
+    if (!methodDescriptor.isStatic()) {
+      // Only use suffixes for instance methods. Static methods are always called through the
+      // right constructor, no need to add a suffix to avoid collisions.
+      switch (methodDescriptor.getVisibility()) {
+        case PRIVATE:
+          // To ensure that private methods never override each other.
+          suffix = "_$p_" + getMangledName(methodDescriptor.getEnclosingTypeDescriptor());
+          break;
+        case PACKAGE_PRIVATE:
+          // To ensure that package private methods only override one another when
+          // they are in the same package.
+          suffix =
+              "_$pp_"
+                  + methodDescriptor
+                      .getEnclosingTypeDescriptor()
+                      .getTypeDeclaration()
+                      .getPackageName()
+                      .replace('.', '_');
+          break;
+        default:
+          break;
+      }
     }
     String parameterSignature = getMangledParameterSignature(methodDescriptor);
     String prefix = "m_";

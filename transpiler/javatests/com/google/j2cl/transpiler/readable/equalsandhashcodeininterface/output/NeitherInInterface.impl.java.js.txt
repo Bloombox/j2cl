@@ -1,22 +1,18 @@
 goog.module('com.google.j2cl.transpiler.readable.equalsandhashcodeininterface.NeitherInInterface$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @interface
  */
 class NeitherInInterface {
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    NeitherInInterface.$clinit = (() => {});
+    NeitherInInterface.$clinit = () => {};
     NeitherInInterface.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -29,7 +25,6 @@ class NeitherInInterface {
         .$implements__com_google_j2cl_transpiler_readable_equalsandhashcodeininterface_NeitherInInterface =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -40,32 +35,17 @@ class NeitherInInterface {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_equalsandhashcodeininterface_NeitherInInterface;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_equalsandhashcodeininterface_NeitherInInterface;
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadataForInterface(
     NeitherInInterface,
     'com.google.j2cl.transpiler.readable.equalsandhashcodeininterface.NeitherInInterface');
 
-
 NeitherInInterface.$markImplementor(
     /** @type {Function} */ (NeitherInInterface));
-
 
 exports = NeitherInInterface;
 //# sourceMappingURL=NeitherInInterface.js.map

@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.H$impl');
 
-
 const G = goog.require('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.G$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template V
@@ -17,7 +15,6 @@ class H extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @template V
    * @return {!H<V>}
@@ -30,15 +27,12 @@ class H extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_H__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_H__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {V} value
    * @return {V}
@@ -47,7 +41,6 @@ class H extends j_l_Object {
   enclose(value) {
     return null;
   }
-
   /**
    * Bridge method for exposing non-JsMethod.
    * @override
@@ -58,17 +51,14 @@ class H extends j_l_Object {
   m_enclose__java_lang_Object(arg0) {
     return this.enclose(arg0);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    H.$clinit = (() => {});
+    H.$clinit = () => {};
     H.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -77,28 +67,15 @@ class H extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof H;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, H);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     H, 'com.google.j2cl.transpiler.readable.bridgejsmethod.Main$H');
 
-
 G.$markImplementor(H);
-
 
 exports = H;
 //# sourceMappingURL=Main$H.js.map

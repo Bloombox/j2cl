@@ -1,12 +1,10 @@
 goog.module('woo.Foo$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $Overlay = goog.forwardDeclare('com.google.j2cl.transpiler.readable.packageinfosubpackage.Foo.NativeBar.$Overlay$impl');
 let NativeBar = goog.forwardDeclare('com.google.j2cl.transpiler.readable.packageinfosubpackage.subpackage.Bar');
-
 
 class Foo extends j_l_Object {
   /**
@@ -17,7 +15,6 @@ class Foo extends j_l_Object {
     /** @public {NativeBar} */
     this.f_nativeBar__com_google_j2cl_transpiler_readable_packageinfosubpackage_Foo_;
   }
-
   /**
    * @return {!Foo}
    * @public
@@ -29,35 +26,28 @@ class Foo extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_packageinfosubpackage_Foo__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_packageinfosubpackage_Foo__() {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_packageinfosubpackage_Foo();
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_packageinfosubpackage_Foo() {
     this.f_nativeBar__com_google_j2cl_transpiler_readable_packageinfosubpackage_Foo_ =
         new NativeBar();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Foo.$clinit = (() => {});
+    Foo.$clinit = () => {};
     Foo.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -66,16 +56,6 @@ class Foo extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Foo;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Foo);
-  }
-
   /**
    * @public
    */
@@ -83,12 +63,9 @@ class Foo extends j_l_Object {
     NativeBar = goog.module.get(
         'com.google.j2cl.transpiler.readable.packageinfosubpackage.subpackage.Bar');
   }
-};
-
+}
 $Util.$setClassMetadata(
     Foo, 'com.google.j2cl.transpiler.readable.packageinfosubpackage.Foo');
-
-
 
 exports = Foo;
 //# sourceMappingURL=Foo.js.map

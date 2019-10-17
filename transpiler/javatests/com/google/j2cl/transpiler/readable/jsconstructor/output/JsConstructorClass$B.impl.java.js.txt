@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass.B$impl');
 
-
 const A = goog.require('com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass.A$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class B extends A {
   /**
@@ -20,11 +18,9 @@ class B extends A {
     this.$ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B__int(
         x);
   }
-
   /**
    * Initialization from constructor 'B(int)'.
    * @param {number} x
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B__int(
@@ -35,7 +31,6 @@ class B extends A {
     this.f_fB__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B =
         3;
   }
-
   /**
    * Factory method corresponding to constructor 'B()'.
    * @return {!B}
@@ -48,17 +43,14 @@ class B extends A {
         .$ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B__();
     return $instance;
   }
-
   /**
    * Initialization from constructor 'B()'.
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B__() {
     this.f_fB__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B =
         4;
   }
-
   /**
    * Factory method corresponding to constructor 'B(int, int)'.
    * @param {number} x
@@ -74,12 +66,10 @@ class B extends A {
             x, y);
     return $instance;
   }
-
   /**
    * Initialization from constructor 'B(int, int)'.
    * @param {number} x
    * @param {number} y
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B__int__int(
@@ -87,26 +77,21 @@ class B extends A {
     this.f_fB__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B =
         x * y;
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B() {
     this.f_fB__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_B =
         2;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    B.$clinit = (() => {});
+    B.$clinit = () => {};
     B.$loadModules();
     A.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -115,27 +100,14 @@ class B extends A {
   static $isInstance(instance) {
     return instance instanceof B;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, B);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     B,
     'com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass$B');
-
-
 
 exports = B;
 //# sourceMappingURL=JsConstructorClass$B.js.map

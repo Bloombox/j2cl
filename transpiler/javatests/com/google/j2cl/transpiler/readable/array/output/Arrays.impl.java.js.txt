@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.array.Arrays$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -15,7 +14,6 @@ let $Arrays = goog.forwardDeclare('vmbootstrap.Arrays$impl');
 let $int = goog.forwardDeclare('vmbootstrap.primitives.$int$impl');
 let $long = goog.forwardDeclare('vmbootstrap.primitives.$long$impl');
 
-
 class Arrays extends j_l_Object {
   /**
    * @protected
@@ -23,7 +21,6 @@ class Arrays extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!Arrays}
    * @public
@@ -34,17 +31,13 @@ class Arrays extends j_l_Object {
     $instance.$ctor__com_google_j2cl_transpiler_readable_array_Arrays__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_array_Arrays__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testObjectArray__() {
@@ -62,9 +55,7 @@ class Arrays extends j_l_Object {
     $Arrays.$set(objects, 0, null);
     $Arrays.$set(objects2d[0], 1, null);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testJavaTypeArray__() {
@@ -90,9 +81,7 @@ class Arrays extends j_l_Object {
     $Arrays.$set(objects, 0, null);
     $Arrays.$set(objects2d[0], 1, null);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testIntArrays___$pp_com_google_j2cl_transpiler_readable_array() {
@@ -111,9 +100,7 @@ class Arrays extends j_l_Object {
     $Arrays.$set(ints, 0, 1);
     $Arrays.$set(ints2d[0], 1, 1);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testLongArrays___$pp_com_google_j2cl_transpiler_readable_array() {
@@ -137,9 +124,7 @@ class Arrays extends j_l_Object {
     $Arrays.$set(longs, 0, $Long.fromInt(1));
     $Arrays.$set(longs2d[0], 1, $Long.fromInt(1));
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testDevirtualizedTypeArrays___$pp_com_google_j2cl_transpiler_readable_array() {
@@ -164,9 +149,7 @@ class Arrays extends j_l_Object {
     $Arrays.$set(booleans, 0, true);
     $Arrays.$set(booleans2d[0], 1, false);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testStringArrays___$pp_com_google_j2cl_transpiler_readable_array() {
@@ -191,9 +174,7 @@ class Arrays extends j_l_Object {
     $Arrays.$set(strings, 0, null);
     $Arrays.$set(strings2d[0], 1, null);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testNativeArray__() {
@@ -210,9 +191,7 @@ class Arrays extends j_l_Object {
     $Arrays.$set(nativeObjects, 0, null);
     $Arrays.$set(nativeObjects2d[0], 1, null);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testErasureCastsOnArrayAccess__() {
@@ -222,40 +201,31 @@ class Arrays extends j_l_Object {
             .f_data__com_google_j2cl_transpiler_readable_array_Arrays_ArrayContainer,
         j_l_String, 1))[0];
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testArraysSupertypeClosureTypes__() {
     this.m_consumesCloneable__java_lang_Cloneable(new Array(10));
     this.m_consumesSerializable__java_io_Serializable(new Array(10));
   }
-
   /**
    * @param {(Cloneable|Array)} cloneable
-   * @return {void}
    * @public
    */
   m_consumesCloneable__java_lang_Cloneable(cloneable) {}
-
   /**
    * @param {(Serializable|Array)} serializable
-   * @return {void}
    * @public
    */
   m_consumesSerializable__java_io_Serializable(serializable) {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Arrays.$clinit = (() => {});
+    Arrays.$clinit = () => {};
     Arrays.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -264,16 +234,6 @@ class Arrays extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Arrays;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Arrays);
-  }
-
   /**
    * @public
    */
@@ -287,12 +247,9 @@ class Arrays extends j_l_Object {
     $int = goog.module.get('vmbootstrap.primitives.$int$impl');
     $long = goog.module.get('vmbootstrap.primitives.$long$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     Arrays, 'com.google.j2cl.transpiler.readable.array.Arrays');
-
-
 
 exports = Arrays;
 //# sourceMappingURL=Arrays.js.map

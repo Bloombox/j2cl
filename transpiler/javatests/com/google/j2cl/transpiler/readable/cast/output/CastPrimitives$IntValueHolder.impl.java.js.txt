@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.cast.CastPrimitives.IntValueHolder$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class IntValueHolder extends j_l_Object {
   /**
@@ -12,7 +10,6 @@ class IntValueHolder extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @param {number} value
    * @return {!IntValueHolder}
@@ -26,27 +23,22 @@ class IntValueHolder extends j_l_Object {
             value);
     return $instance;
   }
-
   /**
    * @param {number} value
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_cast_CastPrimitives_IntValueHolder__int(
       value) {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    IntValueHolder.$clinit = (() => {});
+    IntValueHolder.$clinit = () => {};
     IntValueHolder.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -55,27 +47,14 @@ class IntValueHolder extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof IntValueHolder;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, IntValueHolder);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     IntValueHolder,
     'com.google.j2cl.transpiler.readable.cast.CastPrimitives$IntValueHolder');
-
-
 
 exports = IntValueHolder;
 //# sourceMappingURL=CastPrimitives$IntValueHolder.js.map

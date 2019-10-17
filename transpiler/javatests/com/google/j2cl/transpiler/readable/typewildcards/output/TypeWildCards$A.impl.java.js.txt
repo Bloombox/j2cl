@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards.A$impl');
 
-
 const X = goog.require('com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards.X$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @implements {X}
@@ -19,44 +17,35 @@ class A extends j_l_Object {
     this.f_f__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_A =
         0;
   }
-
   /**
    * @return {!A}
    * @public
    */
   static $create__() {
-    A.$clinit();
     let $instance = new A();
     $instance
         .$ctor__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_A__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_A__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @override
-   * @return {void}
    * @public
    */
   m_m__() {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    A.$clinit = (() => {});
+    A.$clinit = () => {};
     A.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -65,28 +54,15 @@ class A extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof A;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, A);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     A, 'com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards$A');
 
-
 X.$markImplementor(A);
-
 
 exports = A;
 //# sourceMappingURL=TypeWildCards$A.js.map

@@ -1,8 +1,6 @@
 goog.module('com.google.j2cl.transpiler.readable.jsbridgeaccidentaloverride.MyInterface$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @interface
@@ -15,7 +13,6 @@ class MyInterface {
    * @public
    */
   m_foo__int(a) {}
-
   /**
    * @abstract
    * @param {number} a
@@ -23,16 +20,13 @@ class MyInterface {
    * @public
    */
   m_bar__int(a) {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    MyInterface.$clinit = (() => {});
+    MyInterface.$clinit = () => {};
     MyInterface.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -45,7 +39,6 @@ class MyInterface {
         .$implements__com_google_j2cl_transpiler_readable_jsbridgeaccidentaloverride_MyInterface =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -56,31 +49,16 @@ class MyInterface {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_jsbridgeaccidentaloverride_MyInterface;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_jsbridgeaccidentaloverride_MyInterface;
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadataForInterface(
     MyInterface,
     'com.google.j2cl.transpiler.readable.jsbridgeaccidentaloverride.MyInterface');
 
-
 MyInterface.$markImplementor(/** @type {Function} */ (MyInterface));
-
 
 exports = MyInterface;
 //# sourceMappingURL=MyInterface.js.map

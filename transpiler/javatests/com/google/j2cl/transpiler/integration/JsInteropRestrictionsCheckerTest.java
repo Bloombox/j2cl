@@ -23,6 +23,44 @@ import junit.framework.TestCase;
 /** Tests for JsInteropRestrictionsChecker. */
 public class JsInteropRestrictionsCheckerTest extends TestCase {
 
+  public void testSystemGetPropertyFails() {
+    assertTranspileFails(
+            "Buggy",
+            "import jsinterop.annotations.*;",
+            "@JsType",
+            "class Main {",
+            "  public final static String COMPILE_TIME_CONSTANT =\"constant\";",
+            "  public static void main(){",
+            "    System.getProperty(COMPILE_TIME_CONSTANT);",
+            "    String s=\"property\";",
+            "    System.getProperty(s);",
+            "    System.getProperty(\"pro\"+\"perty\");",
+            "    System.getProperty(COMPILE_TIME_CONSTANT,\"default\");}",
+            "}")
+        .assertErrorsWithSourcePosition(
+            "Error:Buggy.java:7: Method 'String System.getProperty(String)' "
+                + "can only take a string literal as its first parameter",
+            "Error:Buggy.java:9: Method 'String System.getProperty(String)' "
+                + "can only take a string literal as its first parameter",
+            "Error:Buggy.java:10: Method 'String System.getProperty(String)' "
+                + "can only take a string literal as its first parameter",
+            "Error:Buggy.java:11: Method 'String System.getProperty(String, String)' "
+                + "can only take a string literal as its first parameter");
+  }
+
+  public void testSystemGetPropertySucceeds() {
+    assertTranspileSucceeds(
+            "Buggy",
+            "import jsinterop.annotations.*;",
+            "@JsType",
+            "class Main {",
+            "  public static void main(){",
+            "    System.getProperty(\"java.runtime.name\");",
+            "    System.getProperty(\"java.runtime.name\",\"default\");}",
+            "}")
+        .assertNoWarnings();
+  }
+
   // TODO(b/37579830): Finalize checker implementation and enable this test.
   public void disabled_testCollidingAccidentalOverrideConcreteMethodFails() {
     assertTranspileFails(
@@ -2808,8 +2846,25 @@ public class JsInteropRestrictionsCheckerTest extends TestCase {
             "public class Buggy {",
             "  @JsMethod",
             "  public native void m();",
+            "  @JsProperty",
+            "  public native int getM();",
             "}")
         .assertNoWarnings();
+  }
+
+  public void testNativeMethodNotJsMethodWarns() {
+    newTesterWithDefaults()
+        .addCompilationUnit(
+            "Buggy",
+            "import jsinterop.annotations.*;",
+            "public class Buggy {",
+            "  public native void m();",
+            "}")
+        .addNativeFile("Buggy")
+        .assertTranspileSucceeds()
+        .assertWarningsWithoutSourcePosition(
+            "[unusable-by-js] Native 'void Buggy.m()' is exposed to JavaScript without "
+                + "@JsMethod.");
   }
 
   public void testNativeJsTypeSucceeds() {
@@ -3192,6 +3247,8 @@ public class JsInteropRestrictionsCheckerTest extends TestCase {
             "  @JsMethod",
             "  public static void fc1(A a) {}", // JsMethod
             "  public native void fc2(A a);", // native method
+            "  @JsMethod",
+            "  private native void fc3(A a);", // private native JsMethod
             "}",
             "class D {", // non-jstype class with JsProperty
             "  @JsProperty",
@@ -3221,8 +3278,8 @@ public class JsInteropRestrictionsCheckerTest extends TestCase {
         .assertWarningsWithoutSourcePosition(
             "[unusable-by-js] Type of parameter 'a' in 'void C.fc1(A a)' is not usable by but "
                 + "exposed to JavaScript.",
-            "[unusable-by-js] Method 'void C.fc2(A a)' is not usable by but exposed to JavaScript.",
-            "[unusable-by-js] Type of parameter 'a' in 'void C.fc2(A a)' is not usable by but "
+            "[unusable-by-js] Native 'void C.fc2(A a)' is exposed to JavaScript without @JsMethod.",
+            "[unusable-by-js] Type of parameter 'a' in 'void C.fc3(A a)' is not usable by but "
                 + "exposed to JavaScript.",
             "[unusable-by-js] Type 'A' of field 'D.a' is not usable by but exposed to JavaScript.",
             "[unusable-by-js] Type of parameter 'a' in 'void FI.f(A a)' is not usable by but"

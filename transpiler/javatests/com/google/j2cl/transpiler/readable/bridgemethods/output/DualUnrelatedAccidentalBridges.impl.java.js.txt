@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.bridgemethods.DualUnrelatedAccidentalBridges$impl');
 
-
 const SomeInterface = goog.require('com.google.j2cl.transpiler.readable.bridgemethods.SomeInterface$impl');
 const SomeOtherFooInterface = goog.require('com.google.j2cl.transpiler.readable.bridgemethods.SomeOtherFooInterface$impl');
 const SuperDualUnrelatedAccidentalBridges = goog.require('com.google.j2cl.transpiler.readable.bridgemethods.SuperDualUnrelatedAccidentalBridges$impl');
@@ -10,7 +9,6 @@ let Double = goog.forwardDeclare('java.lang.Double$impl');
 let Number = goog.forwardDeclare('java.lang.Number$impl');
 let j_l_String = goog.forwardDeclare('java.lang.String$impl');
 let $Casts = goog.forwardDeclare('vmbootstrap.Casts$impl');
-
 
 /**
  * @implements {SomeInterface<?string, ?number>}
@@ -24,7 +22,6 @@ class DualUnrelatedAccidentalBridges extends
   constructor() {
     super();
   }
-
   /**
    * @return {!DualUnrelatedAccidentalBridges}
    * @public
@@ -36,21 +33,17 @@ class DualUnrelatedAccidentalBridges extends
         .$ctor__com_google_j2cl_transpiler_readable_bridgemethods_DualUnrelatedAccidentalBridges__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_bridgemethods_DualUnrelatedAccidentalBridges__() {
     this.$ctor__com_google_j2cl_transpiler_readable_bridgemethods_SuperDualUnrelatedAccidentalBridges__();
   }
-
   /**
    * Bridge method.
    * @override
    * @param {*} arg0
    * @param {*} arg1
-   * @return {void}
    * @public
    */
   m_foo__java_lang_Object__java_lang_Object(arg0, arg1) {
@@ -58,43 +51,36 @@ class DualUnrelatedAccidentalBridges extends
         /**@type {?string} */ ($Casts.$to(arg0, j_l_String)),
         /**@type {?number} */ ($Casts.$to(arg1, Double)));
   }
-
   /**
    * Bridge method.
    * @override
    * @param {*} arg0
    * @param {(Number|number)} arg1
-   * @return {void}
    * @public
    */
   m_foo__java_lang_Object__java_lang_Number(arg0, arg1) {
     super.m_foo__java_lang_String__java_lang_Number(
         /**@type {?string} */ ($Casts.$to(arg0, j_l_String)), arg1);
   }
-
   /**
    * Bridge method.
    * @override
    * @param {*} arg0
    * @param {?number} arg1
-   * @return {void}
    * @public
    */
   m_foo__java_lang_Object__java_lang_Double(arg0, arg1) {
     super.m_foo__java_lang_String__java_lang_Double(
         /**@type {?string} */ ($Casts.$to(arg0, j_l_String)), arg1);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    DualUnrelatedAccidentalBridges.$clinit = (() => {});
+    DualUnrelatedAccidentalBridges.$clinit = () => {};
     DualUnrelatedAccidentalBridges.$loadModules();
     SuperDualUnrelatedAccidentalBridges.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -103,17 +89,6 @@ class DualUnrelatedAccidentalBridges extends
   static $isInstance(instance) {
     return instance instanceof DualUnrelatedAccidentalBridges;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(
-        classConstructor, DualUnrelatedAccidentalBridges);
-  }
-
   /**
    * @public
    */
@@ -122,16 +97,13 @@ class DualUnrelatedAccidentalBridges extends
     j_l_String = goog.module.get('java.lang.String$impl');
     $Casts = goog.module.get('vmbootstrap.Casts$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     DualUnrelatedAccidentalBridges,
     'com.google.j2cl.transpiler.readable.bridgemethods.DualUnrelatedAccidentalBridges');
 
-
 SomeInterface.$markImplementor(DualUnrelatedAccidentalBridges);
 SomeOtherFooInterface.$markImplementor(DualUnrelatedAccidentalBridges);
-
 
 exports = DualUnrelatedAccidentalBridges;
 //# sourceMappingURL=DualUnrelatedAccidentalBridges.js.map

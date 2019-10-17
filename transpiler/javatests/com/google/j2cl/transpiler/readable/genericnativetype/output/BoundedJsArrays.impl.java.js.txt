@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.genericnativetype.BoundedJsArrays$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $Overlay = goog.forwardDeclare('com.google.j2cl.transpiler.readable.genericnativetype.BoundedJsArray.$Overlay$impl');
-
 
 class BoundedJsArrays extends j_l_Object {
   /**
@@ -14,27 +12,22 @@ class BoundedJsArrays extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!BoundedJsArrays}
    * @public
    */
   static $create__() {
-    BoundedJsArrays.$clinit();
     let $instance = new BoundedJsArrays();
     $instance
         .$ctor__com_google_j2cl_transpiler_readable_genericnativetype_BoundedJsArrays__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_genericnativetype_BoundedJsArrays__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @template V
    * @return {Array<V>}
@@ -44,7 +37,6 @@ class BoundedJsArrays extends j_l_Object {
     BoundedJsArrays.$clinit();
     return /**@type {Array<V>} */ ($Overlay.m_create__());
   }
-
   /**
    * @template V
    * @param {number} size
@@ -55,17 +47,14 @@ class BoundedJsArrays extends j_l_Object {
     BoundedJsArrays.$clinit();
     return /**@type {Array<V>} */ ($Overlay.m_create__int(size));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    BoundedJsArrays.$clinit = (() => {});
+    BoundedJsArrays.$clinit = () => {};
     BoundedJsArrays.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -74,16 +63,6 @@ class BoundedJsArrays extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof BoundedJsArrays;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, BoundedJsArrays);
-  }
-
   /**
    * @public
    */
@@ -91,13 +70,10 @@ class BoundedJsArrays extends j_l_Object {
     $Overlay = goog.module.get(
         'com.google.j2cl.transpiler.readable.genericnativetype.BoundedJsArray.$Overlay$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     BoundedJsArrays,
     'com.google.j2cl.transpiler.readable.genericnativetype.BoundedJsArrays');
-
-
 
 exports = BoundedJsArrays;
 //# sourceMappingURL=BoundedJsArrays.js.map

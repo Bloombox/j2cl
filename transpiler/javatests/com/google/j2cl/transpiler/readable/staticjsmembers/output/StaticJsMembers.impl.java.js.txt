@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.staticjsmembers.StaticJsMembers$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Bar = goog.forwardDeclare('foo.Bar');
 let Baz = goog.forwardDeclare('foo.Baz');
-
 
 class StaticJsMembers extends j_l_Object {
   /**
@@ -15,7 +13,6 @@ class StaticJsMembers extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!StaticJsMembers}
    * @public
@@ -27,35 +24,27 @@ class StaticJsMembers extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_staticjsmembers_StaticJsMembers__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_staticjsmembers_StaticJsMembers__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {number} a
-   * @return {void}
    * @public
    */
   static fun(a) {
     StaticJsMembers.$clinit();
   }
-
   /**
    * @param {number} a
-   * @return {void}
    * @public
    */
   static f2(a) {
     StaticJsMembers.$clinit();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
@@ -81,7 +70,6 @@ class StaticJsMembers extends j_l_Object {
     new Object();
     new window.Object();
   }
-
   /**
    * @return {number}
    * @public
@@ -92,10 +80,8 @@ class StaticJsMembers extends j_l_Object {
         StaticJsMembers
             .$f_field1__com_google_j2cl_transpiler_readable_staticjsmembers_StaticJsMembers);
   }
-
   /**
    * @param {number} value
-   * @return {void}
    * @public
    */
   static set field1(value) {
@@ -104,7 +90,6 @@ class StaticJsMembers extends j_l_Object {
          .$f_field1__com_google_j2cl_transpiler_readable_staticjsmembers_StaticJsMembers =
          value);
   }
-
   /**
    * @return {number}
    * @public
@@ -115,10 +100,8 @@ class StaticJsMembers extends j_l_Object {
         StaticJsMembers
             .$f_field2__com_google_j2cl_transpiler_readable_staticjsmembers_StaticJsMembers);
   }
-
   /**
    * @param {number} value
-   * @return {void}
    * @public
    */
   static set field2(value) {
@@ -127,17 +110,14 @@ class StaticJsMembers extends j_l_Object {
          .$f_field2__com_google_j2cl_transpiler_readable_staticjsmembers_StaticJsMembers =
          value);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    StaticJsMembers.$clinit = (() => {});
+    StaticJsMembers.$clinit = () => {};
     StaticJsMembers.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -146,16 +126,6 @@ class StaticJsMembers extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof StaticJsMembers;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, StaticJsMembers);
-  }
-
   /**
    * @public
    */
@@ -163,25 +133,19 @@ class StaticJsMembers extends j_l_Object {
     Bar = goog.module.get('foo.Bar');
     Baz = goog.module.get('foo.Baz');
   }
-};
-
+}
 $Util.$setClassMetadata(
     StaticJsMembers,
     'com.google.j2cl.transpiler.readable.staticjsmembers.StaticJsMembers');
-
 
 /** @private {number} */
 StaticJsMembers
     .$f_field1__com_google_j2cl_transpiler_readable_staticjsmembers_StaticJsMembers =
     0;
-
-
 /** @private {number} */
 StaticJsMembers
     .$f_field2__com_google_j2cl_transpiler_readable_staticjsmembers_StaticJsMembers =
     0;
-
-
 
 exports = StaticJsMembers;
 //# sourceMappingURL=StaticJsMembers.js.map

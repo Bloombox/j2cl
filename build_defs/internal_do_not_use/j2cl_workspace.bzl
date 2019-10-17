@@ -1,16 +1,15 @@
 """Macro to use for loading the J2CL repository"""
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_jar")
-load("@io_bazel_rules_closure//closure:defs.bzl", "closure_repositories")
+load("@io_bazel_rules_closure//closure:repositories.bzl", "rules_closure_dependencies")
 load("@bazel_skylib//lib:versions.bzl", "versions")
 
 def setup_j2cl_workspace():
     """Load all dependencies needed for J2CL."""
 
-    versions.check("0.24.0")  # The version J2CL currently have a CI setup for.
+    versions.check("1.0.0")  # The version J2CL currently have a CI setup for.
 
-    closure_repositories(
-        omit_com_google_protobuf = True,
+    rules_closure_dependencies(
         omit_com_google_auto_common = True,
     )
 
@@ -25,10 +24,10 @@ def setup_j2cl_workspace():
     )
 
     # We cannot replace com_google_jsinterop_annotations so choose a different name
-    native.maven_jar(
+    http_archive(
         name = "com_google_jsinterop_annotations_head",
-        artifact = "com.google.jsinterop:jsinterop-annotations:HEAD-SNAPSHOT",
-        repository = "https://oss.sonatype.org/content/repositories/google-snapshots/",
+        urls = ["https://github.com/google/jsinterop-annotations/archive/master.zip"],
+        strip_prefix = "jsinterop-annotations-master",
     )
 
     native.maven_jar(
@@ -73,7 +72,7 @@ def setup_j2cl_workspace():
 
     native.maven_jar(
         name = "com_google_truth",
-        artifact = "com.google.truth:truth:0.39",
+        artifact = "com.google.truth:truth:1.0",
     )
 
     # TODO(b/135461024): for now J2CL uses a prepackaged version of javac. But in the future it
@@ -84,66 +83,66 @@ def setup_j2cl_workspace():
     )
 
     # Eclipse JARs listed at
-    # http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/
+    # http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/
 
     http_jar(
         name = "org_eclipse_jdt_content_type",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.core.contenttype_3.7.300.v20190215-2048.jar",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.core.contenttype_3.7.300.v20190215-2048.jar",
         sha256 = "d4cee7a28a000a89863ab225c479cafc2fdf8638db2e89b383d6d792c5bfb866",
     )
 
     http_jar(
         name = "org_eclipse_jdt_jobs",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.core.jobs_3.10.300.v20190215-2048.jar",
-        sha256 = "a337ff365732b08ce59be7e82921fe354ceccb58c6221fc2b064ded9449382b0",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.core.jobs_3.10.400.v20190506-1457.jar",
+        sha256 = "31dce5a10508774c84ff06d5840ce90b04eeb5c1a22314abe1afbe0f402007e8",
     )
 
     http_jar(
         name = "org_eclipse_jdt_resources",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.core.resources_3.13.300.v20190218-2054.jar",
-        sha256 = "a9176863b9be022cf841ec41e9e5080444700382b7b72ab5d0f3d33d540c1e10",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.core.resources_3.13.400.v20190505-1655.jar",
+        sha256 = "c7ea0920453e16dd72c43d7ee47b2d9cd45a5267c92984ad51e09cb6a8c4378d",
     )
 
     http_jar(
         name = "org_eclipse_jdt_runtime",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.core.runtime_3.15.200.v20190301-1641.jar",
-        sha256 = "9a3b7af1bde36433768a21db8cba91e60c8b56de1cebcc1cbe35fc69c6cba4ef",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.core.runtime_3.15.300.v20190508-0543.jar",
+        sha256 = "a9dc5b43defbb9975136c31478eef9f66ca567be8f4b1d47814752173e18f299",
     )
 
     http_jar(
         name = "org_eclipse_jdt_equinox_common",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.equinox.common_3.10.300.v20190218-2100.jar",
-        sha256 = "86252b5b8cf263f64438e78e80ed8f8b2b22664d4436d582aeb1b6ff9b3a806e",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.equinox.common_3.10.400.v20190516-1504.jar",
+        sha256 = "85cde16fb71b9f25271916b11a5cdce50ddc79cb2974484085990d152e945661",
     )
 
     http_jar(
         name = "org_eclipse_jdt_equinox_preferences",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.equinox.preferences_3.7.300.v20190218-2100.jar",
-        sha256 = "d80f376963d276fbe88c9a117b343f39ea381538d104d100e46b5aeef089d1f3",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.equinox.preferences_3.7.400.v20190516-1504.jar",
+        sha256 = "298c1ee84e68f0eb011be5d55e4041525b682d034ae5ebc7dafdfcb86ef09d6f",
     )
 
     http_jar(
         name = "org_eclipse_jdt_compiler_apt",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.jdt.apt.core_3.6.300.v20190228-0624.jar",
-        sha256 = "279f69572a11a969bf875a4d2bb27de279327bc843ea30fdc46a2ab3fcf46e8a",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.jdt.apt.core_3.6.400.v20190328-1431.jar",
+        sha256 = "589097f07dd37570117e078a56da8b754c22a4225fae09f1a09e5b6f81d58ba0",
     )
 
     http_jar(
         name = "org_eclipse_jdt_core",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.jdt.core_3.17.0.v20190306-2240.jar",
-        sha256 = "2b23a72dd7dacfb90000c290fbd6d23fc3857cf015622397d7fc3bee9e7da259",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.jdt.core_3.18.0.v20190522-0428.jar",
+        sha256 = "2a727df878a41bf63f2f6bd0a77fb327ffebd1b637f4b06f08cb41263ff96194",
     )
 
     http_jar(
         name = "org_eclipse_jdt_osgi",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.osgi_3.13.300.v20190218-1622.jar",
-        sha256 = "d1df0da964ec1bf0e5ac4f442eead3076c1c89dc834bc6148776ff5542c5a0e7",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.osgi_3.14.0.v20190517-1309.jar",
+        sha256 = "0a97384b1820f709695e76e9eca214b8bed59738206945113bb89c5fc5060e12",
     )
 
     http_jar(
         name = "org_eclipse_jdt_text",
-        url = "http://download.eclipse.org/eclipse/updates/4.11/R-4.11-201903070500/plugins/org.eclipse.text_3.8.100.v20190306-1823.jar",
-        sha256 = "e9972f7a70c3130691eb57d4514b22d33c6c7615acccab1107fb0e1d64fab710",
+        url = "http://download.eclipse.org/eclipse/updates/4.12/R-4.12-201906051800/plugins/org.eclipse.text_3.8.200.v20190519-2344.jar",
+        sha256 = "3c0747c95459cfadf6d11ef591452c98812a9208d40a9fe3719ba7dbf8a26132",
     )
 
     http_archive(
@@ -152,23 +151,42 @@ def setup_j2cl_workspace():
         sha256 = "474ce8b5aae933b3fd9bacb78ec6f8f557547adfa9846bb90c2407994e530ac8",
     )
 
-    # proto_library and java_proto_library rules implicitly depend on
-    # @com_google_protobuf for protoc and proto runtimes.
     http_archive(
-        name = "com_google_protobuf",
-        strip_prefix = "protobuf-3.6.1.3",
-        urls = ["https://github.com/google/protobuf/archive/v3.6.1.3.zip"],
-        sha256 = "9510dd2afc29e7245e9e884336f848c8a6600a14ae726adb6befdb4f786f0be2",
+        name = "org_jbox2d",
+        strip_prefix = "jbox2d-jbox2d-2.2.1.1/jbox2d-library",
+        urls = ["https://github.com/jbox2d/jbox2d/archive/jbox2d-2.2.1.1.zip"],
+        sha256 = "088e5fc0f56c75f82c289c4721d9faf46a309e258d3ee647799622ef82e60303",
+        patches = ["@com_google_j2cl//transpiler/javatests/com/google/j2cl/transpiler/integration/box2d:jbox2d.patch"],
+        build_file_content = '''
+filegroup(
+    name = "j2cl_sources",
+    srcs = glob(
+        ["src/main/java/**/*.java"],
+        exclude = [
+            "**/StrictMath.java",
+            "**/PlatformMathUtils.java",
+            "**/Timer.java",
+            "**/profile/**",
+        ],
+    ) + glob(["src/main/java/org/jbox2d/gwtemul/**/*.java"]),
+    visibility = ["//visibility:public"],
+)''',
     )
 
-    # needed for protobuf
+    # Required by protobuf_java_util
     native.bind(
         name = "guava",
         actual = "@com_google_guava",
     )
 
-    # needed for protobuf
+    # Required by protobuf_java_util
     native.bind(
         name = "gson",
         actual = "@com_google_code_gson",
+    )
+
+    # Required by protobuf_java_util
+    native.bind(
+        name = "error_prone_annotations",
+        actual = "@com_google_errorprone_error_prone_annotations",
     )

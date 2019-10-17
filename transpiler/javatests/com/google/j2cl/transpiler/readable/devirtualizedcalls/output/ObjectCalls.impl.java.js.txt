@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.devirtualizedcalls.ObjectCalls$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $Arrays = goog.forwardDeclare('vmbootstrap.Arrays$impl');
 let $Objects = goog.forwardDeclare('vmbootstrap.Objects$impl');
-
 
 class ObjectCalls extends j_l_Object {
   /**
@@ -15,7 +13,6 @@ class ObjectCalls extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!ObjectCalls}
    * @public
@@ -27,17 +24,13 @@ class ObjectCalls extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_devirtualizedcalls_ObjectCalls__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_devirtualizedcalls_ObjectCalls__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_main__() {
@@ -54,9 +47,7 @@ class ObjectCalls extends j_l_Object {
     $Objects.m_toString__java_lang_Object(objectCalls);
     $Objects.m_getClass__java_lang_Object(objectCalls);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
@@ -69,17 +60,14 @@ class ObjectCalls extends j_l_Object {
     this.toString();
     this.m_getClass__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    ObjectCalls.$clinit = (() => {});
+    ObjectCalls.$clinit = () => {};
     ObjectCalls.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -88,16 +76,6 @@ class ObjectCalls extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof ObjectCalls;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, ObjectCalls);
-  }
-
   /**
    * @public
    */
@@ -105,13 +83,10 @@ class ObjectCalls extends j_l_Object {
     $Arrays = goog.module.get('vmbootstrap.Arrays$impl');
     $Objects = goog.module.get('vmbootstrap.Objects$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     ObjectCalls,
     'com.google.j2cl.transpiler.readable.devirtualizedcalls.ObjectCalls');
-
-
 
 exports = ObjectCalls;
 //# sourceMappingURL=ObjectCalls.js.map

@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.packageprivatemethods.package2.SubParent$impl');
 
-
 const Parent = goog.require('com.google.j2cl.transpiler.readable.packageprivatemethods.package1.Parent$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @abstract
@@ -15,15 +13,12 @@ class SubParent extends Parent {
   constructor() {
     super();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_packageprivatemethods_package2_SubParent__() {
     this.$ctor__com_google_j2cl_transpiler_readable_packageprivatemethods_package1_Parent__();
   }
-
   /**
    * @param {number} a
    * @return {number}
@@ -33,17 +28,14 @@ class SubParent extends Parent {
       a) {
     return a;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    SubParent.$clinit = (() => {});
+    SubParent.$clinit = () => {};
     SubParent.$loadModules();
     Parent.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -52,27 +44,14 @@ class SubParent extends Parent {
   static $isInstance(instance) {
     return instance instanceof SubParent;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, SubParent);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     SubParent,
     'com.google.j2cl.transpiler.readable.packageprivatemethods.package2.SubParent');
-
-
 
 exports = SubParent;
 //# sourceMappingURL=SubParent.js.map

@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.jsfunction.Main.DoubleDoubleJsBiFunction$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 const $JavaScriptFunction = goog.require('vmbootstrap.JavaScriptFunction$impl');
@@ -9,7 +8,6 @@ let Double = goog.forwardDeclare('java.lang.Double$impl');
 let Number = goog.forwardDeclare('java.lang.Number$impl');
 let $Casts = goog.forwardDeclare('vmbootstrap.Casts$impl');
 
-
 class DoubleDoubleJsBiFunction extends j_l_Object {
   /**
    * @protected
@@ -17,7 +15,6 @@ class DoubleDoubleJsBiFunction extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {function(?number, ?number):?number}
    * @public
@@ -32,16 +29,13 @@ class DoubleDoubleJsBiFunction extends j_l_Object {
             .m_apply__java_lang_Object__java_lang_Number,
         $instance, DoubleDoubleJsBiFunction.$copy);
   }
-
   /**
    * @suppress {invalidCasts}
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsfunction_Main_DoubleDoubleJsBiFunction__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {function(?number, ?number):?number} $thisArg
    * @param {?number} d
@@ -54,7 +48,6 @@ class DoubleDoubleJsBiFunction extends j_l_Object {
     DoubleDoubleJsBiFunction.$clinit();
     return d;
   }
-
   /**
    * Bridge method.
    * @this {?function(?number, ?number):?number}
@@ -69,17 +62,14 @@ class DoubleDoubleJsBiFunction extends j_l_Object {
             this, /**@type {?number} */ ($Casts.$to(arg0, Double)),
             /**@type {?number} */ ($Casts.$to(arg1, Double)));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    DoubleDoubleJsBiFunction.$clinit = (() => {});
+    DoubleDoubleJsBiFunction.$clinit = () => {};
     DoubleDoubleJsBiFunction.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -90,16 +80,6 @@ class DoubleDoubleJsBiFunction extends j_l_Object {
         !!instance
               .$is__com_google_j2cl_transpiler_readable_jsfunction_Main_DoubleDoubleJsBiFunction;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, DoubleDoubleJsBiFunction);
-  }
-
   /**
    * @param {DoubleDoubleJsBiFunction} from
    * @param {?} to
@@ -110,7 +90,6 @@ class DoubleDoubleJsBiFunction extends j_l_Object {
     to.$is__com_google_j2cl_transpiler_readable_jsfunction_Main_DoubleDoubleJsBiFunction =
         true;
   }
-
   /**
    * @public
    */
@@ -118,15 +97,12 @@ class DoubleDoubleJsBiFunction extends j_l_Object {
     Double = goog.module.get('java.lang.Double$impl');
     $Casts = goog.module.get('vmbootstrap.Casts$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     DoubleDoubleJsBiFunction,
     'com.google.j2cl.transpiler.readable.jsfunction.Main$DoubleDoubleJsBiFunction');
 
-
 $JavaScriptFunction.$markImplementor(DoubleDoubleJsBiFunction);
-
 
 exports = DoubleDoubleJsBiFunction;
 //# sourceMappingURL=Main$DoubleDoubleJsBiFunction.js.map

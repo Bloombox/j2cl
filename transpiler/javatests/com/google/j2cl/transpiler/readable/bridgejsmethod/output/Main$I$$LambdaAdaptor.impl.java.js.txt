@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.I.$LambdaAdaptor$impl');
 
-
 const I = goog.require('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.I$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Number = goog.forwardDeclare('java.lang.Number$impl');
-
 
 /**
  * @template T
@@ -25,10 +23,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_I_$LambdaAdaptor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_I_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function(T):T} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_I_$LambdaAdaptor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_I_$JsFunction(
@@ -37,7 +33,6 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_I_$LambdaAdaptor =
         fn;
   }
-
   /**
    * @param {T} arg0
    * @return {T}
@@ -50,17 +45,14 @@ class $LambdaAdaptor extends j_l_Object {
             this.f_$$fn__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_I_$LambdaAdaptor,
         $function(arg0));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -69,29 +61,16 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.bridgejsmethod.Main$I$$LambdaAdaptor');
 
-
 I.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=Main$I$$LambdaAdaptor.js.map

@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.breakstatement.BreakStatement$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class BreakStatement extends j_l_Object {
   /**
@@ -12,7 +10,6 @@ class BreakStatement extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!BreakStatement}
    * @public
@@ -24,17 +21,13 @@ class BreakStatement extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_breakstatement_BreakStatement__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_breakstatement_BreakStatement__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
@@ -42,17 +35,14 @@ class BreakStatement extends j_l_Object {
       break;
     }
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    BreakStatement.$clinit = (() => {});
+    BreakStatement.$clinit = () => {};
     BreakStatement.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -61,27 +51,14 @@ class BreakStatement extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof BreakStatement;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, BreakStatement);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     BreakStatement,
     'com.google.j2cl.transpiler.readable.breakstatement.BreakStatement');
-
-
 
 exports = BreakStatement;
 //# sourceMappingURL=BreakStatement.js.map

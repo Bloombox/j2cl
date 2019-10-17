@@ -91,6 +91,12 @@ public class Main {
         public void run() {}
       }.run();
     }
+
+    @JsOverlay
+    public final void overlay() {}
+
+    @JsOverlay
+    public static void overlay(NativeJsTypeWithOverlay o) {}
   }
 
   @JsFunction

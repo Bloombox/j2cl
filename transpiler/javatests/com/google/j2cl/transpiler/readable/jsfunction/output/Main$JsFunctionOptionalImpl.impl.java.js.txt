@@ -1,13 +1,11 @@
 goog.module('com.google.j2cl.transpiler.readable.jsfunction.Main.JsFunctionOptionalImpl$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 const $JavaScriptFunction = goog.require('vmbootstrap.JavaScriptFunction$impl');
 
 let Double = goog.forwardDeclare('java.lang.Double$impl');
 let $Primitives = goog.forwardDeclare('vmbootstrap.Primitives$impl');
-
 
 class JsFunctionOptionalImpl extends j_l_Object {
   /**
@@ -16,7 +14,6 @@ class JsFunctionOptionalImpl extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {function(number, ?number=):number}
    * @public
@@ -30,16 +27,13 @@ class JsFunctionOptionalImpl extends j_l_Object {
         JsFunctionOptionalImpl.prototype.m_m__int__java_lang_Double, $instance,
         JsFunctionOptionalImpl.$copy);
   }
-
   /**
    * @suppress {invalidCasts}
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsfunction_Main_JsFunctionOptionalImpl__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @this {?function(number, ?number=):number}
    * @param {number} i
@@ -51,17 +45,14 @@ class JsFunctionOptionalImpl extends j_l_Object {
     return $Primitives.$narrowDoubleToInt(
         (i + Double.m_doubleValue__java_lang_Double(number_1)));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    JsFunctionOptionalImpl.$clinit = (() => {});
+    JsFunctionOptionalImpl.$clinit = () => {};
     JsFunctionOptionalImpl.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -72,16 +63,6 @@ class JsFunctionOptionalImpl extends j_l_Object {
         !!instance
               .$is__com_google_j2cl_transpiler_readable_jsfunction_Main_JsFunctionOptionalImpl;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, JsFunctionOptionalImpl);
-  }
-
   /**
    * @param {JsFunctionOptionalImpl} from
    * @param {?} to
@@ -92,7 +73,6 @@ class JsFunctionOptionalImpl extends j_l_Object {
     to.$is__com_google_j2cl_transpiler_readable_jsfunction_Main_JsFunctionOptionalImpl =
         true;
   }
-
   /**
    * @public
    */
@@ -100,15 +80,12 @@ class JsFunctionOptionalImpl extends j_l_Object {
     Double = goog.module.get('java.lang.Double$impl');
     $Primitives = goog.module.get('vmbootstrap.Primitives$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     JsFunctionOptionalImpl,
     'com.google.j2cl.transpiler.readable.jsfunction.Main$JsFunctionOptionalImpl');
 
-
 $JavaScriptFunction.$markImplementor(JsFunctionOptionalImpl);
-
 
 exports = JsFunctionOptionalImpl;
 //# sourceMappingURL=Main$JsFunctionOptionalImpl.js.map

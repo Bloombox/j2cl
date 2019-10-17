@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.abstractinnerclass.InnerClasses.C$impl');
 
-
 const A = goog.require('com.google.j2cl.transpiler.readable.abstractinnerclass.InnerClasses.A$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let InnerClasses = goog.forwardDeclare('com.google.j2cl.transpiler.readable.abstractinnerclass.InnerClasses$impl');
-
 
 /**
  * @abstract
@@ -21,10 +19,8 @@ class C extends j_l_Object {
     /** @public {InnerClasses} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_abstractinnerclass_InnerClasses_C;
   }
-
   /**
    * @param {InnerClasses} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_abstractinnerclass_InnerClasses_C__com_google_j2cl_transpiler_readable_abstractinnerclass_InnerClasses(
@@ -33,25 +29,20 @@ class C extends j_l_Object {
         $outer_this;
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_bar___$pp_com_google_j2cl_transpiler_readable_abstractinnerclass() {
     this.m_foo__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    C.$clinit = (() => {});
+    C.$clinit = () => {};
     C.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -60,28 +51,15 @@ class C extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof C;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, C);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     C, 'com.google.j2cl.transpiler.readable.abstractinnerclass.InnerClasses$C');
 
-
 A.$markImplementor(C);
-
 
 exports = C;
 //# sourceMappingURL=InnerClasses$C.js.map

@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards.Y.$LambdaAdaptor$impl');
 
-
 const Y = goog.require('com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards.Y$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @implements {Y}
@@ -22,10 +20,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_Y_$LambdaAdaptor__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_Y_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function():void} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_Y_$LambdaAdaptor__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_Y_$JsFunction(
@@ -34,9 +30,7 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_Y_$LambdaAdaptor =
         fn;
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_n__() {
@@ -46,17 +40,14 @@ class $LambdaAdaptor extends j_l_Object {
       $function();
     }
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -65,29 +56,16 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards$Y$$LambdaAdaptor');
 
-
 Y.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=TypeWildCards$Y$$LambdaAdaptor.js.map

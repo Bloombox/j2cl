@@ -13,12 +13,10 @@
             "kind" : "STATIC"
           } ],
           "referencedTypes" : ["java.lang.Object"],
-          "startPosition" : {"line" : 8, "column" : 2},
-          "endPosition" : {"line" : 15, "column" : 2}
+          "position" : {"start" : 6, "end" : 12}
         },
         {
           "name" : "$create__",
-          "public" : true,
           "static" : true,
           "invokedMethods" : [
             {
@@ -37,8 +35,7 @@
             }
           ],
           "referencedTypes" : ["javaemul.InternalType"],
-          "startPosition" : {"line" : 15, "column" : 2},
-          "endPosition" : {"line" : 26, "column" : 2}
+          "position" : {"start" : 12, "end" : 22}
         },
         {
           "name" : "$ctor__javaemul_InternalType__",
@@ -47,14 +44,12 @@
             "method" : "$ctor__java_lang_Object__",
             "enclosingType" : "java.lang.Object"
           } ],
-          "startPosition" : {"line" : 26, "column" : 2},
-          "endPosition" : {"line" : 34, "column" : 2}
+          "position" : {"start" : 22, "end" : 28}
         },
         {
           "name" : "foo",
           "jsAccessible" : true,
-          "startPosition" : {"line" : 34, "column" : 2},
-          "endPosition" : {"line" : 41, "column" : 2}
+          "position" : {"start" : 28, "end" : 32}
         },
         {
           "name" : "$clinit",
@@ -78,8 +73,7 @@
             }
           ],
           "referencedTypes" : [ "javaemul.InternalType", "java.lang.Object" ],
-          "startPosition" : {"line" : 41, "column" : 2},
-          "endPosition" : {"line" : 52, "column" : 2}
+          "position" : {"start" : 32, "end" : 40}
         }
       ],
       "headerSourceFilePath" : "javaemul/InternalType.java.js",
@@ -98,12 +92,10 @@
             "kind" : "STATIC"
           } ],
           "referencedTypes" : ["java.lang.Object"],
-          "startPosition" : {"line" : 8, "column" : 2},
-          "endPosition" : {"line" : 15, "column" : 2}
+          "position" : {"start" : 6, "end" : 12}
         },
         {
           "name" : "$create__",
-          "public" : true,
           "static" : true,
           "invokedMethods" : [
             {
@@ -122,8 +114,7 @@
             }
           ],
           "referencedTypes" : ["vmbootstrap.InternalType2"],
-          "startPosition" : {"line" : 15, "column" : 2},
-          "endPosition" : {"line" : 26, "column" : 2}
+          "position" : {"start" : 12, "end" : 22}
         },
         {
           "name" : "$ctor__vmbootstrap_InternalType2__",
@@ -132,14 +123,12 @@
             "method" : "$ctor__java_lang_Object__",
             "enclosingType" : "java.lang.Object"
           } ],
-          "startPosition" : {"line" : 26, "column" : 2},
-          "endPosition" : {"line" : 34, "column" : 2}
+          "position" : {"start" : 22, "end" : 28}
         },
         {
           "name" : "foo",
           "jsAccessible" : true,
-          "startPosition" : {"line" : 34, "column" : 2},
-          "endPosition" : {"line" : 41, "column" : 2}
+          "position" : {"start" : 28, "end" : 32}
         },
         {
           "name" : "$clinit",
@@ -164,8 +153,7 @@
           ],
           "referencedTypes" :
               [ "vmbootstrap.InternalType2", "java.lang.Object" ],
-          "startPosition" : {"line" : 41, "column" : 2},
-          "endPosition" : {"line" : 52, "column" : 2}
+          "position" : {"start" : 32, "end" : 40}
         }
       ],
       "headerSourceFilePath" : "vmbootstrap/InternalType2.java.js",
@@ -184,8 +172,7 @@
             "kind" : "STATIC"
           } ],
           "referencedTypes" : ["java.lang.Object"],
-          "startPosition" : {"line" : 10, "column" : 2},
-          "endPosition" : {"line" : 17, "column" : 2}
+          "position" : {"start" : 8, "end" : 14}
         },
         {
           "name" : "$create__",
@@ -213,8 +200,7 @@
           ],
           "referencedTypes" :
               ["com.google.j2cl.transpiler.readable.libraryinfo.Main"],
-          "startPosition" : {"line" : 17, "column" : 2},
-          "endPosition" : {"line" : 28, "column" : 2}
+          "position" : {"start" : 14, "end" : 24}
         },
         {
           "name" :
@@ -224,8 +210,7 @@
             "method" : "$ctor__java_lang_Object__",
             "enclosingType" : "java.lang.Object"
           } ],
-          "startPosition" : {"line" : 28, "column" : 2},
-          "endPosition" : {"line" : 36, "column" : 2}
+          "position" : {"start" : 24, "end" : 30}
         },
         {
           "name" : "entryPoint",
@@ -257,25 +242,21 @@
                   "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionImpl",
               "kind" : "STATIC"
             },
-            {"method" : "log", "enclosingType" : "console", "kind" : "STATIC"}
+            {"method" : "console.log", "kind" : "STATIC"}
           ],
           "referencedTypes" : [
             "com.google.j2cl.transpiler.readable.libraryinfo.Main",
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionImpl",
-            "console"
+            ""
           ],
-          "startPosition" : {"line" : 36, "column" : 2},
-          "endPosition" : {"line" : 50, "column" : 2}
+          "position" : {"start" : 30, "end" : 42}
         },
         {
           "name" :
               "m_execute___$p_com_google_j2cl_transpiler_readable_libraryinfo_Main",
-          "invokedMethods" : [
-            {"method" : "log", "enclosingType" : "console", "kind" : "STATIC"}
-          ],
-          "referencedTypes" : ["console"],
-          "startPosition" : {"line" : 50, "column" : 2},
-          "endPosition" : {"line" : 58, "column" : 2}
+          "invokedMethods" : [ {"method" : "console.log", "kind" : "STATIC"} ],
+          "referencedTypes" : [""],
+          "position" : {"start" : 42, "end" : 48}
         },
         {
           "name" : "toString",
@@ -286,11 +267,10 @@
             "enclosingType" : "java.lang.Object",
             "kind" : "STATIC"
           } ],
-          "startPosition" : {"line" : 58, "column" : 2},
-          "endPosition" : {"line" : 67, "column" : 2}
+          "position" : {"start" : 48, "end" : 56}
         },
         {
-          "name" : "log",
+          "name" : "console.log",
           "public" : true,
           "static" : true,
           "jsAccessible" : true,
@@ -306,8 +286,7 @@
               "$f_STATIC_FIELD__com_google_j2cl_transpiler_readable_libraryinfo_Main",
           "public" : true,
           "static" : true,
-          "startPosition" : {"line" : 127},
-          "endPosition" : {"line" : 131}
+          "position" : {"start" : 97, "end" : 99}
         },
         {
           "name" :
@@ -331,8 +310,7 @@
           ],
           "referencedTypes" :
               ["com.google.j2cl.transpiler.readable.libraryinfo.Main"],
-          "startPosition" : {"line" : 75, "column" : 2},
-          "endPosition" : {"line" : 84, "column" : 2}
+          "position" : {"start" : 63, "end" : 70}
         },
         {
           "name" : "$clinit",
@@ -368,8 +346,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main",
             "java.lang.Object"
           ],
-          "startPosition" : {"line" : 84, "column" : 2},
-          "endPosition" : {"line" : 96, "column" : 2}
+          "position" : {"start" : 70, "end" : 79}
         }
       ],
       "headerSourceFilePath" :
@@ -384,8 +361,7 @@
         {
           "name" : "m_foo__",
           "public" : true,
-          "startPosition" : {"line" : 12, "column" : 2},
-          "endPosition" : {"line" : 20, "column" : 2}
+          "position" : {"start" : 10, "end" : 15}
         },
         {
           "name" : "$adapt",
@@ -409,8 +385,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionnalInterface",
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionnalInterface.$LambdaAdaptor"
           ],
-          "startPosition" : {"line" : 20, "column" : 2},
-          "endPosition" : {"line" : 30, "column" : 2}
+          "position" : {"start" : 15, "end" : 24}
         },
         {
           "name" : "$clinit",
@@ -432,8 +407,7 @@
           ],
           "referencedTypes" :
               ["com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionnalInterface"],
-          "startPosition" : {"line" : 30, "column" : 2},
-          "endPosition" : {"line" : 40, "column" : 2}
+          "position" : {"start" : 24, "end" : 31}
         }
       ],
       "headerSourceFilePath" :
@@ -449,8 +423,7 @@
           "name" : "accessibleFunctionalInterfaceMethod",
           "public" : true,
           "jsAccessible" : true,
-          "startPosition" : {"line" : 12, "column" : 2},
-          "endPosition" : {"line" : 20, "column" : 2}
+          "position" : {"start" : 10, "end" : 15}
         },
         {
           "name" : "$adapt",
@@ -474,8 +447,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface",
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface.$LambdaAdaptor"
           ],
-          "startPosition" : {"line" : 20, "column" : 2},
-          "endPosition" : {"line" : 30, "column" : 2}
+          "position" : {"start" : 15, "end" : 24}
         },
         {
           "name" : "$clinit",
@@ -497,8 +469,7 @@
           ],
           "referencedTypes" :
               ["com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface"],
-          "startPosition" : {"line" : 30, "column" : 2},
-          "endPosition" : {"line" : 40, "column" : 2}
+          "position" : {"start" : 24, "end" : 31}
         }
       ],
       "headerSourceFilePath" :
@@ -522,12 +493,10 @@
             "kind" : "STATIC"
           } ],
           "referencedTypes" : ["java.lang.Object"],
-          "startPosition" : {"line" : 9, "column" : 2},
-          "endPosition" : {"line" : 16, "column" : 2}
+          "position" : {"start" : 7, "end" : 13}
         },
         {
           "name" : "$create__",
-          "public" : true,
           "static" : true,
           "invokedMethods" : [
             {
@@ -573,8 +542,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionImpl",
             "nativebootstrap.Util"
           ],
-          "startPosition" : {"line" : 16, "column" : 2},
-          "endPosition" : {"line" : 27, "column" : 2}
+          "position" : {"start" : 13, "end" : 23}
         },
         {
           "name" :
@@ -584,15 +552,13 @@
             "method" : "$ctor__java_lang_Object__",
             "enclosingType" : "java.lang.Object"
           } ],
-          "startPosition" : {"line" : 27, "column" : 2},
-          "endPosition" : {"line" : 36, "column" : 2}
+          "position" : {"start" : 23, "end" : 30}
         },
         {
           "name" : "m_apply__java_lang_String",
           "public" : true,
           "jsAccessible" : true,
-          "startPosition" : {"line" : 36, "column" : 2},
-          "endPosition" : {"line" : 44, "column" : 2}
+          "position" : {"start" : 30, "end" : 35}
         },
         {
           "name" : "$clinit",
@@ -621,8 +587,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionImpl",
             "java.lang.Object"
           ],
-          "startPosition" : {"line" : 44, "column" : 2},
-          "endPosition" : {"line" : 55, "column" : 2}
+          "position" : {"start" : 35, "end" : 43}
         }
       ],
       "headerSourceFilePath" :
@@ -669,8 +634,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionnalInterface.$LambdaAdaptor",
             "java.lang.Object"
           ],
-          "startPosition" : {"line" : 12, "column" : 2},
-          "endPosition" : {"line" : 24, "column" : 2}
+          "position" : {"start" : 10, "end" : 21}
         },
         {
           "name" :
@@ -688,8 +652,7 @@
                   "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionnalInterface.$LambdaAdaptor"
             }
           ],
-          "startPosition" : {"line" : 24, "column" : 2},
-          "endPosition" : {"line" : 34, "column" : 2}
+          "position" : {"start" : 21, "end" : 29}
         },
         {
           "name" : "m_foo__",
@@ -700,8 +663,7 @@
             "enclosingType" :
                 "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionnalInterface.$LambdaAdaptor"
           } ],
-          "startPosition" : {"line" : 34, "column" : 2},
-          "endPosition" : {"line" : 45, "column" : 2}
+          "position" : {"start" : 29, "end" : 38}
         },
         {
           "name" :
@@ -735,8 +697,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionnalInterface.$LambdaAdaptor",
             "java.lang.Object"
           ],
-          "startPosition" : {"line" : 45, "column" : 2},
-          "endPosition" : {"line" : 56, "column" : 2}
+          "position" : {"start" : 38, "end" : 46}
         }
       ],
       "headerSourceFilePath" :
@@ -783,8 +744,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface.$LambdaAdaptor",
             "java.lang.Object"
           ],
-          "startPosition" : {"line" : 12, "column" : 2},
-          "endPosition" : {"line" : 24, "column" : 2}
+          "position" : {"start" : 10, "end" : 21}
         },
         {
           "name" :
@@ -802,8 +762,7 @@
                   "com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface.$LambdaAdaptor"
             }
           ],
-          "startPosition" : {"line" : 24, "column" : 2},
-          "endPosition" : {"line" : 34, "column" : 2}
+          "position" : {"start" : 21, "end" : 29}
         },
         {
           "name" : "accessibleFunctionalInterfaceMethod",
@@ -815,8 +774,7 @@
             "enclosingType" :
                 "com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface.$LambdaAdaptor"
           } ],
-          "startPosition" : {"line" : 34, "column" : 2},
-          "endPosition" : {"line" : 45, "column" : 2}
+          "position" : {"start" : 29, "end" : 38}
         },
         {
           "name" :
@@ -850,8 +808,7 @@
             "com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface.$LambdaAdaptor",
             "java.lang.Object"
           ],
-          "startPosition" : {"line" : 45, "column" : 2},
-          "endPosition" : {"line" : 56, "column" : 2}
+          "position" : {"start" : 38, "end" : 46}
         }
       ],
       "headerSourceFilePath" :

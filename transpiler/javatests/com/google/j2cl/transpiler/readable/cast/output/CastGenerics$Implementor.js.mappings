@@ -2,7 +2,6 @@
 [Implementor] => [constructor]
 [Implementor] => [super();] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<synthetic: ctor_js>"
 [Implementor] => [$create__]
-[Implementor] => [Implementor.$clinit();] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<synthetic: ctor_create>"
 [Implementor] => [let $instance = new Implementor();] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<synthetic: ctor_create>"
 [Implementor] => [$instance.$ctor__com_google_j2cl_transpiler_readable_cast_CastGenerics_Implementor__();] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<synthetic: ctor_create>"
 [Implementor] => [return $instance;] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<synthetic: ctor_create>"
@@ -11,7 +10,6 @@
 [mA] => [m_mA__]
 [mB] => [m_mB__]
 [Implementor] => [$clinit]
-[Implementor] => [Implementor.$clinit = (() =>{
-    });] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<clinit>"
+[Implementor] => [Implementor.$clinit = () =>{};] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<clinit>"
 [Implementor] => [Implementor.$loadModules();] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<clinit>"
 [Implementor] => [BaseImplementor.$clinit();] "com.google.j2cl.transpiler.readable.cast.CastGenerics$Implementor.<clinit>"

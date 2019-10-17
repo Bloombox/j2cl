@@ -34,6 +34,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * A thread-safe, fast and pretty minifier/comment stripper for J2CL generated code.
@@ -63,7 +65,7 @@ public class J2clMinifier {
 
   private interface TransitionFunction {
     StringBuilder transition(
-        StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c);
+        StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state);
   }
 
   /**
@@ -80,8 +82,7 @@ public class J2clMinifier {
   private static final int S_BLOCK_COMMENT;
   private static final int S_DOUBLE_QUOTED_STRING;
   private static final int S_DOUBLE_QUOTED_STRING_ESCAPE;
-  private static final int S_NON_MINIMIZABLE_IDENTIFIER;
-  private static final int S_MINIMIZABLE_IDENTIFIER;
+  private static final int S_IDENTIFIER;
   private static final int S_LINE_COMMENT;
   private static final int S_MAYBE_BLOCK_COMMENT_END;
   private static final int S_MAYBE_COMMENT_START;
@@ -98,8 +99,7 @@ public class J2clMinifier {
       S_BLOCK_COMMENT = numberOfStates++;
       S_DOUBLE_QUOTED_STRING = numberOfStates++;
       S_DOUBLE_QUOTED_STRING_ESCAPE = numberOfStates++;
-      S_NON_MINIMIZABLE_IDENTIFIER = numberOfStates++;
-      S_MINIMIZABLE_IDENTIFIER = numberOfStates++;
+      S_IDENTIFIER = numberOfStates++;
       S_LINE_COMMENT = numberOfStates++;
       S_MAYBE_BLOCK_COMMENT_END = numberOfStates++;
       S_MAYBE_COMMENT_START = numberOfStates++;
@@ -117,13 +117,9 @@ public class J2clMinifier {
       setIdentifierStartTransitions(S_NON_IDENTIFIER);
       setCommentOrStringStartTransitions(S_NON_IDENTIFIER);
 
-      setDefaultTransitions(S_MINIMIZABLE_IDENTIFIER, S_NON_IDENTIFIER);
-      setIdentifierCharTransitions(S_MINIMIZABLE_IDENTIFIER, S_MINIMIZABLE_IDENTIFIER);
-      setCommentOrStringStartTransitions(S_MINIMIZABLE_IDENTIFIER);
-
-      setDefaultTransitions(S_NON_MINIMIZABLE_IDENTIFIER, S_NON_IDENTIFIER);
-      setIdentifierCharTransitions(S_NON_MINIMIZABLE_IDENTIFIER, S_NON_MINIMIZABLE_IDENTIFIER);
-      setCommentOrStringStartTransitions(S_NON_MINIMIZABLE_IDENTIFIER);
+      setDefaultTransitions(S_IDENTIFIER, S_NON_IDENTIFIER);
+      setIdentifierCharTransitions(S_IDENTIFIER, S_IDENTIFIER);
+      setCommentOrStringStartTransitions(S_IDENTIFIER);
 
       setDefaultTransitions(S_MAYBE_COMMENT_START, S_NON_IDENTIFIER);
       setIdentifierStartTransitions(S_MAYBE_COMMENT_START);
@@ -163,7 +159,8 @@ public class J2clMinifier {
   private static StringBuilder bufferIdentifierChar(
       @SuppressWarnings("unused") StringBuilder minifiedContentBuffer,
       StringBuilder identifierBuffer,
-      char c) {
+      char c,
+      int state) {
     identifierBuffer.append(c);
     return identifierBuffer;
   }
@@ -198,6 +195,11 @@ public class J2clMinifier {
   }
 
   private static boolean isMinifiableIdentifier(String identifier) {
+    char firstChar = identifier.charAt(0);
+    if (firstChar != '$' && firstChar != 'm' && firstChar != 'f') {
+      return false;
+    }
+
     // This is faster than a regex and more readable as well.
     if (startsLikeJavaMethodOrField(identifier)) {
       int underScoreIndex = identifier.indexOf('_');
@@ -224,10 +226,7 @@ public class J2clMinifier {
   }
 
   private static void setIdentifierStartTransitions(int currentState) {
-    setIdentifierCharTransitions(currentState, S_NON_MINIMIZABLE_IDENTIFIER);
-    nextState[currentState]['f'] = S_MINIMIZABLE_IDENTIFIER;
-    nextState[currentState]['m'] = S_MINIMIZABLE_IDENTIFIER;
-    nextState[currentState]['$'] = S_MINIMIZABLE_IDENTIFIER;
+    setIdentifierCharTransitions(currentState, S_IDENTIFIER);
   }
 
   private static void setIdentifierCharTransitions(int currentState, int nextState) {
@@ -246,50 +245,89 @@ public class J2clMinifier {
 
   @SuppressWarnings("unused")
   private static StringBuilder skipChar(
-      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c) {
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
     return identifierBuffer;
   }
 
   private static StringBuilder skipCharUnlessNewLine(
-      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c) {
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
     if (c == '\n') {
-      identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, c);
+      identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, c, state);
     }
     return identifierBuffer;
   }
 
   @SuppressWarnings("unused")
   private static StringBuilder startNewIdentifier(
-      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c) {
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
     StringBuilder identifierBuilder = new StringBuilder();
     identifierBuilder.append(c);
     return identifierBuilder;
   }
 
+  private static StringBuilder writeCharOrReplace(
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
+    if ((c == '\n' || c == 0) && state == S_NON_IDENTIFIER) {
+      maybeReplaceGoogStatement(minifiedContentBuffer);
+    }
+    if (c != 0) {
+      minifiedContentBuffer.append(c);
+    }
+    return identifierBuffer;
+  }
+
+  private static final String MODULE_NAME = "['\"][\\w\\.$]+['\"]";
+  private static final Pattern GOOG_FORWARD_DECLARE =
+      Pattern.compile("((?:let|var) [\\w$]+) = goog.forwardDeclare\\(" + MODULE_NAME + "\\);");
+  private static final Pattern GOOG_REQUIRE =
+      Pattern.compile("goog.require\\(" + MODULE_NAME + "\\);");
+
+  private static void maybeReplaceGoogStatement(StringBuilder minifiedContentBuffer) {
+    int start = minifiedContentBuffer.lastIndexOf("\n") + 1;
+    int end = minifiedContentBuffer.length();
+    if (start == end) {
+      return;
+    }
+
+    // goog.forwardDeclare is only useful for compiler except the variable declaration.
+    Matcher m = GOOG_FORWARD_DECLARE.matcher(minifiedContentBuffer).region(start, end);
+    if (m.matches()) {
+      minifiedContentBuffer.replace(start, minifiedContentBuffer.length(), m.group(1)).append(';');
+      return;
+    }
+
+    // Unassigned goog.require is only useful for compiler and bundling.
+    m = GOOG_REQUIRE.matcher(minifiedContentBuffer).region(start, end);
+    if (m.matches()) {
+      minifiedContentBuffer.delete(start, minifiedContentBuffer.length());
+      return;
+    }
+  }
+
   private static StringBuilder writeChar(
-      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c) {
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
     minifiedContentBuffer.append(c);
     return identifierBuffer;
   }
 
   @SuppressWarnings("unused")
   private static StringBuilder writeSlash(
-      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c) {
-    identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, '/');
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
+    identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, '/', state);
     return identifierBuffer;
   }
 
   private static StringBuilder writeSlashAndChar(
-      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c) {
-    identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, '/');
-    identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, c);
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
+    identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, '/', state);
+    identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, c, state);
     return identifierBuffer;
   }
 
   private static StringBuilder writeSlashAndStartNewIdentifier(
-      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c) {
-    identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, '/');
-    identifierBuffer = startNewIdentifier(minifiedContentBuffer, identifierBuffer, c);
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
+    identifierBuffer = writeChar(minifiedContentBuffer, identifierBuffer, '/', state);
+    identifierBuffer = startNewIdentifier(minifiedContentBuffer, identifierBuffer, c, state);
     return identifierBuffer;
   }
 
@@ -347,32 +385,21 @@ public class J2clMinifier {
 
     transFn = new TransitionFunction[numberOfStates][numberOfStates];
 
-    transFn[S_NON_IDENTIFIER][S_MINIMIZABLE_IDENTIFIER] = J2clMinifier::startNewIdentifier;
-    transFn[S_NON_IDENTIFIER][S_NON_MINIMIZABLE_IDENTIFIER] = J2clMinifier::writeChar;
-    transFn[S_NON_IDENTIFIER][S_NON_IDENTIFIER] = J2clMinifier::writeChar;
+    transFn[S_NON_IDENTIFIER][S_IDENTIFIER] = J2clMinifier::startNewIdentifier;
+    transFn[S_NON_IDENTIFIER][S_NON_IDENTIFIER] = J2clMinifier::writeCharOrReplace;
     transFn[S_NON_IDENTIFIER][S_MAYBE_COMMENT_START] = J2clMinifier::skipChar;
     transFn[S_NON_IDENTIFIER][S_SINGLE_QUOTED_STRING] = J2clMinifier::writeChar;
     transFn[S_NON_IDENTIFIER][S_DOUBLE_QUOTED_STRING] = J2clMinifier::writeChar;
-    transFn[S_NON_IDENTIFIER][S_END_STATE] = J2clMinifier::skipChar;
+    transFn[S_NON_IDENTIFIER][S_END_STATE] = J2clMinifier::writeCharOrReplace;
 
-    transFn[S_NON_MINIMIZABLE_IDENTIFIER][S_NON_MINIMIZABLE_IDENTIFIER] = J2clMinifier::writeChar;
-    transFn[S_NON_MINIMIZABLE_IDENTIFIER][S_NON_IDENTIFIER] = J2clMinifier::writeChar;
-    transFn[S_NON_MINIMIZABLE_IDENTIFIER][S_MAYBE_COMMENT_START] = J2clMinifier::skipChar;
-    transFn[S_NON_MINIMIZABLE_IDENTIFIER][S_SINGLE_QUOTED_STRING] = J2clMinifier::writeChar;
-    transFn[S_NON_MINIMIZABLE_IDENTIFIER][S_DOUBLE_QUOTED_STRING] = J2clMinifier::writeChar;
-    transFn[S_NON_MINIMIZABLE_IDENTIFIER][S_END_STATE] = J2clMinifier::skipChar;
+    transFn[S_IDENTIFIER][S_IDENTIFIER] = J2clMinifier::bufferIdentifierChar;
+    transFn[S_IDENTIFIER][S_NON_IDENTIFIER] = this::writeIdentifierAndChar;
+    transFn[S_IDENTIFIER][S_MAYBE_COMMENT_START] = this::writeIdentifier;
+    transFn[S_IDENTIFIER][S_SINGLE_QUOTED_STRING] = this::writeIdentifierAndChar;
+    transFn[S_IDENTIFIER][S_DOUBLE_QUOTED_STRING] = this::writeIdentifierAndChar;
+    transFn[S_IDENTIFIER][S_END_STATE] = this::writeIdentifier;
 
-    transFn[S_MINIMIZABLE_IDENTIFIER][S_MINIMIZABLE_IDENTIFIER] =
-        J2clMinifier::bufferIdentifierChar;
-    transFn[S_MINIMIZABLE_IDENTIFIER][S_NON_IDENTIFIER] = this::writeIdentifierAndChar;
-    transFn[S_MINIMIZABLE_IDENTIFIER][S_MAYBE_COMMENT_START] = this::writeIdentifier;
-    transFn[S_MINIMIZABLE_IDENTIFIER][S_SINGLE_QUOTED_STRING] = this::writeIdentifierAndChar;
-    transFn[S_MINIMIZABLE_IDENTIFIER][S_DOUBLE_QUOTED_STRING] = this::writeIdentifierAndChar;
-    transFn[S_MINIMIZABLE_IDENTIFIER][S_END_STATE] = this::writeIdentifier;
-
-    transFn[S_MAYBE_COMMENT_START][S_MINIMIZABLE_IDENTIFIER] =
-        J2clMinifier::writeSlashAndStartNewIdentifier;
-    transFn[S_MAYBE_COMMENT_START][S_NON_MINIMIZABLE_IDENTIFIER] = J2clMinifier::writeSlashAndChar;
+    transFn[S_MAYBE_COMMENT_START][S_IDENTIFIER] = J2clMinifier::writeSlashAndStartNewIdentifier;
     transFn[S_MAYBE_COMMENT_START][S_MAYBE_COMMENT_START] = J2clMinifier::writeChar;
     transFn[S_MAYBE_COMMENT_START][S_LINE_COMMENT] = J2clMinifier::writeSlashAndChar;
     transFn[S_MAYBE_COMMENT_START][S_BLOCK_COMMENT] = J2clMinifier::skipChar;
@@ -469,7 +496,8 @@ public class J2clMinifier {
       int parseState = nextState[lastParseState][c < 256 ? c : 0];
 
       TransitionFunction transitionFunction = transFn[lastParseState][parseState];
-      identifierBuffer = transitionFunction.transition(minifiedContentBuffer, identifierBuffer, c);
+      identifierBuffer =
+          transitionFunction.transition(minifiedContentBuffer, identifierBuffer, c, lastParseState);
 
       lastParseState = parseState;
     }
@@ -479,7 +507,8 @@ public class J2clMinifier {
 
     // Transition to the end state
     TransitionFunction transitionFunction = transFn[lastParseState][S_END_STATE];
-    transitionFunction.transition(minifiedContentBuffer, identifierBuffer, (char) 0);
+    transitionFunction.transition(
+        minifiedContentBuffer, identifierBuffer, (char) 0, lastParseState);
 
     minifiedContent = minifiedContentBuffer.toString();
     // Update the minified content cache for next time.
@@ -520,7 +549,8 @@ public class J2clMinifier {
   private StringBuilder writeIdentifier(
       StringBuilder minifiedContentBuffer,
       StringBuilder identifierBuffer,
-      @SuppressWarnings("unused") char c) {
+      @SuppressWarnings("unused") char c,
+      int state) {
     String identifier = identifierBuffer.toString();
     if (isMinifiableIdentifier(identifier)) {
       minifiedContentBuffer.append(getMinifiedIdentifier(identifier));
@@ -531,8 +561,8 @@ public class J2clMinifier {
   }
 
   private StringBuilder writeIdentifierAndChar(
-      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c) {
-    writeIdentifier(minifiedContentBuffer, identifierBuffer, c);
+      StringBuilder minifiedContentBuffer, StringBuilder identifierBuffer, char c, int state) {
+    writeIdentifier(minifiedContentBuffer, identifierBuffer, c, state);
     minifiedContentBuffer.append(c);
     return identifierBuffer;
   }

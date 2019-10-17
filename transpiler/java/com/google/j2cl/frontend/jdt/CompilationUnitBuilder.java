@@ -26,6 +26,7 @@ import static java.util.stream.Collectors.toList;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.MoreCollectors;
 import com.google.j2cl.ast.ArrayAccess;
 import com.google.j2cl.ast.ArrayLength;
 import com.google.j2cl.ast.ArrayLiteral;
@@ -81,6 +82,7 @@ import com.google.j2cl.ast.TryStatement;
 import com.google.j2cl.ast.Type;
 import com.google.j2cl.ast.TypeDeclaration;
 import com.google.j2cl.ast.TypeDescriptor;
+import com.google.j2cl.ast.TypeDescriptors;
 import com.google.j2cl.ast.TypeLiteral;
 import com.google.j2cl.ast.UnaryExpression;
 import com.google.j2cl.ast.UnionTypeDescriptor;
@@ -232,12 +234,13 @@ public class CompilationUnitBuilder extends AbstractCompilationUnitBuilder {
         ASTNode sourcePositionNode,
         Function<Type, T> typeProcessor) {
       Type type = createType(typeBinding, sourcePositionNode);
-      pushType(type);
       getCurrentCompilationUnit().addType(type);
-      convertTypeBody(type, bodyDeclarations);
-      T result = typeProcessor.apply(type);
-      popType();
-      return result;
+      return processEnclosedBy(
+          type,
+          () -> {
+            convertTypeBody(type, bodyDeclarations);
+            return typeProcessor.apply(type);
+          });
     }
 
     private void convertTypeBody(Type type, List<BodyDeclaration> bodyDeclarations) {
@@ -362,13 +365,16 @@ public class CompilationUnitBuilder extends AbstractCompilationUnitBuilder {
         parameters.add(createVariable(parameter));
       }
 
+      MethodDescriptor methodDescriptor =
+          JdtUtils.createMethodDescriptor(methodDeclaration.resolveBinding());
+
       // If a method has no body, initialize the body with an empty list of statements.
       Block body =
           methodDeclaration.getBody() == null
               ? Block.newBuilder().setSourcePosition(getSourcePosition(methodDeclaration)).build()
-              : convert(methodDeclaration.getBody());
+              : processEnclosedBy(methodDescriptor, () -> convert(methodDeclaration.getBody()));
 
-      return newMethodBuilder(methodDeclaration.resolveBinding())
+      return newMethodBuilder(methodDescriptor)
           .setSourcePosition(getSourcePosition(methodDeclaration.getName()))
           .setParameters(parameters)
           .addStatements(body.getStatements())
@@ -376,13 +382,15 @@ public class CompilationUnitBuilder extends AbstractCompilationUnitBuilder {
     }
 
     private Method convert(AnnotationTypeMemberDeclaration memberDeclaration) {
-      return newMethodBuilder(memberDeclaration.resolveBinding())
+      MethodDescriptor methodDescriptor =
+          JdtUtils.createMethodDescriptor(memberDeclaration.resolveBinding());
+
+      return newMethodBuilder(methodDescriptor)
           .setSourcePosition(getSourcePosition(memberDeclaration))
           .build();
     }
 
-    private Method.Builder newMethodBuilder(IMethodBinding methodBinding) {
-      MethodDescriptor methodDescriptor = JdtUtils.createMethodDescriptor(methodBinding);
+    private Method.Builder newMethodBuilder(MethodDescriptor methodDescriptor) {
       // TODO(b/31312257): fix or decide to not emit @override and suppress the error.
       boolean isOverride =
           methodDescriptor
@@ -979,20 +987,19 @@ public class CompilationUnitBuilder extends AbstractCompilationUnitBuilder {
       return FunctionExpression.newBuilder()
           .setTypeDescriptor(JdtUtils.createTypeDescriptor(expression.resolveTypeBinding()))
           .setParameters(
-              JdtUtils.<VariableDeclaration>asTypedList(expression.parameters())
-                  .stream()
+              JdtUtils.<VariableDeclaration>asTypedList(expression.parameters()).stream()
                   .map(this::convert)
                   .collect(toImmutableList()))
           .setStatements(
-              convertLambdaBody(
-                      expression.getBody(), functionalMethodDescriptor.getReturnTypeDescriptor())
-                  .getStatements())
+              processEnclosedBy(
+                  functionalMethodDescriptor,
+                  () -> convertLambdaBody(expression.getBody()).getStatements()))
           .setSourcePosition(getSourcePosition(expression))
           .build();
     }
 
     // Lambda expression bodies can be either an Expression or a Statement
-    private Block convertLambdaBody(ASTNode lambdaBody, TypeDescriptor returnTypeDescriptor) {
+    private Block convertLambdaBody(ASTNode lambdaBody) {
       Block body;
       if (lambdaBody.getNodeType() == ASTNode.BLOCK) {
         body = convert((org.eclipse.jdt.core.dom.Block) lambdaBody);
@@ -1001,7 +1008,9 @@ public class CompilationUnitBuilder extends AbstractCompilationUnitBuilder {
         Expression lambdaMethodBody = convert((org.eclipse.jdt.core.dom.Expression) lambdaBody);
         Statement statement =
             AstUtils.createReturnOrExpressionStatement(
-                getSourcePosition(lambdaBody), lambdaMethodBody, returnTypeDescriptor);
+                getSourcePosition(lambdaBody),
+                lambdaMethodBody,
+                getEnclosingFunctional().getReturnTypeDescriptor());
         body =
             Block.newBuilder()
                 .setSourcePosition(getSourcePosition(lambdaBody))
@@ -1031,8 +1040,7 @@ public class CompilationUnitBuilder extends AbstractCompilationUnitBuilder {
           JdtUtils.createTypeDescriptor(expression.resolveTypeBinding());
 
       // MethodDescriptor target of the method reference.
-      MethodDescriptor referencedMethodDescriptor =
-          JdtUtils.createMethodDescriptor(expression.resolveMethodBinding());
+      MethodDescriptor referencedMethodDescriptor = resolveMethodReferenceTarget(expression);
 
       // Functional interface method that the expression implements.
       MethodDescriptor functionalMethodDescriptor =
@@ -1047,6 +1055,26 @@ public class CompilationUnitBuilder extends AbstractCompilationUnitBuilder {
           referencedMethodDescriptor,
           expressionTypeDescriptor,
           functionalMethodDescriptor);
+    }
+
+    private MethodDescriptor resolveMethodReferenceTarget(ExpressionMethodReference expression) {
+      IMethodBinding methodBinding = expression.resolveMethodBinding();
+      if (methodBinding == null) {
+        // JDT did not resolve the method binding but it was not a compilation error. This situation
+        // seems to happen only for method references on array objects.
+        checkArgument(expression.getExpression().resolveTypeBinding().isArray());
+
+        // Array methods are provided by java.lang.Object and are matched here by name. This is safe
+        // because there is only a handful of method in java.lang.Object and if methods are added
+        // in the future they will be caught be the MoreCollectors.onlyElement. Resolving the target
+        // correctly if there were many overloads is extra complexity that can be left out until
+        // it is really needed.
+        String targetMethodName = expression.getName().getIdentifier();
+        return TypeDescriptors.get().javaLangObject.getMethodDescriptors().stream()
+            .filter(m -> m.getName().equals(targetMethodName))
+            .collect(MoreCollectors.onlyElement());
+      }
+      return JdtUtils.createMethodDescriptor(methodBinding);
     }
 
     /**
@@ -1379,13 +1407,10 @@ public class CompilationUnitBuilder extends AbstractCompilationUnitBuilder {
 
     private ReturnStatement convert(org.eclipse.jdt.core.dom.ReturnStatement statement) {
       // Grab the type of the return statement from the method declaration, not from the expression.
-      TypeDescriptor returnTypeDescriptor =
-          JdtUtils.createTypeDescriptor(
-              checkNotNull(JdtUtils.findCurrentMethodBinding(statement)).getReturnType());
 
       return ReturnStatement.newBuilder()
           .setExpression(convertOrNull(statement.getExpression()))
-          .setTypeDescriptor(returnTypeDescriptor)
+          .setTypeDescriptor(getEnclosingFunctional().getReturnTypeDescriptor())
           .setSourcePosition(getSourcePosition(statement))
           .build();
     }

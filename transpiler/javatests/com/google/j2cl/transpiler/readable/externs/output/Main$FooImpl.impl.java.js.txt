@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.externs.Main.FooImpl$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class FooImpl extends j_l_Object {
   /**
@@ -14,7 +12,6 @@ class FooImpl extends j_l_Object {
     /** @public {?string} */
     this.foo;
   }
-
   /**
    * @return {!FooImpl}
    * @public
@@ -26,25 +23,20 @@ class FooImpl extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_externs_Main_FooImpl__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_externs_Main_FooImpl__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    FooImpl.$clinit = (() => {});
+    FooImpl.$clinit = () => {};
     FooImpl.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -53,26 +45,13 @@ class FooImpl extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof FooImpl;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, FooImpl);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     FooImpl, 'com.google.j2cl.transpiler.readable.externs.Main$FooImpl');
-
-
 
 exports = FooImpl;
 //# sourceMappingURL=Main$FooImpl.js.map

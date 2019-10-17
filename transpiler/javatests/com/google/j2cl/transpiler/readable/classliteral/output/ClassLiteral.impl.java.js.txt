@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.classliteral.ClassLiteral$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Class = goog.forwardDeclare('java.lang.Class$impl');
-
 
 class ClassLiteral extends j_l_Object {
   /**
@@ -14,7 +12,6 @@ class ClassLiteral extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!ClassLiteral}
    * @public
@@ -26,34 +23,27 @@ class ClassLiteral extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_classliteral_ClassLiteral__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_classliteral_ClassLiteral__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_main__() {
     let o = Class.$get(ClassLiteral);
     o = Class.$get(ClassLiteral, 2);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    ClassLiteral.$clinit = (() => {});
+    ClassLiteral.$clinit = () => {};
     ClassLiteral.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -62,29 +52,16 @@ class ClassLiteral extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof ClassLiteral;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, ClassLiteral);
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     Class = goog.module.get('java.lang.Class$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     ClassLiteral,
     'com.google.j2cl.transpiler.readable.classliteral.ClassLiteral');
-
-
 
 exports = ClassLiteral;
 //# sourceMappingURL=ClassLiteral.js.map

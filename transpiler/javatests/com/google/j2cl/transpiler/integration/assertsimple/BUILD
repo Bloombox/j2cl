@@ -1,5 +1,4 @@
 package(
-    default_visibility = ["//transpiler/javatests/com/google/j2cl/transpiler/sizetest:__pkg__"],
     licenses = ["notice"],  # Apache 2.0
 )
 
@@ -18,4 +17,5 @@ integration_test(
         # Turn on asserts since it is what this test is testing.
         "--remove_j2cl_asserts=false",
     ],
+    tags = ["manual"],
 )

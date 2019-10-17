@@ -50,7 +50,7 @@ public abstract class IntegrationTestBase {
     }
   }
 
-  @Parameters
+  @Parameters(name = "{0}")
   public static Iterable<Object[]> data() {
     return Arrays.asList(
         new TestMode[] {TestMode.JAVA},
@@ -68,19 +68,39 @@ public abstract class IntegrationTestBase {
     return new TestAsserter(testMode, consoleLogs);
   }
 
-  protected Stacktrace loadStackTrace(String testName) throws IOException {
-    String prefixName =
-        testName
-            + (testMode == TestMode.JAVA
-                ? "-java"
-                : testMode == TestMode.J2CL_COMPILED ? "-j2cl_compiled" : "-j2cl_uncompiled");
-    File prefixFile = getTestDataFile(prefixName + ".stacktrace.txt");
-    File standardFile = getTestDataFile(testName + ".stacktrace.txt");
-    // try loading a prefix version first if it exists, otherwise use the default file
-    String fileContent =
-        Files.asCharSource(prefixFile.exists() ? prefixFile : standardFile, StandardCharsets.UTF_8)
-            .read();
-    return Stacktrace.parse(fileContent);
+  protected void runStacktraceTest(String testName) throws Exception {
+    TestResult testResult =
+        newTestResultBuilder().testClassName(testName).addTestFailure("test").build();
+
+    List<String> logLines = runTest(testName);
+    assertThat(logLines).matches(testResult);
+
+    Stacktrace stacktrace = loadStackTrace(testName);
+    assertThat(logLines).matches(stacktrace);
+  }
+
+  private Stacktrace loadStackTrace(String testName) throws IOException {
+    return Stacktrace.parse(
+        Files.asCharSource(getStackTraceFile(testName), StandardCharsets.UTF_8).read());
+  }
+
+  private File getStackTraceFile(String testName) throws IOException {
+    switch (testMode) {
+      case J2CL_COMPILED:
+        File compiledFile = getTestDataFile(testName + ".stacktrace_j2cl_compiled.txt");
+        if (compiledFile.exists()) {
+          return compiledFile;
+        }
+        // fall through
+      case J2CL_UNCOMPILED:
+        File uncompiledFile = getTestDataFile(testName + ".stacktrace_j2cl.txt");
+        if (uncompiledFile.exists()) {
+          return uncompiledFile;
+        }
+        // fall through
+      default:
+        return getTestDataFile(testName + ".stacktrace.txt");
+    }
   }
 
   protected List<String> runTest(String testName) throws Exception {

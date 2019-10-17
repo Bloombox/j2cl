@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.subnativejstype.SubNativeJsType$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 const MyNativeJsType = goog.require('test.foo.MyNativeJsType');
 
 let $Overlay = goog.forwardDeclare('com.google.j2cl.transpiler.readable.subnativejstype.MyNativeJsType.$Overlay$impl');
-
 
 class SubNativeJsType extends MyNativeJsType {
   /**
@@ -19,16 +17,13 @@ class SubNativeJsType extends MyNativeJsType {
     this.$ctor__com_google_j2cl_transpiler_readable_subnativejstype_SubNativeJsType__int(
         x);
   }
-
   /**
    * Initialization from constructor 'SubNativeJsType(int)'.
    * @param {number} x
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_subnativejstype_SubNativeJsType__int(
       x) {}
-
   /**
    * Factory method corresponding to constructor 'SubNativeJsType()'.
    * @return {!SubNativeJsType}
@@ -41,24 +36,19 @@ class SubNativeJsType extends MyNativeJsType {
         .$ctor__com_google_j2cl_transpiler_readable_subnativejstype_SubNativeJsType__();
     return $instance;
   }
-
   /**
    * Initialization from constructor 'SubNativeJsType()'.
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_subnativejstype_SubNativeJsType__() {
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    SubNativeJsType.$clinit = (() => {});
+    SubNativeJsType.$clinit = () => {};
     SubNativeJsType.$loadModules();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -67,27 +57,14 @@ class SubNativeJsType extends MyNativeJsType {
   static $isInstance(instance) {
     return instance instanceof SubNativeJsType;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, SubNativeJsType);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     SubNativeJsType,
     'com.google.j2cl.transpiler.readable.subnativejstype.SubNativeJsType');
-
-
 
 exports = SubNativeJsType;
 //# sourceMappingURL=SubNativeJsType.js.map

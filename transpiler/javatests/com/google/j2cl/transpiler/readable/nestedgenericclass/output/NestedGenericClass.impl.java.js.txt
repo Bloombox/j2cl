@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.nestedgenericclass.NestedGenericClass$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -15,7 +14,6 @@ let Error = goog.forwardDeclare('java.lang.Error$impl');
 let Exception = goog.forwardDeclare('java.lang.Exception$impl');
 let Number = goog.forwardDeclare('java.lang.Number$impl');
 
-
 /**
  * @template T
  */
@@ -26,7 +24,6 @@ class NestedGenericClass extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @template T
    * @return {!NestedGenericClass<T>}
@@ -39,19 +36,15 @@ class NestedGenericClass extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_nestedgenericclass_NestedGenericClass__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_nestedgenericclass_NestedGenericClass__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @template S
    * @param {S} t
-   * @return {void}
    * @public
    */
   m_fun__java_lang_Object(t) {
@@ -60,7 +53,6 @@ class NestedGenericClass extends j_l_Object {
     $1F.$create__com_google_j2cl_transpiler_readable_nestedgenericclass_NestedGenericClass(
         this);
   }
-
   /**
    * @template T_1
    * @return {void}
@@ -72,9 +64,7 @@ class NestedGenericClass extends j_l_Object {
          this))
         .m_bar__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
@@ -93,17 +83,14 @@ class NestedGenericClass extends j_l_Object {
         (C.$create__com_google_j2cl_transpiler_readable_nestedgenericclass_NestedGenericClass(
             n)));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    NestedGenericClass.$clinit = (() => {});
+    NestedGenericClass.$clinit = () => {};
     NestedGenericClass.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -112,16 +99,6 @@ class NestedGenericClass extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof NestedGenericClass;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, NestedGenericClass);
-  }
-
   /**
    * @public
    */
@@ -141,13 +118,10 @@ class NestedGenericClass extends j_l_Object {
     D = goog.module.get(
         'com.google.j2cl.transpiler.readable.nestedgenericclass.NestedGenericClass.C.D$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     NestedGenericClass,
     'com.google.j2cl.transpiler.readable.nestedgenericclass.NestedGenericClass');
-
-
 
 exports = NestedGenericClass;
 //# sourceMappingURL=NestedGenericClass.js.map

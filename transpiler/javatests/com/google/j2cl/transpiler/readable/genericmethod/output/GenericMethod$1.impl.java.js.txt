@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.genericmethod.GenericMethod.$1$impl');
 
-
 const GenericMethod = goog.require('com.google.j2cl.transpiler.readable.genericmethod.GenericMethod$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Error = goog.forwardDeclare('java.lang.Error$impl');
-
 
 /**
  * @template T, T_1
@@ -20,7 +18,6 @@ class $1 extends GenericMethod {
     /** @public {GenericMethod<T_1>} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_genericmethod_GenericMethod_1;
   }
-
   /**
    * @template T, T_1
    * @param {GenericMethod<T_1>} $outer_this
@@ -36,10 +33,8 @@ class $1 extends GenericMethod {
             $outer_this);
     return $instance;
   }
-
   /**
    * @param {GenericMethod<T_1>} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_genericmethod_GenericMethod_1__com_google_j2cl_transpiler_readable_genericmethod_GenericMethod(
@@ -48,32 +43,25 @@ class $1 extends GenericMethod {
         $outer_this;
     this.$ctor__com_google_j2cl_transpiler_readable_genericmethod_GenericMethod__();
   }
-
   /**
    * @param {T} t
-   * @return {void}
    * @public
    */
   m_fun2__java_lang_Error(t) {}
-
   /**
    * @template T_2
    * @param {T_2} t
-   * @return {void}
    * @public
    */
   m_fun2__java_lang_Object(t) {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $1.$clinit = (() => {});
+    $1.$clinit = () => {};
     $1.$loadModules();
     GenericMethod.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -82,26 +70,13 @@ class $1 extends GenericMethod {
   static $isInstance(instance) {
     return instance instanceof $1;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $1);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $1, 'com.google.j2cl.transpiler.readable.genericmethod.GenericMethod$1');
-
-
 
 exports = $1;
 //# sourceMappingURL=GenericMethod$1.js.map

@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.jsdoctypemappings.JsDocTypeMappings.ExportedTypeNewName$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let JsDocTypeMappings = goog.forwardDeclare('com.google.j2cl.transpiler.readable.jsdoctypemappings.JsDocTypeMappings$impl');
-
 
 class ExportedType extends j_l_Object {
   /**
@@ -16,7 +14,6 @@ class ExportedType extends j_l_Object {
     /** @public {JsDocTypeMappings} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_jsdoctypemappings_JsDocTypeMappings_ExportedType;
   }
-
   /**
    * @param {JsDocTypeMappings} $outer_this
    * @return {!ExportedType}
@@ -31,10 +28,8 @@ class ExportedType extends j_l_Object {
             $outer_this);
     return $instance;
   }
-
   /**
    * @param {JsDocTypeMappings} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsdoctypemappings_JsDocTypeMappings_ExportedType__com_google_j2cl_transpiler_readable_jsdoctypemappings_JsDocTypeMappings(
@@ -43,17 +38,14 @@ class ExportedType extends j_l_Object {
         $outer_this;
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    ExportedType.$clinit = (() => {});
+    ExportedType.$clinit = () => {};
     ExportedType.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -62,27 +54,14 @@ class ExportedType extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof ExportedType;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, ExportedType);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     ExportedType,
     'com.google.j2cl.transpiler.readable.jsdoctypemappings.JsDocTypeMappings$ExportedType');
-
-
 
 exports = ExportedType;
 //# sourceMappingURL=JsDocTypeMappings$ExportedType.js.map

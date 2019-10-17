@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.interfaces.Main.SubInterface.$LambdaAdaptor$impl');
 
-
 const SubInterface = goog.require('com.google.j2cl.transpiler.readable.interfaces.Main.SubInterface$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Interface = goog.forwardDeclare('com.google.j2cl.transpiler.readable.interfaces.Main.Interface$impl');
-
 
 /**
  * @implements {SubInterface}
@@ -24,10 +22,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_interfaces_Main_SubInterface_$LambdaAdaptor__com_google_j2cl_transpiler_readable_interfaces_Main_SubInterface_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function():void} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_interfaces_Main_SubInterface_$LambdaAdaptor__com_google_j2cl_transpiler_readable_interfaces_Main_SubInterface_$JsFunction(
@@ -36,9 +32,7 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_interfaces_Main_SubInterface_$LambdaAdaptor =
         fn;
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_interfaceMethod__() {
@@ -48,12 +42,10 @@ class $LambdaAdaptor extends j_l_Object {
       $function();
     }
   }
-
   /**
    * Default method forwarding stub.
    * @override
    * @param {?string} arg0
-   * @return {void}
    * @public
    */
   m_defaultMethodX__java_lang_String(arg0) {
@@ -61,12 +53,10 @@ class $LambdaAdaptor extends j_l_Object {
         .m_defaultMethodX__$default__com_google_j2cl_transpiler_readable_interfaces_Main_SubInterface__java_lang_String(
             this, arg0);
   }
-
   /**
    * Default method forwarding stub.
    * @override
    * @param {?string} arg0
-   * @return {void}
    * @public
    */
   m_defaultMethod__java_lang_Object(arg0) {
@@ -74,18 +64,15 @@ class $LambdaAdaptor extends j_l_Object {
         .m_defaultMethod__$default__com_google_j2cl_transpiler_readable_interfaces_Main_Interface__java_lang_Object(
             this, arg0);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
     SubInterface.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -94,16 +81,6 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
@@ -111,15 +88,12 @@ class $LambdaAdaptor extends j_l_Object {
     Interface = goog.module.get(
         'com.google.j2cl.transpiler.readable.interfaces.Main.Interface$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.interfaces.Main$SubInterface$$LambdaAdaptor');
 
-
 SubInterface.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=Main$SubInterface$$LambdaAdaptor.js.map

@@ -1,13 +1,11 @@
 goog.module('com.google.j2cl.transpiler.readable.jsoptional.Main.NonJsTypeSubtype$impl');
 
-
 const I = goog.require('com.google.j2cl.transpiler.readable.jsoptional.Main.I$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let j_l_String = goog.forwardDeclare('java.lang.String$impl');
 let $Casts = goog.forwardDeclare('vmbootstrap.Casts$impl');
-
 
 /**
  * @implements {I<?string>}
@@ -19,7 +17,6 @@ class NonJsTypeSubtype extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!NonJsTypeSubtype}
    * @public
@@ -31,46 +28,37 @@ class NonJsTypeSubtype extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_jsoptional_Main_NonJsTypeSubtype__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsoptional_Main_NonJsTypeSubtype__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {?string} t
    * @param {*} o
-   * @return {void}
    * @public
    */
   m_m__java_lang_String__java_lang_Object(t, o) {}
-
   /**
    * Bridge method.
    * @override
    * @param {*} arg0
    * @param {*=} arg1
-   * @return {void}
    * @public
    */
   m(arg0, arg1) {
     this.m_m__java_lang_String__java_lang_Object(
         /**@type {?string} */ ($Casts.$to(arg0, j_l_String)), arg1);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    NonJsTypeSubtype.$clinit = (() => {});
+    NonJsTypeSubtype.$clinit = () => {};
     NonJsTypeSubtype.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -79,16 +67,6 @@ class NonJsTypeSubtype extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof NonJsTypeSubtype;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, NonJsTypeSubtype);
-  }
-
   /**
    * @public
    */
@@ -96,15 +74,12 @@ class NonJsTypeSubtype extends j_l_Object {
     j_l_String = goog.module.get('java.lang.String$impl');
     $Casts = goog.module.get('vmbootstrap.Casts$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     NonJsTypeSubtype,
     'com.google.j2cl.transpiler.readable.jsoptional.Main$NonJsTypeSubtype');
 
-
 I.$markImplementor(NonJsTypeSubtype);
-
 
 exports = NonJsTypeSubtype;
 //# sourceMappingURL=Main$NonJsTypeSubtype.js.map

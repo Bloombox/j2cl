@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.declarelegacynamespace.OutterRequire.Inner$impl');
 
-
 const OutterRequire = goog.require('com.google.j2cl.transpiler.readable.declarelegacynamespace.OutterRequire$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class Inner extends j_l_Object {
   /**
@@ -15,25 +13,20 @@ class Inner extends j_l_Object {
     super();
     this.$ctor__com_google_j2cl_transpiler_readable_declarelegacynamespace_OutterRequire_Inner__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_declarelegacynamespace_OutterRequire_Inner__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Inner.$clinit = (() => {});
+    Inner.$clinit = () => {};
     Inner.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -42,27 +35,14 @@ class Inner extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Inner;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Inner);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     Inner,
     'com.google.j2cl.transpiler.readable.declarelegacynamespace.OutterRequire$Inner');
-
-
 
 exports = Inner;
 //# sourceMappingURL=OutterRequire$Inner.js.map

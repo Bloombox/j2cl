@@ -1,13 +1,11 @@
 goog.module('com.google.j2cl.transpiler.readable.bridgemethoddefault.A$impl');
 
-
 const II = goog.require('com.google.j2cl.transpiler.readable.bridgemethoddefault.II$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let j_l_String = goog.forwardDeclare('java.lang.String$impl');
 let $Casts = goog.forwardDeclare('vmbootstrap.Casts$impl');
-
 
 /**
  * @implements {II}
@@ -19,7 +17,6 @@ class A extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!A}
    * @public
@@ -31,50 +28,41 @@ class A extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_bridgemethoddefault_A__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_bridgemethoddefault_A__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * Default method forwarding stub.
    * @override
    * @param {?string} arg0
-   * @return {void}
    * @public
    */
   m_m__java_lang_String(arg0) {
     II.m_m__$default__com_google_j2cl_transpiler_readable_bridgemethoddefault_II__java_lang_String(
         this, arg0);
   }
-
   /**
    * Bridge method.
    * @override
    * @param {*} arg0
-   * @return {void}
    * @public
    */
   m_m__java_lang_Object(arg0) {
     this.m_m__java_lang_String(
         /**@type {?string} */ ($Casts.$to(arg0, j_l_String)));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    A.$clinit = (() => {});
+    A.$clinit = () => {};
     A.$loadModules();
     j_l_Object.$clinit();
     II.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -83,16 +71,6 @@ class A extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof A;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, A);
-  }
-
   /**
    * @public
    */
@@ -100,14 +78,11 @@ class A extends j_l_Object {
     j_l_String = goog.module.get('java.lang.String$impl');
     $Casts = goog.module.get('vmbootstrap.Casts$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     A, 'com.google.j2cl.transpiler.readable.bridgemethoddefault.A');
 
-
 II.$markImplementor(A);
-
 
 exports = A;
 //# sourceMappingURL=A.js.map

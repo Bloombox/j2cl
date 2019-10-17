@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.staticjsmethodswithclassnamespace.ExternalCaller$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let StaticJsMethodsWithClassNamespace = goog.forwardDeclare('woo.StaticJsMethodsWithClassNamespace$impl');
-
 
 class ExternalCaller extends j_l_Object {
   /**
@@ -14,7 +12,6 @@ class ExternalCaller extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!ExternalCaller}
    * @public
@@ -26,33 +23,26 @@ class ExternalCaller extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_staticjsmethodswithclassnamespace_ExternalCaller__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_staticjsmethodswithclassnamespace_ExternalCaller__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
     StaticJsMethodsWithClassNamespace.replacedName();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    ExternalCaller.$clinit = (() => {});
+    ExternalCaller.$clinit = () => {};
     ExternalCaller.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -61,16 +51,6 @@ class ExternalCaller extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof ExternalCaller;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, ExternalCaller);
-  }
-
   /**
    * @public
    */
@@ -78,13 +58,10 @@ class ExternalCaller extends j_l_Object {
     StaticJsMethodsWithClassNamespace =
         goog.module.get('woo.StaticJsMethodsWithClassNamespace$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     ExternalCaller,
     'com.google.j2cl.transpiler.readable.staticjsmethodswithclassnamespace.ExternalCaller');
-
-
 
 exports = ExternalCaller;
 //# sourceMappingURL=ExternalCaller.js.map

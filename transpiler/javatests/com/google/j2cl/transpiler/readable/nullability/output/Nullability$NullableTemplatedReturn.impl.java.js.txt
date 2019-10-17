@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.nullability.Nullability.NullableTemplatedReturn$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.nullability.Nullability.NullableTemplatedReturn.$LambdaAdaptor$impl');
-
 
 /**
  * @interface
@@ -17,7 +15,6 @@ class NullableTemplatedReturn {
    * @public
    */
   m_foo__() {}
-
   /**
    * @template T
    * @param {?function():T} fn
@@ -28,16 +25,13 @@ class NullableTemplatedReturn {
     NullableTemplatedReturn.$clinit();
     return /**@type {!$LambdaAdaptor<T>} */ (new $LambdaAdaptor(fn));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    NullableTemplatedReturn.$clinit = (() => {});
+    NullableTemplatedReturn.$clinit = () => {};
     NullableTemplatedReturn.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -50,7 +44,6 @@ class NullableTemplatedReturn {
         .$implements__com_google_j2cl_transpiler_readable_nullability_Nullability_NullableTemplatedReturn =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -61,18 +54,6 @@ class NullableTemplatedReturn {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_nullability_Nullability_NullableTemplatedReturn;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_nullability_Nullability_NullableTemplatedReturn;
-  }
-
   /**
    * @public
    */
@@ -80,16 +61,13 @@ class NullableTemplatedReturn {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.nullability.Nullability.NullableTemplatedReturn.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     NullableTemplatedReturn,
     'com.google.j2cl.transpiler.readable.nullability.Nullability$NullableTemplatedReturn');
 
-
 NullableTemplatedReturn.$markImplementor(
     /** @type {Function} */ (NullableTemplatedReturn));
-
 
 exports = NullableTemplatedReturn;
 //# sourceMappingURL=Nullability$NullableTemplatedReturn.js.map

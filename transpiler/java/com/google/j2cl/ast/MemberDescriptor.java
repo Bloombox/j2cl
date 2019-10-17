@@ -59,9 +59,7 @@ public abstract class MemberDescriptor extends Node
    * Returns true if both members are references/declaration of the same particular member in the
    * same enclosing class.
    */
-  public boolean isSameMember(MemberDescriptor thatMember) {
-    return getDeclarationDescriptor() == thatMember.getDeclarationDescriptor();
-  }
+  public abstract boolean isSameMember(MemberDescriptor thatMember);
 
   @Nullable
   public abstract String getName();
@@ -100,6 +98,10 @@ public abstract class MemberDescriptor extends Node
   }
 
   public boolean isEnumConstant() {
+    return false;
+  }
+
+  public boolean isCompileTimeConstant() {
     return false;
   }
 
@@ -149,6 +151,28 @@ public abstract class MemberDescriptor extends Node
   /** Whether this member overrides a java.lang.Object method. */
   public boolean isOrOverridesJavaLangObjectMethod() {
     return false;
+  }
+
+  /** Determines whether a method is visible from {@code type} or not (following JLS 6.6.1). */
+  public boolean isVisibleFrom(DeclaredTypeDescriptor type) {
+    switch (getVisibility()) {
+      case PUBLIC:
+      case PROTECTED:
+        return true;
+      case PACKAGE_PRIVATE:
+        return type.isInSamePackage(getEnclosingTypeDescriptor());
+      case PRIVATE:
+        return isEnclosedBySameTopLevelClass(type, getEnclosingTypeDescriptor());
+    }
+    throw new AssertionError();
+  }
+
+  private static boolean isEnclosedBySameTopLevelClass(
+      DeclaredTypeDescriptor thisType, DeclaredTypeDescriptor thatType) {
+    return thisType
+        .getTypeDeclaration()
+        .getTopEnclosingDeclaration()
+        .equals(thatType.getTypeDeclaration().getTopEnclosingDeclaration());
   }
 
   /** Returns whether the member can be referenced directly from JavaScript code. */

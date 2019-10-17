@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.packageinfosubpackage.subpackage.Bar$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class Bar extends j_l_Object {
   /**
@@ -14,25 +12,20 @@ class Bar extends j_l_Object {
     super();
     this.$ctor__com_google_j2cl_transpiler_readable_packageinfosubpackage_subpackage_Bar__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_packageinfosubpackage_subpackage_Bar__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Bar.$clinit = (() => {});
+    Bar.$clinit = () => {};
     Bar.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -41,31 +34,17 @@ class Bar extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Bar;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Bar);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     Bar,
     'com.google.j2cl.transpiler.readable.packageinfosubpackage.subpackage.Bar');
 
-
 /** @public {number} @const */
 Bar.WOO = 1001;
-
-
 
 exports = Bar;
 //# sourceMappingURL=Bar.js.map

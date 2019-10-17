@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.nullability.Nullability.Foo$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T
@@ -15,7 +13,6 @@ class Foo extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @template T
    * @return {!Foo<T>}
@@ -28,23 +25,18 @@ class Foo extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_nullability_Nullability_Foo__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_nullability_Nullability_Foo__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {T} t
-   * @return {void}
    * @public
    */
   m_bar__java_lang_Object_$pp_com_google_j2cl_transpiler_readable_nullability(
       t) {}
-
   /**
    * @return {T}
    * @public
@@ -52,7 +44,6 @@ class Foo extends j_l_Object {
   m_baz___$pp_com_google_j2cl_transpiler_readable_nullability() {
     return null;
   }
-
   /**
    * @override
    * @return {?string}
@@ -61,17 +52,14 @@ class Foo extends j_l_Object {
   toString() {
     return 'Foo';
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Foo.$clinit = (() => {});
+    Foo.$clinit = () => {};
     Foo.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -80,26 +68,13 @@ class Foo extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Foo;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Foo);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     Foo, 'com.google.j2cl.transpiler.readable.nullability.Nullability$Foo');
-
-
 
 exports = Foo;
 //# sourceMappingURL=Nullability$Foo.js.map

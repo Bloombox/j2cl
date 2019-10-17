@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass.A$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class A extends j_l_Object {
   /**
@@ -15,7 +13,6 @@ class A extends j_l_Object {
     this.f_fA__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_A =
         0;
   }
-
   /**
    * Factory method corresponding to constructor 'A(int)'.
    * @param {number} x
@@ -30,11 +27,9 @@ class A extends j_l_Object {
             x);
     return $instance;
   }
-
   /**
    * Initialization from constructor 'A(int)'.
    * @param {number} x
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_A__int(
@@ -44,7 +39,6 @@ class A extends j_l_Object {
     this.f_fA__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_A =
         x;
   }
-
   /**
    * Factory method corresponding to constructor 'A()'.
    * @return {!A}
@@ -57,36 +51,29 @@ class A extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_A__();
     return $instance;
   }
-
   /**
    * Initialization from constructor 'A()'.
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_A__() {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_A();
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_A() {
     this.f_fA__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_A =
         1;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    A.$clinit = (() => {});
+    A.$clinit = () => {};
     A.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -95,27 +82,14 @@ class A extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof A;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, A);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     A,
     'com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass$A');
-
-
 
 exports = A;
 //# sourceMappingURL=JsConstructorClass$A.js.map

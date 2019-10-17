@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass.$1InnerClass$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let SimpleLocalClass = goog.forwardDeclare('com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass$impl');
-
 
 class $1InnerClass extends j_l_Object {
   /**
@@ -20,7 +18,6 @@ class $1InnerClass extends j_l_Object {
     /** @public {number} */
     this.$c_p = 0;
   }
-
   /**
    * @param {SimpleLocalClass} $outer_this
    * @param {number} $c_localVar
@@ -37,12 +34,10 @@ class $1InnerClass extends j_l_Object {
             $outer_this, $c_localVar, $c_p);
     return $instance;
   }
-
   /**
    * @param {SimpleLocalClass} $outer_this
    * @param {number} $c_localVar
    * @param {number} $c_p
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_simplelocalclass_SimpleLocalClass_1InnerClass__com_google_j2cl_transpiler_readable_simplelocalclass_SimpleLocalClass__int__int(
@@ -53,7 +48,6 @@ class $1InnerClass extends j_l_Object {
     this.$c_p = $c_p;
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @return {number}
    * @public
@@ -61,17 +55,14 @@ class $1InnerClass extends j_l_Object {
   m_fun__() {
     return this.$c_localVar + this.$c_p;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $1InnerClass.$clinit = (() => {});
+    $1InnerClass.$clinit = () => {};
     $1InnerClass.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -80,27 +71,14 @@ class $1InnerClass extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $1InnerClass;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $1InnerClass);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $1InnerClass,
     'com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass$1InnerClass');
-
-
 
 exports = $1InnerClass;
 //# sourceMappingURL=SimpleLocalClass$1InnerClass.js.map

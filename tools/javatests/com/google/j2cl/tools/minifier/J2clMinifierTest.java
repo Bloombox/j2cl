@@ -52,6 +52,9 @@ public class J2clMinifierTest extends TestCase {
     assertChange("alert('hi');/* */", "alert('hi');");
     assertChange("/* */alert('hi');", "alert('hi');");
 
+    assertChange("/* *//* */", "");
+    assertChange("''/* */", "''");
+
     assertChange("/** */", "");
     assertChange("/* **/", "");
     assertChange("a/** **/b", "ab");
@@ -109,6 +112,8 @@ public class J2clMinifierTest extends TestCase {
     assertChange(".$implements__java_util_Map$Entry;", ".implements＿1;");
     assertChange("{$implements__java_util_Map$Entry}", "{implements＿1}");
     assertChange("($implements__java_util_Map$Entry)", "(implements＿1)");
+
+    assertChange("abc.$f_baz__com_google_j2cl_MyClass.klm", "abc.baz＿1.klm");
   }
 
   public void testLineComments() {
@@ -149,6 +154,39 @@ public class J2clMinifierTest extends TestCase {
     assertChange("m_foo__", "foo＿1");
     assertChange("m_bar__java_lang_Object", "bar＿1");
     assertChange("m_baz__java_lang_Object__java_lang_String", "baz＿1");
+  }
+
+  public void testForwardDeclare() {
+    assertChange("let Byte = goog.forwardDeclare('java.lang.Byte$impl');", "let Byte;");
+    assertChange("let Byte = goog.forwardDeclare(\"java.lang.Byte$impl\");", "let Byte;");
+    assertChange("var Foo = goog.forwardDeclare('java.lang.Foo');", "var Foo;");
+    assertChange("var $Foo = goog.forwardDeclare('java.lang.Foo');", "var $Foo;");
+    assertChange("\nlet Byte = goog.forwardDeclare('java.lang.Byte$impl');\n", "\nlet Byte;\n");
+    assertChange(
+        "let Byte = goog.forwardDeclare(\"java.lang.Byte$impl\");\n"
+            + "var Foo = goog.forwardDeclare('java.lang.Foo');",
+        "let Byte;\nvar Foo;");
+
+    assertNoChange("let Byte = goog.forwardDeclare('java.lang.Byte');('$impl');");
+    assertNoChange("goog.forwardDeclare('java.lang.Foo');");
+    assertNoChange("var Foo = goog.forwardDeclare('java.lang.Foo')");
+    assertNoChange("identvar Foo = goog.forwardDeclare('java.lang.Foo');");
+    assertNoChange("\"let Byte = goog.forwardDeclare('java.lang.Byte$impl');\"");
+    assertNoChange("//let Byte = goog.forwardDeclare('java.lang.Byte$impl');");
+  }
+
+  public void testGoogRequire() {
+    assertChange("goog.require('java.lang.Foo');", "");
+    assertChange("goog.require('java.lang.Foo$1_');", "");
+    assertChange("\ngoog.require('java.lang.Foo');\n", "\n\n");
+    assertChange("goog.require('java.lang.Foo');\ngoog.require('java.lang.Bar');", "\n");
+
+    assertNoChange("let Byte = goog.require('java.lang.Byte');");
+    assertNoChange("var Foo = goog.require('java.lang.Byte');");
+    assertNoChange("goog.require('java.lang.Foo')");
+    assertNoChange("identgoog.require('java.lang.Foo');");
+    assertNoChange("\"goog.require('java.lang.Foo');\"");
+    assertNoChange("//goog.require('java.lang.Foo');");
   }
 
   public void testNoChanges() {

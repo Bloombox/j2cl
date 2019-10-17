@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.jsignore.JsIgnoreExample$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class JsIgnoreExample extends j_l_Object {
   /**
@@ -14,31 +12,24 @@ class JsIgnoreExample extends j_l_Object {
     super();
     this.$ctor__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static exportedFunction() {
     JsIgnoreExample.$clinit();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static m_notExportedFunction__() {
     JsIgnoreExample.$clinit();
   }
-
   /**
    * @return {number}
    * @public
@@ -49,10 +40,8 @@ class JsIgnoreExample extends j_l_Object {
         JsIgnoreExample
             .$f_exportedField__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample);
   }
-
   /**
    * @param {number} value
-   * @return {void}
    * @public
    */
   static set exportedField(value) {
@@ -61,7 +50,6 @@ class JsIgnoreExample extends j_l_Object {
          .$f_exportedField__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample =
          value);
   }
-
   /**
    * @return {number}
    * @public
@@ -72,10 +60,8 @@ class JsIgnoreExample extends j_l_Object {
         JsIgnoreExample
             .$f_notExportedField__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample);
   }
-
   /**
    * @param {number} value
-   * @return {void}
    * @public
    */
   static set f_notExportedField__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample(
@@ -85,7 +71,6 @@ class JsIgnoreExample extends j_l_Object {
          .$f_notExportedField__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample =
          value);
   }
-
   /**
    * @return {*}
    * @public
@@ -96,25 +81,11 @@ class JsIgnoreExample extends j_l_Object {
         JsIgnoreExample
             .$f_CONSTNAME__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample);
   }
-
   /**
-   * @param {*} value
-   * @return {void}
-   * @public
-   */
-  static set CONSTNAME(value) {
-    (JsIgnoreExample.$clinit(),
-     JsIgnoreExample
-         .$f_CONSTNAME__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample =
-         value);
-  }
-
-  /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    JsIgnoreExample.$clinit = (() => {});
+    JsIgnoreExample.$clinit = () => {};
     JsIgnoreExample.$loadModules();
     j_l_Object.$clinit();
     JsIgnoreExample
@@ -127,7 +98,6 @@ class JsIgnoreExample extends j_l_Object {
         .$f_CONSTNAME__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample =
         j_l_Object.$create__();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -136,44 +106,26 @@ class JsIgnoreExample extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof JsIgnoreExample;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, JsIgnoreExample);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     JsIgnoreExample,
     'com.google.j2cl.transpiler.readable.jsignore.JsIgnoreExample');
-
 
 /** @private {number} */
 JsIgnoreExample
     .$f_exportedField__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample =
     0;
-
-
 /** @private {number} */
 JsIgnoreExample
     .$f_notExportedField__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample =
     0;
-
-
 /** @private {*} */
 JsIgnoreExample
     .$f_CONSTNAME__com_google_j2cl_transpiler_readable_jsignore_JsIgnoreExample;
-
-
 
 exports = JsIgnoreExample;
 //# sourceMappingURL=JsIgnoreExample.js.map

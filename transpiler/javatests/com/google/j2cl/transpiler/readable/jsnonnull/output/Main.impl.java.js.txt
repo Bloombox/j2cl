@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.jsnonnull.Main$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -9,7 +8,6 @@ let j_l_String = goog.forwardDeclare('java.lang.String$impl');
 let ArrayList = goog.forwardDeclare('java.util.ArrayList$impl');
 let List = goog.forwardDeclare('java.util.List$impl');
 let $Arrays = goog.forwardDeclare('vmbootstrap.Arrays$impl');
-
 
 class Main extends j_l_Object {
   /**
@@ -42,10 +40,8 @@ class Main extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_jsnonnull_Main__java_lang_String(
         a);
   }
-
   /**
    * @param {string} a
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsnonnull_Main__java_lang_String(
@@ -53,7 +49,6 @@ class Main extends j_l_Object {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_jsnonnull_Main();
   }
-
   /**
    * @param {string} a
    * @param {!List<number>} b
@@ -64,7 +59,6 @@ class Main extends j_l_Object {
   m_m1__java_lang_String__java_util_List__java_lang_String(a, b, c) {
     return '';
   }
-
   /**
    * @param {?string} a
    * @param {!List<number>} b
@@ -74,7 +68,6 @@ class Main extends j_l_Object {
   m_m2__java_lang_String__java_util_List(a, b) {
     return '';
   }
-
   /**
    * @param {string} a
    * @param {...string} args
@@ -85,16 +78,12 @@ class Main extends j_l_Object {
     $Arrays.$stampType(args, j_l_String, 1);
     return null;
   }
-
   /**
    * @param {function(string):string} f
-   * @return {void}
    * @public
    */
   m_m4__com_google_j2cl_transpiler_readable_jsnonnull_Main_MyFunction(f) {}
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_jsnonnull_Main() {
@@ -116,17 +105,14 @@ class Main extends j_l_Object {
     this.f_f12__com_google_j2cl_transpiler_readable_jsnonnull_Main_ =
         /**@type {ArrayList<?string>} */ (Lists.m_newArrayList__());
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Main.$clinit = (() => {});
+    Main.$clinit = () => {};
     Main.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -135,16 +121,6 @@ class Main extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Main;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Main);
-  }
-
   /**
    * @public
    */
@@ -154,12 +130,9 @@ class Main extends j_l_Object {
     ArrayList = goog.module.get('java.util.ArrayList$impl');
     $Arrays = goog.module.get('vmbootstrap.Arrays$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     Main, 'com.google.j2cl.transpiler.readable.jsnonnull.Main');
-
-
 
 exports = Main;
 //# sourceMappingURL=Main.js.map

@@ -22,7 +22,7 @@ import org.junit.runners.JUnit4;
 
 /** Integration test for throwing in a bridge method */
 @RunWith(JUnit4.class)
-public class ThrowsInBridgeMethod {
+public class ThrowsInBridgeMethod extends StacktraceTestBase {
 
   public static class MyList extends ArrayList<String> {
     @Override

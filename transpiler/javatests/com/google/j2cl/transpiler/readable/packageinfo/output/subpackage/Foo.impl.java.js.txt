@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.packageinfo.subpackage.Foo$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Outer = goog.forwardDeclare('readable.packageinfo.Outer$impl');
-
 
 class Foo extends j_l_Object {
   /**
@@ -16,7 +14,6 @@ class Foo extends j_l_Object {
     /** @public {Outer} */
     this.f_outer__com_google_j2cl_transpiler_readable_packageinfo_subpackage_Foo;
   }
-
   /**
    * @return {!Foo}
    * @public
@@ -28,35 +25,28 @@ class Foo extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_packageinfo_subpackage_Foo__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_packageinfo_subpackage_Foo__() {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_packageinfo_subpackage_Foo();
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_packageinfo_subpackage_Foo() {
     this.f_outer__com_google_j2cl_transpiler_readable_packageinfo_subpackage_Foo =
         new Outer();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Foo.$clinit = (() => {});
+    Foo.$clinit = () => {};
     Foo.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -65,28 +55,15 @@ class Foo extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Foo;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Foo);
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     Outer = goog.module.get('readable.packageinfo.Outer$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     Foo, 'com.google.j2cl.transpiler.readable.packageinfo.subpackage.Foo');
-
-
 
 exports = Foo;
 //# sourceMappingURL=Foo.js.map

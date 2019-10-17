@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.typeannotations.AbstractTypeNonNull$impl');
 
-
 const ParametricType = goog.require('com.google.j2cl.transpiler.readable.typeannotations.ParametricType$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
@@ -8,7 +7,6 @@ const $Util = goog.require('nativebootstrap.Util$impl');
 let AbstractType = goog.forwardDeclare('com.google.j2cl.transpiler.readable.typeannotations.AbstractType$impl');
 let List = goog.forwardDeclare('java.util.List$impl');
 let Map = goog.forwardDeclare('java.util.Map$impl');
-
 
 /**
  * @abstract
@@ -21,15 +19,12 @@ class AbstractTypeNonNull extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_typeannotations_AbstractTypeNonNull__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * Default method forwarding stub.
    * @override
@@ -44,18 +39,15 @@ class AbstractTypeNonNull extends j_l_Object {
             .m_m__$default__com_google_j2cl_transpiler_readable_typeannotations_ParametricType__java_util_List(
                 this, arg0));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    AbstractTypeNonNull.$clinit = (() => {});
+    AbstractTypeNonNull.$clinit = () => {};
     AbstractTypeNonNull.$loadModules();
     j_l_Object.$clinit();
     ParametricType.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -64,29 +56,16 @@ class AbstractTypeNonNull extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof AbstractTypeNonNull;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, AbstractTypeNonNull);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     AbstractTypeNonNull,
     'com.google.j2cl.transpiler.readable.typeannotations.AbstractTypeNonNull');
 
-
 ParametricType.$markImplementor(AbstractTypeNonNull);
-
 
 exports = AbstractTypeNonNull;
 //# sourceMappingURL=AbstractTypeNonNull.js.map

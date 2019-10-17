@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.simplebridgemethods.Callable$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.simplebridgemethods.Callable.$LambdaAdaptor$impl');
-
 
 /**
  * @interface
@@ -14,11 +12,9 @@ class Callable {
   /**
    * @abstract
    * @param {V} v
-   * @return {void}
    * @public
    */
   m_call__java_lang_Object(v) {}
-
   /**
    * @template V
    * @param {?function(V):void} fn
@@ -29,16 +25,13 @@ class Callable {
     Callable.$clinit();
     return /**@type {!$LambdaAdaptor<V>} */ (new $LambdaAdaptor(fn));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Callable.$clinit = (() => {});
+    Callable.$clinit = () => {};
     Callable.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -51,7 +44,6 @@ class Callable {
         .$implements__com_google_j2cl_transpiler_readable_simplebridgemethods_Callable =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -62,18 +54,6 @@ class Callable {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_simplebridgemethods_Callable;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_simplebridgemethods_Callable;
-  }
-
   /**
    * @public
    */
@@ -81,15 +61,12 @@ class Callable {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.simplebridgemethods.Callable.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     Callable,
     'com.google.j2cl.transpiler.readable.simplebridgemethods.Callable');
 
-
 Callable.$markImplementor(/** @type {Function} */ (Callable));
-
 
 exports = Callable;
 //# sourceMappingURL=Callable.js.map

@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.methodreferences.MethodReferences.BiFunction.$LambdaAdaptor$impl');
 
-
 const BiFunction = goog.require('com.google.j2cl.transpiler.readable.methodreferences.MethodReferences.BiFunction$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T, U, V
@@ -23,10 +21,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction_$LambdaAdaptor__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function(T, U):V} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction_$LambdaAdaptor__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction_$JsFunction(
@@ -35,7 +31,6 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction_$LambdaAdaptor =
         fn;
   }
-
   /**
    * @param {T} arg0
    * @param {U} arg1
@@ -49,17 +44,14 @@ class $LambdaAdaptor extends j_l_Object {
             this.f_$$fn__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction_$LambdaAdaptor,
         $function(arg0, arg1));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -68,29 +60,16 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.methodreferences.MethodReferences$BiFunction$$LambdaAdaptor');
 
-
 BiFunction.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=MethodReferences$BiFunction$$LambdaAdaptor.js.map

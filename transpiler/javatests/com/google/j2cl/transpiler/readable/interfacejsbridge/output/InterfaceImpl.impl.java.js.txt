@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.interfacejsbridge.InterfaceImpl$impl');
 
-
 const SubInterface = goog.require('com.google.j2cl.transpiler.readable.interfacejsbridge.SubInterface$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @implements {SubInterface}
@@ -16,7 +14,6 @@ class InterfaceImpl extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!InterfaceImpl}
    * @public
@@ -28,15 +25,12 @@ class InterfaceImpl extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_interfacejsbridge_InterfaceImpl__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_interfacejsbridge_InterfaceImpl__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @override
    * @param {number} a
@@ -46,7 +40,6 @@ class InterfaceImpl extends j_l_Object {
   foo(a) {
     return 0;
   }
-
   /**
    * Bridge method for exposing non-JsMethod.
    * @override
@@ -57,17 +50,14 @@ class InterfaceImpl extends j_l_Object {
   m_foo__int(arg0) {
     return this.foo(arg0);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    InterfaceImpl.$clinit = (() => {});
+    InterfaceImpl.$clinit = () => {};
     InterfaceImpl.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -76,29 +66,16 @@ class InterfaceImpl extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof InterfaceImpl;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, InterfaceImpl);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     InterfaceImpl,
     'com.google.j2cl.transpiler.readable.interfacejsbridge.InterfaceImpl');
 
-
 SubInterface.$markImplementor(InterfaceImpl);
-
 
 exports = InterfaceImpl;
 //# sourceMappingURL=InterfaceImpl.js.map

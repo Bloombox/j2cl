@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.declarelegacynamespace.OutterRequire$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class OutterRequire extends j_l_Object {
   /**
@@ -14,25 +12,20 @@ class OutterRequire extends j_l_Object {
     super();
     this.$ctor__com_google_j2cl_transpiler_readable_declarelegacynamespace_OutterRequire__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_declarelegacynamespace_OutterRequire__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    OutterRequire.$clinit = (() => {});
+    OutterRequire.$clinit = () => {};
     OutterRequire.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -41,27 +34,14 @@ class OutterRequire extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof OutterRequire;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, OutterRequire);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     OutterRequire,
     'com.google.j2cl.transpiler.readable.declarelegacynamespace.OutterRequire');
-
-
 
 exports = OutterRequire;
 //# sourceMappingURL=OutterRequire.js.map

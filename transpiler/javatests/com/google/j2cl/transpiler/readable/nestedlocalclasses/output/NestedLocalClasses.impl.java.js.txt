@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.nestedlocalclasses.NestedLocalClasses$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class NestedLocalClasses extends j_l_Object {
   /**
@@ -12,7 +10,6 @@ class NestedLocalClasses extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!NestedLocalClasses}
    * @public
@@ -24,34 +21,27 @@ class NestedLocalClasses extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_nestedlocalclasses_NestedLocalClasses__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_nestedlocalclasses_NestedLocalClasses__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {number} p
-   * @return {void}
    * @public
    */
   m_test__int(p) {
     let localVar = 1;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    NestedLocalClasses.$clinit = (() => {});
+    NestedLocalClasses.$clinit = () => {};
     NestedLocalClasses.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -60,27 +50,14 @@ class NestedLocalClasses extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof NestedLocalClasses;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, NestedLocalClasses);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     NestedLocalClasses,
     'com.google.j2cl.transpiler.readable.nestedlocalclasses.NestedLocalClasses');
-
-
 
 exports = NestedLocalClasses;
 //# sourceMappingURL=NestedLocalClasses.js.map

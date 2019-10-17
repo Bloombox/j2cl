@@ -29,42 +29,24 @@ import java.util.List;
 /** Helper class for comparing stack traces */
 class StacktraceAsserter {
 
-  private static final ImmutableList<String> JAVA_START_FRAMES_FOR_TRIMMING =
+  private static final int EXTRA_J2CL_FRAME_COUNT = 1;
+
+  private static final ImmutableList<String> EXTRA_J2CL_FRAMES =
+      ImmutableList.of(
+          "at java.lang.Throwable.fillInStackTrace.*",
+          "at java.lang.RuntimeException.*",
+          "at .*\\$MyJsException.*");
+
+  private static final ImmutableList<String> JAVA_TEST_INFRA_FRAMES =
       ImmutableList.of(
           "at sun.reflect.", "at java.lang.reflect.", "at org.junit.", "at com.google.testing.");
 
-  private static final ImmutableList<String> JS_START_FRAMES_FOR_TRIMMING =
-      ImmutableList.of(
-          "at java.lang.Throwable.", "at java.lang.Exception.", "at java.lang.RuntimeException.");
-
-  private static final ImmutableList<String> JS_FILES_FOR_TRIMMING =
+  private static final ImmutableList<String> JS_TEST_INFRA_FRAMES =
       ImmutableList.of(
           "javascript/closure/testing/testcase.js",
           "javascript/closure/testing/testrunner.js",
           "javascript/closure/promise/promise.js",
           "javascript/closure/testing/jsunit.js");
-
-  public static Stacktrace parse(String stacktrace) {
-    String[] lines = stacktrace.split("\\n");
-
-    Builder builder = Stacktrace.newStacktraceBuilder().message(lines[0]);
-
-    for (int i = 1; i < lines.length; i++) {
-      String frame = lines[i].trim();
-      // cut off comments
-      int index = frame.indexOf("#");
-      if (index != -1) {
-        frame = frame.substring(0, index).trim();
-      }
-      // if the frame is empty after removing the comment do not add it
-      if (frame.isEmpty()) {
-        continue;
-      }
-      builder.addFrame(frame);
-    }
-
-    return builder.build();
-  }
 
   private final TestMode testMode;
   private final List<String> consoleLogs;
@@ -75,8 +57,7 @@ class StacktraceAsserter {
   }
 
   void matches(Stacktrace expectedStacktrace) {
-    List<String> stacktrace =
-        extractStackTrace(consoleLogs, "java.lang.RuntimeException: __the_message__!");
+    List<String> stacktrace = extractStackTrace(consoleLogs, "Exception: __the_message__!");
     Stacktrace actualStacktrace = parseStackTrace(stacktrace);
 
     assertThat(actualStacktrace.message()).isEqualTo(expectedStacktrace.message());
@@ -199,17 +180,30 @@ class StacktraceAsserter {
     // The first line is different from the rest, it is the message.
     checkArgument(!stacktrace.isEmpty());
     Builder stacktraceBuilder = Stacktrace.newStacktraceBuilder();
-    stacktraceBuilder.message(stacktrace.get(0).trim());
 
-    for (int i = 1; i < stacktrace.size(); i++) {
+    String message = stacktrace.get(0).trim();
+    int frameStart;
+    for (frameStart = 1; frameStart < stacktrace.size(); frameStart++) {
+      String line = stacktrace.get(frameStart).trim();
+      if (!line.startsWith("at ")) {
+        message += "\n" + line;
+      } else {
+        break;
+      }
+    }
+    stacktraceBuilder.message(message);
+
+    for (int i = frameStart; i < stacktrace.size(); i++) {
       final String line = stacktrace.get(i).trim();
-      List<String> startTokenList =
-          testMode == TestMode.JAVA ? JAVA_START_FRAMES_FOR_TRIMMING : JS_START_FRAMES_FOR_TRIMMING;
-      boolean skip = startTokenList.stream().anyMatch(s -> line.startsWith(s));
 
+      boolean skip = false;
       if (testMode.isJ2cl()) {
-        // in J2cl we skip certain js files
-        skip |= JS_FILES_FOR_TRIMMING.stream().anyMatch(s -> line.contains(s));
+        if (i < frameStart + EXTRA_J2CL_FRAME_COUNT) {
+          skip |= EXTRA_J2CL_FRAMES.stream().anyMatch(s -> line.matches(s));
+        }
+        skip |= JS_TEST_INFRA_FRAMES.stream().anyMatch(s -> line.contains(s));
+      } else {
+        skip |= JAVA_TEST_INFRA_FRAMES.stream().anyMatch(s -> line.contains(s));
       }
 
       if (!skip) {
@@ -225,7 +219,7 @@ class StacktraceAsserter {
     // (they are not part of a normal j2cl_test log)
     // Make sure we skip those here
     int logIndex = 0;
-    if (testMode != TestMode.JAVA) {
+    if (testMode.isJ2cl()) {
       for (; logIndex < logLines.size(); logIndex++) {
         if (logLines
             .get(logIndex)
@@ -246,10 +240,8 @@ class StacktraceAsserter {
         if (!line.startsWith(" ") && !line.startsWith("\t")) {
           break;
         }
-        stacklines.add(line.trim());
-      }
-
-      if (line.equals(startLine)) {
+        stacklines.add(line.trim().replaceAll("blaze-out/.*/bin", "<blaze-out>"));
+      } else if (line.contains(startLine)) {
         foundStart = true;
         stacklines.add(line.trim());
       }

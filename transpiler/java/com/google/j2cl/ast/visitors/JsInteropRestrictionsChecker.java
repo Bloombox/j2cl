@@ -56,6 +56,7 @@ import com.google.j2cl.ast.MethodLike;
 import com.google.j2cl.ast.NewArray;
 import com.google.j2cl.ast.NewInstance;
 import com.google.j2cl.ast.Statement;
+import com.google.j2cl.ast.StringLiteral;
 import com.google.j2cl.ast.SuperReference;
 import com.google.j2cl.ast.ThisReference;
 import com.google.j2cl.ast.Type;
@@ -145,6 +146,29 @@ public class JsInteropRestrictionsChecker {
     checkTypeReferences(type);
     checkJsEnumUsages(type);
     checkJsFunctionLambdas(type);
+    checkSystemProperties(type);
+  }
+
+  private void checkSystemProperties(Type type) {
+    type.accept(
+        new AbstractVisitor() {
+          @Override
+          public void exitMethodCall(MethodCall methodCall) {
+            MethodDescriptor target = methodCall.getTarget();
+            List<Expression> args = methodCall.getArguments();
+            if (target
+                    .getEnclosingTypeDescriptor()
+                    .getQualifiedBinaryName()
+                    .equals("java.lang.System")
+                && target.getName().equals("getProperty")
+                && !(args.get(0) instanceof StringLiteral)) {
+              problems.error(
+                  methodCall.getSourcePosition(),
+                  "Method '%s' can only take a string literal as its first parameter",
+                  target.getReadableDescription());
+            }
+          }
+        });
   }
 
   private void checkJsFunctionLambdas(Type type) {
@@ -920,6 +944,10 @@ public class JsInteropRestrictionsChecker {
       Method method = (Method) member;
       checkIllegalOverrides(method);
       checkMethodParameters(method);
+
+      if (memberDescriptor.isNative()) {
+        checkNativeMethod(method);
+      }
       if (memberDescriptor.isJsAsync()) {
         checkJsAsyncMethod(method);
       }
@@ -928,7 +956,7 @@ public class JsInteropRestrictionsChecker {
       }
     }
 
-    if (memberDescriptor.canBeReferencedExternally() || memberDescriptor.isNative()) {
+    if (memberDescriptor.canBeReferencedExternally()) {
       checkUnusableByJs(member);
     }
 
@@ -968,6 +996,20 @@ public class JsInteropRestrictionsChecker {
             }
           }
         });
+  }
+
+  private void checkNativeMethod(Method method) {
+    MethodDescriptor methodDescriptor = method.getDescriptor();
+    if (isUnusableByJsSuppressed(methodDescriptor)) {
+      return;
+    }
+
+    if (!methodDescriptor.isJsMember()) {
+      problems.warning(
+          method.getSourcePosition(),
+          "[unusable-by-js] Native '%s' is exposed to JavaScript without @JsMethod.",
+          method.getReadableDescription());
+    }
   }
 
   private void checkJsAsyncMethod(Method method) {

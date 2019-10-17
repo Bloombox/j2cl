@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.methodreferences.MethodReferences.BiFunction$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.methodreferences.MethodReferences.BiFunction.$LambdaAdaptor$impl');
-
 
 /**
  * @interface
@@ -19,7 +17,6 @@ class BiFunction {
    * @public
    */
   m_apply__java_lang_Object__java_lang_Object(t, u) {}
-
   /**
    * @template T, U, V
    * @param {?function(T, U):V} fn
@@ -30,16 +27,13 @@ class BiFunction {
     BiFunction.$clinit();
     return /**@type {!$LambdaAdaptor<T, U, V>} */ (new $LambdaAdaptor(fn));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    BiFunction.$clinit = (() => {});
+    BiFunction.$clinit = () => {};
     BiFunction.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -52,7 +46,6 @@ class BiFunction {
         .$implements__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -63,18 +56,6 @@ class BiFunction {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_methodreferences_MethodReferences_BiFunction;
-  }
-
   /**
    * @public
    */
@@ -82,15 +63,12 @@ class BiFunction {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.methodreferences.MethodReferences.BiFunction.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     BiFunction,
     'com.google.j2cl.transpiler.readable.methodreferences.MethodReferences$BiFunction');
 
-
 BiFunction.$markImplementor(/** @type {Function} */ (BiFunction));
-
 
 exports = BiFunction;
 //# sourceMappingURL=MethodReferences$BiFunction.js.map

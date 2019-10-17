@@ -1,8 +1,6 @@
 goog.module('com.google.j2cl.transpiler.readable.objectmap.ObjectMap.$Overlay$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class $Overlay {
   /**
@@ -10,29 +8,25 @@ class $Overlay {
    * @return {Object<string, T>}
    * @public
    */
-  static m_create___$pp_com_google_j2cl_transpiler_readable_objectmap() {
+  static m_create__() {
     $Overlay.$clinit();
     return null;
   }
-
   /**
    * @return {Object<string, ?string>}
    * @public
    */
-  static m_createForString___$pp_com_google_j2cl_transpiler_readable_objectmap() {
+  static m_createForString__() {
     $Overlay.$clinit();
     return null;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $Overlay.$clinit = (() => {});
+    $Overlay.$clinit = () => {};
     $Overlay.$loadModules();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -41,15 +35,12 @@ class $Overlay {
   static $isInstance(instance) {
     return instance instanceof Object;
   }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata($Overlay, 'Object');
-
 
 exports = $Overlay;
 //# sourceMappingURL=ObjectMap$$Overlay.js.map

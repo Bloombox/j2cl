@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.lambdas.Lambdas.Functional.$LambdaAdaptor$impl');
 
-
 const Functional = goog.require('com.google.j2cl.transpiler.readable.lambdas.Lambdas.Functional$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T
@@ -23,10 +21,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_lambdas_Lambdas_Functional_$LambdaAdaptor__com_google_j2cl_transpiler_readable_lambdas_Lambdas_Functional_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function(Functional<T>):Functional<T>} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_lambdas_Lambdas_Functional_$LambdaAdaptor__com_google_j2cl_transpiler_readable_lambdas_Lambdas_Functional_$JsFunction(
@@ -35,7 +31,6 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_lambdas_Lambdas_Functional_$LambdaAdaptor =
         fn;
   }
-
   /**
    * @param {Functional<T>} arg0
    * @return {Functional<T>}
@@ -48,17 +43,14 @@ class $LambdaAdaptor extends j_l_Object {
             this.f_$$fn__com_google_j2cl_transpiler_readable_lambdas_Lambdas_Functional_$LambdaAdaptor,
         $function(arg0));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -67,29 +59,16 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.lambdas.Lambdas$Functional$$LambdaAdaptor');
 
-
 Functional.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=Lambdas$Functional$$LambdaAdaptor.js.map

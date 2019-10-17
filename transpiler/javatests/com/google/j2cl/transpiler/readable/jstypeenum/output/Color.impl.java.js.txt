@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.jstypeenum.Color$impl');
 
-
 const Enum = goog.require('java.lang.Enum$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -8,7 +7,6 @@ let $Equality = goog.forwardDeclare('nativebootstrap.Equality$impl');
 let $Arrays = goog.forwardDeclare('vmbootstrap.Arrays$impl');
 let $Casts = goog.forwardDeclare('vmbootstrap.Casts$impl');
 let $Enums = goog.forwardDeclare('vmbootstrap.Enums$impl');
-
 
 /**
  * @extends {Enum<Color>}
@@ -20,7 +18,6 @@ class Color extends Enum {
   constructor() {
     super();
   }
-
   /**
    * @param {?string} $name
    * @param {number} $ordinal
@@ -34,11 +31,9 @@ class Color extends Enum {
             $name, $ordinal);
     return $instance;
   }
-
   /**
    * @param {?string} $name
    * @param {number} $ordinal
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jstypeenum_Color__java_lang_String__int(
@@ -47,7 +42,6 @@ class Color extends Enum {
     this.f_ordinal__java_lang_Enum_ = $ordinal;
     this.$ctor__java_lang_Enum__java_lang_String__int($name, $ordinal);
   }
-
   /**
    * @param {string} name
    * @return {!Color}
@@ -57,18 +51,17 @@ class Color extends Enum {
     Color.$clinit();
     if ($Equality.$same(
             Color
-                .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_,
+                .f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_,
             null)) {
       Color
-          .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_ =
+          .f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_ =
           $Enums.createMapFromValues(Color.values());
     }
     return $Enums.getValueFromNameAndMap(
         name,
         Color
-            .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_);
+            .f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_);
   }
-
   /**
    * @return {!Array<!Color>}
    * @public
@@ -83,7 +76,6 @@ class Color extends Enum {
         ],
         Color));
   }
-
   /**
    * Bridge method.
    * @override
@@ -94,7 +86,6 @@ class Color extends Enum {
   m_compareTo__java_lang_Object(arg0) {
     return super.compareTo(/**@type {Color} */ ($Casts.$to(arg0, Color)));
   }
-
   /**
    * @return {!Color}
    * @public
@@ -104,18 +95,6 @@ class Color extends Enum {
         Color.$clinit(),
         Color.$f_RED__com_google_j2cl_transpiler_readable_jstypeenum_Color);
   }
-
-  /**
-   * @param {!Color} value
-   * @return {void}
-   * @public
-   */
-  static set RED(value) {
-    (Color.$clinit(),
-     Color.$f_RED__com_google_j2cl_transpiler_readable_jstypeenum_Color =
-         value);
-  }
-
   /**
    * @return {!Color}
    * @public
@@ -125,18 +104,6 @@ class Color extends Enum {
         Color.$clinit(),
         Color.$f_GREEN__com_google_j2cl_transpiler_readable_jstypeenum_Color);
   }
-
-  /**
-   * @param {!Color} value
-   * @return {void}
-   * @public
-   */
-  static set GREEN(value) {
-    (Color.$clinit(),
-     Color.$f_GREEN__com_google_j2cl_transpiler_readable_jstypeenum_Color =
-         value);
-  }
-
   /**
    * @return {!Color}
    * @public
@@ -146,48 +113,11 @@ class Color extends Enum {
         Color.$clinit(),
         Color.$f_BLUE__com_google_j2cl_transpiler_readable_jstypeenum_Color);
   }
-
   /**
-   * @param {!Color} value
-   * @return {void}
-   * @public
-   */
-  static set BLUE(value) {
-    (Color.$clinit(),
-     Color.$f_BLUE__com_google_j2cl_transpiler_readable_jstypeenum_Color =
-         value);
-  }
-
-  /**
-   * @return {Map<?string, !Color>}
-   * @public
-   */
-  static get f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_() {
-    return (
-        Color.$clinit(),
-        Color
-            .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_);
-  }
-
-  /**
-   * @param {Map<?string, !Color>} value
-   * @return {void}
-   * @public
-   */
-  static set f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_(
-      value) {
-    (Color.$clinit(),
-     Color
-         .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_ =
-         value);
-  }
-
-  /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Color.$clinit = (() => {});
+    Color.$clinit = () => {};
     Color.$loadModules();
     Enum.$clinit();
     Color.$f_RED__com_google_j2cl_transpiler_readable_jstypeenum_Color =
@@ -206,10 +136,9 @@ class Color extends Enum {
             Color
                 .$ordinal$f_BLUE__com_google_j2cl_transpiler_readable_jstypeenum_Color);
     Color
-        .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_ =
+        .f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_ =
         null;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -218,16 +147,6 @@ class Color extends Enum {
   static $isInstance(instance) {
     return instance instanceof Color;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Color);
-  }
-
   /**
    * @public
    */
@@ -237,42 +156,25 @@ class Color extends Enum {
     $Casts = goog.module.get('vmbootstrap.Casts$impl');
     $Enums = goog.module.get('vmbootstrap.Enums$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForEnum(
     Color, 'com.google.j2cl.transpiler.readable.jstypeenum.Color');
 
-
 /** @private {!Color} */
 Color.$f_RED__com_google_j2cl_transpiler_readable_jstypeenum_Color;
-
-
 /** @private {!Color} */
 Color.$f_GREEN__com_google_j2cl_transpiler_readable_jstypeenum_Color;
-
-
 /** @private {!Color} */
 Color.$f_BLUE__com_google_j2cl_transpiler_readable_jstypeenum_Color;
-
-
-/** @private {Map<?string, !Color>} */
-Color
-    .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_;
-
-
+/** @public {Map<?string, !Color>} */
+Color.f_namesToValuesMap__com_google_j2cl_transpiler_readable_jstypeenum_Color_;
 /** @public {number} @const */
 Color.$ordinal$f_RED__com_google_j2cl_transpiler_readable_jstypeenum_Color = 0;
-
-
 /** @public {number} @const */
 Color.$ordinal$f_GREEN__com_google_j2cl_transpiler_readable_jstypeenum_Color =
     1;
-
-
 /** @public {number} @const */
 Color.$ordinal$f_BLUE__com_google_j2cl_transpiler_readable_jstypeenum_Color = 2;
-
-
 
 exports = Color;
 //# sourceMappingURL=Color.js.map

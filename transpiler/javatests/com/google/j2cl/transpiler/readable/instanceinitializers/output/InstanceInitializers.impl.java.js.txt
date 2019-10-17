@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.instanceinitializers.InstanceInitializers$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class InstanceInitializers extends j_l_Object {
   /**
@@ -15,7 +13,6 @@ class InstanceInitializers extends j_l_Object {
     this.f_field__com_google_j2cl_transpiler_readable_instanceinitializers_InstanceInitializers =
         0;
   }
-
   /**
    * @return {!InstanceInitializers}
    * @public
@@ -27,18 +24,14 @@ class InstanceInitializers extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_instanceinitializers_InstanceInitializers__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_instanceinitializers_InstanceInitializers__() {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_instanceinitializers_InstanceInitializers();
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_instanceinitializers_InstanceInitializers() {
@@ -47,17 +40,14 @@ class InstanceInitializers extends j_l_Object {
     this.f_field__com_google_j2cl_transpiler_readable_instanceinitializers_InstanceInitializers =
         2;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    InstanceInitializers.$clinit = (() => {});
+    InstanceInitializers.$clinit = () => {};
     InstanceInitializers.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -66,27 +56,14 @@ class InstanceInitializers extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof InstanceInitializers;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, InstanceInitializers);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     InstanceInitializers,
     'com.google.j2cl.transpiler.readable.instanceinitializers.InstanceInitializers');
-
-
 
 exports = InstanceInitializers;
 //# sourceMappingURL=InstanceInitializers.js.map

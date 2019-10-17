@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.jsfunction.Main$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -23,7 +22,6 @@ let $JavaScriptFunction = goog.forwardDeclare('vmbootstrap.JavaScriptFunction$im
 let $Primitives = goog.forwardDeclare('vmbootstrap.Primitives$impl');
 let $int = goog.forwardDeclare('vmbootstrap.primitives.$int$impl');
 
-
 class Main extends j_l_Object {
   /**
    * @protected
@@ -35,7 +33,6 @@ class Main extends j_l_Object {
     /** @public {?function(?string):void} */
     this.f_jsFunctionFieldParameterized__com_google_j2cl_transpiler_readable_jsfunction_Main;
   }
-
   /**
    * @return {!Main}
    * @public
@@ -46,22 +43,18 @@ class Main extends j_l_Object {
     $instance.$ctor__com_google_j2cl_transpiler_readable_jsfunction_Main__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsfunction_Main__() {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_jsfunction_Main();
   }
-
   /**
    * @return {?function(number):number}
    * @public
    */
   // native static createNativeFunction()
-
   /**
    * @param {?function(number):number} fn
    * @param {number} a
@@ -73,9 +66,7 @@ class Main extends j_l_Object {
     Main.$clinit();
     return fn(a);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testJsFunction__() {
@@ -89,31 +80,27 @@ class Main extends j_l_Object {
         .m_bar__com_google_j2cl_transpiler_readable_jsfunction_Main_JsFunctionImplementation(
             func);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testJsFunctionsCapturingLocal__() {
     let n = 4;
     Main.m_callFn__com_google_j2cl_transpiler_readable_jsfunction_Main_JsFunctionInterface__int(
-        ((/** number */ number_1) => {
+        (/** number */ number_1) => {
           return number_1 + n;
-        }),
+        },
         n);
     Main.m_callFn__com_google_j2cl_transpiler_readable_jsfunction_Main_JsFunctionInterface__int(
-        ((/** number */ a) => {
+        (/** number */ a) => {
           return a + n;
-        }),
+        },
         n);
     ((/** number */ a_1) => {
       this.m_instanceMethod___$p_com_google_j2cl_transpiler_readable_jsfunction_Main();
       return 0;
     })(3);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testJsFunctionThis__() {
@@ -122,15 +109,11 @@ class Main extends j_l_Object {
       return 0;
     })(3);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_instanceMethod___$p_com_google_j2cl_transpiler_readable_jsfunction_Main() {}
-
   /**
-   * @return {void}
    * @public
    */
   m_testJsFunctionErasureCasts__() {
@@ -140,23 +123,20 @@ class Main extends j_l_Object {
         /**@type {?function(?string):?string} */ (
             $Casts.$to(list.getAtIndex(0), $JavaScriptFunction)));
   }
-
   /**
    * @param {?function(?string):?string} f
-   * @return {void}
    * @public
    */
   static m_acceptsJsFunction__com_google_j2cl_transpiler_readable_jsfunction_Main_Function(
       f) {
     Main.$clinit();
   }
-
   /**
    * @return {?function(number, ...number):number}
    * @public
    */
   m_testJsFunctionVarargs___$pp_com_google_j2cl_transpiler_readable_jsfunction() {
-    let f = ((/** number */ i, .../** ...number */ numbers) => {
+    let f = (/** number */ i, .../** ...number */ numbers) => {
       $Arrays.$stampType(numbers, $int, 1);
       let sum = i;
       for (let $array = numbers, $index = 0; $index < $array.length; $index++) {
@@ -164,16 +144,15 @@ class Main extends j_l_Object {
         sum += number_1;
       }
       return sum;
-    });
+    };
     return f;
   }
-
   /**
    * @return {?function(number, ...number):number}
    * @public
    */
   m_testJsFunctionVarargsInnerClass___$pp_com_google_j2cl_transpiler_readable_jsfunction() {
-    return ((/** number */ i, .../** ...number */ numbers) => {
+    return (/** number */ i, .../** ...number */ numbers) => {
       $Arrays.$stampType(numbers, $int, 1);
       let sum = i;
       for (let $array = numbers, $index = 0; $index < $array.length; $index++) {
@@ -181,72 +160,58 @@ class Main extends j_l_Object {
         sum += number_1;
       }
       return sum;
-    });
+    };
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testVarArgsMethodReferenceToJsFuncion__() {
-    let c = ((arg0, /** number */ arg1, arg2) => {
+    let c = (arg0, /** number */ arg1, arg2) => {
       let arg0_1 = /**@type {?function(...*):*} */ (
           $Casts.$to(arg0, $JavaScriptFunction));
       let arg2_1 = /**@type {Array<?function(...*):*>} */ (
           $Arrays.$castTo(arg2, $JavaScriptFunction, 1));
       return arg0_1(Integer.m_valueOf__int(arg1), arg2_1);
-    });
+    };
   }
-
   /**
    * @template T
    * @param {?function(number, ...T):number} x
-   * @return {void}
    * @public
    */
   m_acceptsVarargsJsFunctionWithTypeVariable__com_google_j2cl_transpiler_readable_jsfunction_Main_JsFunctionVarargsGenerics_$pp_com_google_j2cl_transpiler_readable_jsfunction(
       x) {}
-
   /**
    * @template T
    * @param {?function(number, ...List<T>):number} x
-   * @return {void}
    * @public
    */
   m_acceptsVarargsJsFunctionWithParemetrizedType__com_google_j2cl_transpiler_readable_jsfunction_Main_JsFunctionVarargsGenerics_$pp_com_google_j2cl_transpiler_readable_jsfunction(
       x) {}
-
   /**
    * @template T
    * @param {...?function(number, ...T):number} x
-   * @return {void}
    * @public
    */
   acceptsVarargsJsFunctionWithTypeVariableInVarargs(...x) {
     $Arrays.$stampType(x, $JavaScriptFunction, 1);
   }
-
   /**
    * @template T
    * @param {...?function(number, ...List<T>):number} x
-   * @return {void}
    * @public
    */
   acceptsVarargsJsFunctionWithParemetrizedTypeInVarargs(...x) {
     $Arrays.$stampType(x, $JavaScriptFunction, 1);
   }
-
   /**
    * @param {...?function():void} x
-   * @return {void}
    * @public
    */
   acceptsJsFunctionInVarargs(...x) {
     $Arrays.$stampType(x, $JavaScriptFunction, 1);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testJsFunctionClassLiterals___$pp_com_google_j2cl_transpiler_readable_jsfunction() {
@@ -255,27 +220,22 @@ class Main extends j_l_Object {
     let o = Class.$get($JavaScriptFunction);
     o = Class.$get($JavaScriptFunction, 1);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testJsFunctionOptional___$pp_com_google_j2cl_transpiler_readable_jsfunction() {
-    let f = ((/** number */ i, /** ?number= */ n) => {
+    let f = (/** number */ i, /** ?number= */ n) => {
       return $Primitives.$narrowDoubleToInt(
           (i + Double.m_doubleValue__java_lang_Double(n)));
-    });
+    };
   }
-
   /**
    * @param {?function(*):void} fn
-   * @return {void}
    * @public
    */
   static set parametricJsFunction(fn) {
     Main.$clinit();
   }
-
   /**
    * @return {?function(*):void}
    * @public
@@ -284,21 +244,17 @@ class Main extends j_l_Object {
     Main.$clinit();
     return null;
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testFunctionExpressionTypeReplacement___$pp_com_google_j2cl_transpiler_readable_jsfunction() {
-    let f = ((unused) => {
+    let f = (unused) => {
       let unused_1 = /**@type {?string} */ ($Casts.$to(unused, j_l_String));
       let l = /**@type {!ArrayList<List<?>>} */ (ArrayList.$create__());
       l.add(/**@type {!ArrayList<?string>} */ (ArrayList.$create__()));
-    });
+    };
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_testJsFunctionPropertyCall___$pp_com_google_j2cl_transpiler_readable_jsfunction() {
@@ -325,7 +281,6 @@ class Main extends j_l_Object {
       $function_3('');
     }
   }
-
   /**
    * @param {?function(*, (Number|number)):*} f
    * @param {*} o
@@ -338,7 +293,6 @@ class Main extends j_l_Object {
     Main.$clinit();
     return f(o, n);
   }
-
   /**
    * @param {?function(?string, Integer):?string} f
    * @param {?string} s
@@ -351,7 +305,6 @@ class Main extends j_l_Object {
     return /**@type {?string} */ (
         $Casts.$to(f(s, Integer.m_valueOf__int(1)), j_l_String));
   }
-
   /**
    * @template U, V
    * @param {?function(U, V):U} f
@@ -365,7 +318,6 @@ class Main extends j_l_Object {
     Main.$clinit();
     return f(u, v);
   }
-
   /**
    * @param {?function(*, Integer):*} f
    * @param {*} o
@@ -378,7 +330,6 @@ class Main extends j_l_Object {
     Main.$clinit();
     return f(o, n);
   }
-
   /**
    * @param {?function(?string, Integer):?string} f
    * @param {?string} s
@@ -391,9 +342,7 @@ class Main extends j_l_Object {
     return /**@type {?string} */ (
         $Casts.$to(f(s, Integer.m_valueOf__int(1)), j_l_String));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static m_testParameterTypes__() {
@@ -424,16 +373,13 @@ class Main extends j_l_Object {
     doubleDoubleJsBiFunction(1.1, 1.1);
     Main.callOnFunction(DoubleDoubleJsBiFunction.$create__());
   }
-
   /**
    * @param {?function(?number, ?number):?number} f
    * @return {number}
    * @public
    */
   // native static callOnFunction(f)
-
   /**
-   * @return {void}
    * @public
    */
   static m_testCast__() {
@@ -454,9 +400,7 @@ class Main extends j_l_Object {
         /**@type {?function(?number, ?number):?number} */ (
             $Casts.$to(o, DoubleDoubleJsBiFunction));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static m_testNewInstance__() {
@@ -467,30 +411,25 @@ class Main extends j_l_Object {
             TIntegerJsBiFunction.$create__());
     let rawJsBiFunction = DoubleDoubleJsBiFunction.$create__();
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_jsfunction_Main() {
     this.f_jsFunctionFieldWildcard__com_google_j2cl_transpiler_readable_jsfunction_Main =
-        ((/** * */ event) => {});
+        (/** * */ event) => {};
     this.f_jsFunctionFieldParameterized__com_google_j2cl_transpiler_readable_jsfunction_Main =
-        ((event_1) => {
+        (event_1) => {
           let event_2 = /**@type {?string} */ ($Casts.$to(event_1, j_l_String));
-        });
+        };
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Main.$clinit = (() => {});
+    Main.$clinit = () => {};
     Main.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -499,16 +438,6 @@ class Main extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Main;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Main);
-  }
-
   /**
    * @public
    */
@@ -534,12 +463,9 @@ class Main extends j_l_Object {
     $Primitives = goog.module.get('vmbootstrap.Primitives$impl');
     $int = goog.module.get('vmbootstrap.primitives.$int$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     Main, 'com.google.j2cl.transpiler.readable.jsfunction.Main');
-
-
 
 /* NATIVE.JS EPILOG */
 

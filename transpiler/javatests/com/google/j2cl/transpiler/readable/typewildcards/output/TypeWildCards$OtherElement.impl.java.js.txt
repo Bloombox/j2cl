@@ -1,13 +1,11 @@
 goog.module('com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards.OtherElement$impl');
 
-
 const HasKey = goog.require('com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards.HasKey$impl');
 const IntegerSupplier = goog.require('com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards.IntegerSupplier$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let TypeWildCards = goog.forwardDeclare('com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards$impl');
-
 
 /**
  * @abstract
@@ -23,10 +21,8 @@ class OtherElement extends j_l_Object {
     /** @public {TypeWildCards} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_OtherElement;
   }
-
   /**
    * @param {TypeWildCards} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards_OtherElement__com_google_j2cl_transpiler_readable_typewildcards_TypeWildCards(
@@ -35,17 +31,14 @@ class OtherElement extends j_l_Object {
         $outer_this;
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    OtherElement.$clinit = (() => {});
+    OtherElement.$clinit = () => {};
     OtherElement.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -54,30 +47,17 @@ class OtherElement extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof OtherElement;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, OtherElement);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     OtherElement,
     'com.google.j2cl.transpiler.readable.typewildcards.TypeWildCards$OtherElement');
 
-
 IntegerSupplier.$markImplementor(OtherElement);
 HasKey.$markImplementor(OtherElement);
-
 
 exports = OtherElement;
 //# sourceMappingURL=TypeWildCards$OtherElement.js.map

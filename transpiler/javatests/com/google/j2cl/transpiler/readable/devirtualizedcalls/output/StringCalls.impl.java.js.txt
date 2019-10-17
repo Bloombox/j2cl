@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.devirtualizedcalls.StringCalls$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let j_l_String = goog.forwardDeclare('java.lang.String$impl');
-
 
 class StringCalls extends j_l_Object {
   /**
@@ -14,7 +12,6 @@ class StringCalls extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!StringCalls}
    * @public
@@ -26,17 +23,13 @@ class StringCalls extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_devirtualizedcalls_StringCalls__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_devirtualizedcalls_StringCalls__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_main__() {
@@ -47,17 +40,14 @@ class StringCalls extends j_l_Object {
     let trimmed = j_l_String.m_trim__java_lang_String(literal);
     let newString = j_l_String.m_toString__java_lang_String(literal);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    StringCalls.$clinit = (() => {});
+    StringCalls.$clinit = () => {};
     StringCalls.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -66,29 +56,16 @@ class StringCalls extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof StringCalls;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, StringCalls);
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     j_l_String = goog.module.get('java.lang.String$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     StringCalls,
     'com.google.j2cl.transpiler.readable.devirtualizedcalls.StringCalls');
-
-
 
 exports = StringCalls;
 //# sourceMappingURL=StringCalls.js.map

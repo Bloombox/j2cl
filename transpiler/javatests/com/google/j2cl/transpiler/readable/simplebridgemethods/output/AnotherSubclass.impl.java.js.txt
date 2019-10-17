@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.simplebridgemethods.AnotherSubclass$impl');
 
-
 const Superclass = goog.require('com.google.j2cl.transpiler.readable.simplebridgemethods.Superclass$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let AssertionError = goog.forwardDeclare('java.lang.AssertionError$impl');
-
 
 /**
  * @extends {Superclass<AssertionError>}
@@ -17,7 +15,6 @@ class AnotherSubclass extends Superclass {
   constructor() {
     super();
   }
-
   /**
    * @return {!AnotherSubclass}
    * @public
@@ -29,25 +26,20 @@ class AnotherSubclass extends Superclass {
         .$ctor__com_google_j2cl_transpiler_readable_simplebridgemethods_AnotherSubclass__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_simplebridgemethods_AnotherSubclass__() {
     this.$ctor__com_google_j2cl_transpiler_readable_simplebridgemethods_Superclass__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    AnotherSubclass.$clinit = (() => {});
+    AnotherSubclass.$clinit = () => {};
     AnotherSubclass.$loadModules();
     Superclass.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -56,27 +48,14 @@ class AnotherSubclass extends Superclass {
   static $isInstance(instance) {
     return instance instanceof AnotherSubclass;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, AnotherSubclass);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     AnotherSubclass,
     'com.google.j2cl.transpiler.readable.simplebridgemethods.AnotherSubclass');
-
-
 
 exports = AnotherSubclass;
 //# sourceMappingURL=AnotherSubclass.js.map

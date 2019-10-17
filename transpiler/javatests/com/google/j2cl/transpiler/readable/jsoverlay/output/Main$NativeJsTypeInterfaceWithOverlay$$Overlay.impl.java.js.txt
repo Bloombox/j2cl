@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.jsoverlay.Main.NativeJsTypeInterfaceWithOverlay.$Overlay$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 const NativeJsTypeInterfaceWithOverlay = goog.require('test.foo.NativeJsTypeInterfaceWithOverlay');
 
 let j_l_Object = goog.forwardDeclare('java.lang.Object$impl');
-
 
 class $Overlay {
   /**
@@ -13,12 +11,11 @@ class $Overlay {
    * @return {number}
    * @public
    */
-  static m_callM__com_google_j2cl_transpiler_readable_jsoverlay_Main_NativeJsTypeInterfaceWithOverlay(
+  static m_callM__$devirt__com_google_j2cl_transpiler_readable_jsoverlay_Main_NativeJsTypeInterfaceWithOverlay(
       $thisArg) {
     $Overlay.$clinit();
     return $thisArg.m();
   }
-
   /**
    * @return {*}
    * @public
@@ -29,61 +26,31 @@ class $Overlay {
         $Overlay
             .$f_staticField__com_google_j2cl_transpiler_readable_jsoverlay_Main_NativeJsTypeInterfaceWithOverlay_$Overlay);
   }
-
   /**
-   * @param {*} value
-   * @return {void}
-   * @public
-   */
-  static set f_staticField__com_google_j2cl_transpiler_readable_jsoverlay_Main_NativeJsTypeInterfaceWithOverlay_$Overlay(
-      value) {
-    ($Overlay.$clinit(),
-     $Overlay
-         .$f_staticField__com_google_j2cl_transpiler_readable_jsoverlay_Main_NativeJsTypeInterfaceWithOverlay_$Overlay =
-         value);
-  }
-
-  /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $Overlay.$clinit = (() => {});
+    $Overlay.$clinit = () => {};
     $Overlay.$loadModules();
     $Overlay
         .$f_staticField__com_google_j2cl_transpiler_readable_jsoverlay_Main_NativeJsTypeInterfaceWithOverlay_$Overlay =
         j_l_Object.$create__();
   }
-
-  /**
-   * @param {?} instance
-   * @return {boolean}
-   * @public
-   */
-  static $isInstance(instance) {
-    return true;
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     j_l_Object = goog.module.get('java.lang.Object$impl');
   }
-};
-
-
+}
 
 /** @public {?string} @const */
 $Overlay
     .f_COMPILE_TIME_CONSTANT__com_google_j2cl_transpiler_readable_jsoverlay_Main_NativeJsTypeInterfaceWithOverlay_$Overlay =
     '10';
-
-
 /** @private {*} */
 $Overlay
     .$f_staticField__com_google_j2cl_transpiler_readable_jsoverlay_Main_NativeJsTypeInterfaceWithOverlay_$Overlay;
-
 
 exports = $Overlay;
 //# sourceMappingURL=Main$NativeJsTypeInterfaceWithOverlay$$Overlay.js.map

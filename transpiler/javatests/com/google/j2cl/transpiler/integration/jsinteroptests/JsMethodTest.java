@@ -37,6 +37,8 @@ public class JsMethodTest {
     testLambdaImplementingJsMethod();
     testLambdaRequiringJsMethodBridge();
     testJsOptionalJsVarargsLambda();
+    // TODO(b/140309909): Either implement the feature and uncomment the test or ban it.
+    // testPrivateJsMethodInInterface();
   }
 
   static class MyObject {
@@ -73,10 +75,10 @@ public class JsMethodTest {
     assertTrue(Double.isInfinite(-infinity()));
   }
 
-  @JsProperty(namespace = "window")
+  @JsProperty(namespace = GLOBAL, name = "window.jsInteropSecret")
   private static native void setJsInteropSecret(String magic);
 
-  @JsProperty(namespace = "window")
+  @JsProperty(namespace = GLOBAL, name = "window.jsInteropSecret")
   private static native String getJsInteropSecret();
 
   private static void testStaticNativeJsPropertySetter() {
@@ -137,5 +139,22 @@ public class JsMethodTest {
     // the array is not passed directly in JavaScript but recreated by the JsVarargs prologue.
     FunctionalInterfaceWithJsVarargsAndJsOptionalJsMethod rawF = f;
     assertEquals(6, rawF.sum(1.0d, new Number[] {2.0d, 3.0d}));
+  }
+
+  interface InterfaceWithPrivateJsMethod {
+    @JsMethod
+    private String method() {
+      return "Private JsMethod";
+    }
+  }
+
+  @JsType(isNative = true, namespace = GLOBAL, name = "?")
+  interface NativeInterface {
+    String method();
+  }
+
+  private static void testPrivateJsMethodInInterface() {
+    NativeInterface o = (NativeInterface) (Object) new InterfaceWithPrivateJsMethod() {};
+    assertEquals("Private JsMethod", o.method());
   }
 }

@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.whilestatement.WhileStatement$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class WhileStatement extends j_l_Object {
   /**
@@ -12,7 +10,6 @@ class WhileStatement extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!WhileStatement}
    * @public
@@ -24,17 +21,13 @@ class WhileStatement extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_whilestatement_WhileStatement__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_whilestatement_WhileStatement__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
@@ -43,17 +36,14 @@ class WhileStatement extends j_l_Object {
       count++;
     }
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    WhileStatement.$clinit = (() => {});
+    WhileStatement.$clinit = () => {};
     WhileStatement.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -62,27 +52,14 @@ class WhileStatement extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof WhileStatement;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, WhileStatement);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     WhileStatement,
     'com.google.j2cl.transpiler.readable.whilestatement.WhileStatement');
-
-
 
 exports = WhileStatement;
 //# sourceMappingURL=WhileStatement.js.map

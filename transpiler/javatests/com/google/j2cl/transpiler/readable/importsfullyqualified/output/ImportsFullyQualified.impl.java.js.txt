@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.importsfullyqualified.ImportsFullyQualified$impl');
 
-
 const Serializable = goog.require('java.io.Serializable$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @implements {Serializable}
@@ -16,7 +14,6 @@ class ImportsFullyQualified extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!ImportsFullyQualified}
    * @public
@@ -28,25 +25,20 @@ class ImportsFullyQualified extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_importsfullyqualified_ImportsFullyQualified__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_importsfullyqualified_ImportsFullyQualified__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    ImportsFullyQualified.$clinit = (() => {});
+    ImportsFullyQualified.$clinit = () => {};
     ImportsFullyQualified.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -55,29 +47,16 @@ class ImportsFullyQualified extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof ImportsFullyQualified;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, ImportsFullyQualified);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     ImportsFullyQualified,
     'com.google.j2cl.transpiler.readable.importsfullyqualified.ImportsFullyQualified');
 
-
 Serializable.$markImplementor(ImportsFullyQualified);
-
 
 exports = ImportsFullyQualified;
 //# sourceMappingURL=ImportsFullyQualified.js.map

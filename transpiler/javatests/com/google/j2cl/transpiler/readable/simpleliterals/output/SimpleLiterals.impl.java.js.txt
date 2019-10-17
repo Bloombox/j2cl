@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.simpleliterals.SimpleLiterals$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Class = goog.forwardDeclare('java.lang.Class$impl');
-
 
 class SimpleLiterals extends j_l_Object {
   /**
@@ -14,7 +12,6 @@ class SimpleLiterals extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!SimpleLiterals}
    * @public
@@ -26,17 +23,13 @@ class SimpleLiterals extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_simpleliterals_SimpleLiterals__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_simpleliterals_SimpleLiterals__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_main__() {
@@ -47,17 +40,14 @@ class SimpleLiterals extends j_l_Object {
     let e = 'foo';
     let f = Class.$get(SimpleLiterals);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    SimpleLiterals.$clinit = (() => {});
+    SimpleLiterals.$clinit = () => {};
     SimpleLiterals.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -66,29 +56,16 @@ class SimpleLiterals extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof SimpleLiterals;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, SimpleLiterals);
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     Class = goog.module.get('java.lang.Class$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     SimpleLiterals,
     'com.google.j2cl.transpiler.readable.simpleliterals.SimpleLiterals');
-
-
 
 exports = SimpleLiterals;
 //# sourceMappingURL=SimpleLiterals.js.map

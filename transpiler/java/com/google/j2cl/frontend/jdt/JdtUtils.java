@@ -70,8 +70,6 @@ import org.eclipse.jdt.core.dom.IMethodBinding;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 import org.eclipse.jdt.core.dom.IVariableBinding;
 import org.eclipse.jdt.core.dom.InfixExpression;
-import org.eclipse.jdt.core.dom.LambdaExpression;
-import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.PostfixExpression;
 import org.eclipse.jdt.core.dom.PrefixExpression;
@@ -313,23 +311,6 @@ class JdtUtils {
     @SuppressWarnings("unchecked")
     List<T> typedList = jdtRawCollection;
     return typedList;
-  }
-
-  /**
-   * Returns the method binding of the immediately enclosing method, whether that be an actual
-   * method or a lambda expression.
-   */
-  public static IMethodBinding findCurrentMethodBinding(org.eclipse.jdt.core.dom.ASTNode node) {
-    while (true) {
-      if (node == null) {
-        return null;
-      } else if (node instanceof MethodDeclaration) {
-        return ((MethodDeclaration) node).resolveBinding();
-      } else if (node instanceof LambdaExpression) {
-        return ((LambdaExpression) node).resolveMethodBinding();
-      }
-      node = node.getParent();
-    }
   }
 
   /** Creates a DeclaredTypeDescriptor from a JDT TypeBinding. */
@@ -920,7 +901,7 @@ class JdtUtils {
     if (TypeDescriptors.isInitialized()) {
       return;
     }
-    TypeDescriptors.Builder builder = new TypeDescriptors.Builder();
+    TypeDescriptors.SingletonBuilder builder = new TypeDescriptors.SingletonBuilder();
     for (PrimitiveTypeDescriptor typeDescriptor : PrimitiveTypes.TYPES) {
       addPrimitive(ast, builder, typeDescriptor);
     }
@@ -928,11 +909,11 @@ class JdtUtils {
     for (ITypeBinding typeBinding : typeBindings) {
       builder.addReferenceType(createDeclaredTypeDescriptor(typeBinding));
     }
-    builder.init();
+    builder.buildSingleton();
   }
 
   private static void addPrimitive(
-      AST ast, TypeDescriptors.Builder builder, PrimitiveTypeDescriptor typeDescriptor) {
+      AST ast, TypeDescriptors.SingletonBuilder builder, PrimitiveTypeDescriptor typeDescriptor) {
     DeclaredTypeDescriptor boxedType =
         createDeclaredTypeDescriptor(ast.resolveWellKnownType(typeDescriptor.getBoxedClassName()));
     builder.addPrimitiveBoxedTypeDescriptorPair(typeDescriptor, boxedType);
@@ -1134,6 +1115,7 @@ class JdtUtils {
         .setFinal(isFinal)
         .setFunctionalInterface(typeBinding.getFunctionalInterfaceMethod() != null)
         .setJsFunctionInterface(JsInteropUtils.isJsFunction(typeBinding))
+        .setAnnotatedWithFunctionalInterface(isAnnotatedWithFunctionalInterface(typeBinding))
         .setJsType(JsInteropUtils.isJsType(typeBinding))
         .setJsEnumInfo(jsEnumInfo)
         .setNative(JsInteropUtils.isJsNativeType(typeBinding))
@@ -1155,6 +1137,10 @@ class JdtUtils {
         .setUnusableByJsSuppressed(JsInteropAnnotationUtils.isUnusableByJsSuppressed(typeBinding))
         .setDeprecated(isDeprecated(typeBinding))
         .build();
+  }
+
+  private static boolean isAnnotatedWithFunctionalInterface(ITypeBinding typeBinding) {
+    return JdtAnnotationUtils.hasAnnotation(typeBinding, FunctionalInterface.class.getName());
   }
 
   private JdtUtils() {}

@@ -21,7 +21,7 @@ import org.junit.runners.JUnit4;
 
 /** Simple throwing test case */
 @RunWith(JUnit4.class)
-public class SimpleThrowingStacktraceTest {
+public class SimpleThrowingStacktraceTest extends StacktraceTestBase {
   @Test
   public void test() {
     method1();
@@ -37,7 +37,7 @@ public class SimpleThrowingStacktraceTest {
 
   public void method3() {
     if (true) {
-      throw new RuntimeException("__the_message__!");
+      throw new RuntimeException("__the_message__!\n And second line!");
     }
   }
 }

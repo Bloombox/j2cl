@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.jsfunction.JsFunctionOptimization.$1.$1.$2.$1$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class $1 extends j_l_Object {
   /**
@@ -14,7 +12,6 @@ class $1 extends j_l_Object {
     /** @public {?function(?string):?string} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_jsfunction_JsFunctionOptimization_1_1_2_1;
   }
-
   /**
    * @param {?function(?string):?string} $outer_this
    * @return {!$1}
@@ -29,10 +26,8 @@ class $1 extends j_l_Object {
             $outer_this);
     return $instance;
   }
-
   /**
    * @param {?function(?string):?string} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsfunction_JsFunctionOptimization_1_1_2_1__com_google_j2cl_transpiler_readable_jsfunction_JsFunctionOptimization_1_1_2(
@@ -41,7 +36,6 @@ class $1 extends j_l_Object {
         $outer_this;
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @override
    * @return {?string}
@@ -50,17 +44,14 @@ class $1 extends j_l_Object {
   toString() {
     return 'Hey';
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $1.$clinit = (() => {});
+    $1.$clinit = () => {};
     $1.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -69,27 +60,14 @@ class $1 extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $1;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $1);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $1,
     'com.google.j2cl.transpiler.readable.jsfunction.JsFunctionOptimization$1$1$2$1');
-
-
 
 exports = $1;
 //# sourceMappingURL=JsFunctionOptimization$1$1$2$1.js.map

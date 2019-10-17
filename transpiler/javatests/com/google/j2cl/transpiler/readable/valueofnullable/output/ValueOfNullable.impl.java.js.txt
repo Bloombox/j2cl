@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.valueofnullable.ValueOfNullable$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let j_l_String = goog.forwardDeclare('java.lang.String$impl');
-
 
 class ValueOfNullable extends j_l_Object {
   /**
@@ -21,7 +19,6 @@ class ValueOfNullable extends j_l_Object {
     /** @public {?string} */
     this.f_result__com_google_j2cl_transpiler_readable_valueofnullable_ValueOfNullable;
   }
-
   /**
    * @return {!ValueOfNullable}
    * @public
@@ -33,18 +30,14 @@ class ValueOfNullable extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_valueofnullable_ValueOfNullable__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_valueofnullable_ValueOfNullable__() {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_valueofnullable_ValueOfNullable();
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_valueofnullable_ValueOfNullable() {
@@ -58,17 +51,14 @@ class ValueOfNullable extends j_l_Object {
         j_l_String.m_valueOf__java_lang_Object(
             this.f_nullableString__com_google_j2cl_transpiler_readable_valueofnullable_ValueOfNullable);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    ValueOfNullable.$clinit = (() => {});
+    ValueOfNullable.$clinit = () => {};
     ValueOfNullable.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -77,29 +67,16 @@ class ValueOfNullable extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof ValueOfNullable;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, ValueOfNullable);
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     j_l_String = goog.module.get('java.lang.String$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     ValueOfNullable,
     'com.google.j2cl.transpiler.readable.valueofnullable.ValueOfNullable');
-
-
 
 exports = ValueOfNullable;
 //# sourceMappingURL=ValueOfNullable.js.map

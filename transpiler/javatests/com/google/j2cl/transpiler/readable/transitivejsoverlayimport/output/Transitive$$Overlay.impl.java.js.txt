@@ -1,30 +1,24 @@
 goog.module('com.google.j2cl.transpiler.readable.transitivejsoverlayimport.Transitive.$Overlay$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class $Overlay {
   /**
    * @param {!Object} $thisArg
    * @param {?string} arg1
-   * @return {void}
    * @public
    */
-  static m_doTransitiveInstanceMethod__com_google_j2cl_transpiler_readable_transitivejsoverlayimport_Transitive__java_lang_String_$pp_com_google_j2cl_transpiler_readable_transitivejsoverlayimport(
+  static m_doTransitiveInstanceMethod__$devirt__com_google_j2cl_transpiler_readable_transitivejsoverlayimport_Transitive__java_lang_String(
       $thisArg, arg1) {
     $Overlay.$clinit();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $Overlay.$clinit = (() => {});
+    $Overlay.$clinit = () => {};
     $Overlay.$loadModules();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -33,15 +27,12 @@ class $Overlay {
   static $isInstance(instance) {
     return instance instanceof Object;
   }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata($Overlay, 'Object');
-
 
 exports = $Overlay;
 //# sourceMappingURL=Transitive$$Overlay.js.map

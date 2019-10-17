@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.transitivejsoverlayimport.NonNativeLower$impl');
 
-
 const NonNativeUpper = goog.require('com.google.j2cl.transpiler.readable.transitivejsoverlayimport.NonNativeUpper$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class NonNativeLower extends NonNativeUpper {
   /**
@@ -14,31 +12,24 @@ class NonNativeLower extends NonNativeUpper {
     super();
     this.$ctor__com_google_j2cl_transpiler_readable_transitivejsoverlayimport_NonNativeLower__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_transitivejsoverlayimport_NonNativeLower__() {
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_doNonNativeLowerInstanceMethod___$pp_com_google_j2cl_transpiler_readable_transitivejsoverlayimport() {
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    NonNativeLower.$clinit = (() => {});
+    NonNativeLower.$clinit = () => {};
     NonNativeLower.$loadModules();
     NonNativeUpper.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -47,27 +38,14 @@ class NonNativeLower extends NonNativeUpper {
   static $isInstance(instance) {
     return instance instanceof NonNativeLower;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, NonNativeLower);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     NonNativeLower,
     'com.google.j2cl.transpiler.readable.transitivejsoverlayimport.NonNativeLower');
-
-
 
 exports = NonNativeLower;
 //# sourceMappingURL=NonNativeLower.js.map

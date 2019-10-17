@@ -1,52 +1,35 @@
 goog.module('com.google.j2cl.transpiler.readable.jsfunction.Main.TestJsFunctionInJsOverlayCapturingOuter.$Overlay$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $Equality = goog.forwardDeclare('nativebootstrap.Equality$impl');
 
-
 class $Overlay {
   /**
    * @param {!Array} $thisArg
-   * @return {void}
    * @public
    */
-  static m_test__com_google_j2cl_transpiler_readable_jsfunction_Main_TestJsFunctionInJsOverlayCapturingOuter(
+  static m_test__$devirt__com_google_j2cl_transpiler_readable_jsfunction_Main_TestJsFunctionInJsOverlayCapturingOuter(
       $thisArg) {
     $Overlay.$clinit();
-    $thisArg.sort(((/** number */ a) => {
+    $thisArg.sort((/** number */ a) => {
       return $Equality.$same($thisArg, null) ? 0 : 1;
-    }));
+    });
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $Overlay.$clinit = (() => {});
+    $Overlay.$clinit = () => {};
     $Overlay.$loadModules();
   }
-
-  /**
-   * @param {?} instance
-   * @return {boolean}
-   * @public
-   */
-  static $isInstance(instance) {
-    return true;
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     $Equality = goog.module.get('nativebootstrap.Equality$impl');
   }
-};
-
-
+}
 
 exports = $Overlay;
 //#

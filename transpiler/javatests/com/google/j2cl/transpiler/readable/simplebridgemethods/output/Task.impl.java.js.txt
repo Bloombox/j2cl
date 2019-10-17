@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.simplebridgemethods.Task$impl');
 
-
 const Callable = goog.require('com.google.j2cl.transpiler.readable.simplebridgemethods.Callable$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T
@@ -17,7 +15,6 @@ class Task extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @template T
    * @return {!Task<T>}
@@ -30,33 +27,26 @@ class Task extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_simplebridgemethods_Task__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_simplebridgemethods_Task__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @override
    * @param {T} t
-   * @return {void}
    * @public
    */
   m_call__java_lang_Object(t) {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Task.$clinit = (() => {});
+    Task.$clinit = () => {};
     Task.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -65,28 +55,15 @@ class Task extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Task;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Task);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     Task, 'com.google.j2cl.transpiler.readable.simplebridgemethods.Task');
 
-
 Callable.$markImplementor(Task);
-
 
 exports = Task;
 //# sourceMappingURL=Task.js.map

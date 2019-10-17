@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.B$impl');
 
-
 const A = goog.require('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.A$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let j_l_String = goog.forwardDeclare('java.lang.String$impl');
 let $Casts = goog.forwardDeclare('vmbootstrap.Casts$impl');
-
 
 /**
  * @extends {A<?string>}
@@ -18,7 +16,6 @@ class B extends A {
   constructor() {
     super();
   }
-
   /**
    * @return {!B}
    * @public
@@ -30,15 +27,12 @@ class B extends A {
         .$ctor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_B__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_B__() {
     this.$ctor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_A__();
   }
-
   /**
    * @param {?string} s
    * @return {?string}
@@ -47,25 +41,20 @@ class B extends A {
   m_fun__java_lang_String(s) {
     return s;
   }
-
   /**
    * @param {?string} s
-   * @return {void}
    * @public
    */
   bar(s) {}
-
   /**
    * Bridge method.
    * @override
    * @param {*} arg0
-   * @return {void}
    * @public
    */
   m_bar__java_lang_Object(arg0) {
     this.bar(/**@type {?string} */ ($Casts.$to(arg0, j_l_String)));
   }
-
   /**
    * Bridge method.
    * @override
@@ -77,17 +66,14 @@ class B extends A {
     return this.m_fun__java_lang_String(
         /**@type {?string} */ ($Casts.$to(arg0, j_l_String)));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    B.$clinit = (() => {});
+    B.$clinit = () => {};
     B.$loadModules();
     A.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -96,16 +82,6 @@ class B extends A {
   static $isInstance(instance) {
     return instance instanceof B;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, B);
-  }
-
   /**
    * @public
    */
@@ -113,12 +89,9 @@ class B extends A {
     j_l_String = goog.module.get('java.lang.String$impl');
     $Casts = goog.module.get('vmbootstrap.Casts$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     B, 'com.google.j2cl.transpiler.readable.bridgejsmethod.Main$B');
-
-
 
 exports = B;
 //# sourceMappingURL=Main$B.js.map

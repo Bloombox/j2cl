@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.supermethodcall.Parent$impl');
 
-
 const GrandParent = goog.require('com.google.j2cl.transpiler.readable.supermethodcall.GrandParent$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class Parent extends GrandParent {
   /**
@@ -12,7 +10,6 @@ class Parent extends GrandParent {
   constructor() {
     super();
   }
-
   /**
    * @return {!Parent}
    * @public
@@ -24,28 +21,21 @@ class Parent extends GrandParent {
         .$ctor__com_google_j2cl_transpiler_readable_supermethodcall_Parent__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_supermethodcall_Parent__() {
     this.$ctor__com_google_j2cl_transpiler_readable_supermethodcall_GrandParent__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_parentSimplest__() {}
-
   /**
    * @param {number} foo
-   * @return {void}
    * @public
    */
   m_parentWithParams__int(foo) {}
-
   /**
    * @return {*}
    * @public
@@ -53,17 +43,14 @@ class Parent extends GrandParent {
   m_parentWithChangingReturn__() {
     return null;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Parent.$clinit = (() => {});
+    Parent.$clinit = () => {};
     Parent.$loadModules();
     GrandParent.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -72,26 +59,13 @@ class Parent extends GrandParent {
   static $isInstance(instance) {
     return instance instanceof Parent;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Parent);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     Parent, 'com.google.j2cl.transpiler.readable.supermethodcall.Parent');
-
-
 
 exports = Parent;
 //# sourceMappingURL=Parent.js.map

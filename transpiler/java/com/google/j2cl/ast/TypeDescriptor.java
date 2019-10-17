@@ -98,6 +98,21 @@ public abstract class TypeDescriptor extends Node
     return false;
   }
 
+  /** Returns whether the described type is a functional interface (JLS 9.8). */
+  public boolean isFunctionalInterface() {
+    return false;
+  }
+
+  /** Returns whether the described type has the @FunctionalInterface annotation. */
+  public boolean isAnnotatedWithFunctionalInterface() {
+    return false;
+  }
+
+  /** Returns whether the described type is one of the Closure types "*" or "?". */
+  public boolean isStarOrUnknown() {
+    return false;
+  }
+
   /** Returns the type that holds the metadata for the class type */
   @Nullable
   public abstract TypeDeclaration getMetadataTypeDeclaration();
@@ -222,6 +237,11 @@ public abstract class TypeDescriptor extends Node
 
   public boolean isAssignableTo(TypeDescriptor that) {
     return this == that;
+  }
+
+  /** Whether casts to this type are checked at runtime. */
+  public boolean isNoopCast() {
+    return false;
   }
 
   /** A unique string for a give type. Used for interning. */

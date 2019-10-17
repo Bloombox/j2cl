@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface.$LambdaAdaptor$impl');
-
 
 /**
  * @interface
@@ -12,11 +10,9 @@ let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.li
 class JsAccessibleFunctionnalInterface {
   /**
    * @abstract
-   * @return {void}
    * @public
    */
   accessibleFunctionalInterfaceMethod() {}
-
   /**
    * @param {?function():void} fn
    * @return {JsAccessibleFunctionnalInterface}
@@ -26,16 +22,13 @@ class JsAccessibleFunctionnalInterface {
     JsAccessibleFunctionnalInterface.$clinit();
     return new $LambdaAdaptor(fn);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    JsAccessibleFunctionnalInterface.$clinit = (() => {});
+    JsAccessibleFunctionnalInterface.$clinit = () => {};
     JsAccessibleFunctionnalInterface.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -48,7 +41,6 @@ class JsAccessibleFunctionnalInterface {
         .$implements__com_google_j2cl_transpiler_readable_libraryinfo_Main_JsAccessibleFunctionnalInterface =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -59,18 +51,6 @@ class JsAccessibleFunctionnalInterface {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_libraryinfo_Main_JsAccessibleFunctionnalInterface;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_libraryinfo_Main_JsAccessibleFunctionnalInterface;
-  }
-
   /**
    * @public
    */
@@ -78,16 +58,13 @@ class JsAccessibleFunctionnalInterface {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.libraryinfo.Main.JsAccessibleFunctionnalInterface.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     JsAccessibleFunctionnalInterface,
     'com.google.j2cl.transpiler.readable.libraryinfo.Main$JsAccessibleFunctionnalInterface');
 
-
 JsAccessibleFunctionnalInterface.$markImplementor(
     /** @type {Function} */ (JsAccessibleFunctionnalInterface));
-
 
 exports = JsAccessibleFunctionnalInterface;
 //# sourceMappingURL=Main$JsAccessibleFunctionnalInterface.js.map

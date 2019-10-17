@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.genericinterfaceabstractimpl.MyInterface$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.genericinterfaceabstractimpl.MyInterface.$LambdaAdaptor$impl');
-
 
 /**
  * @interface
@@ -18,7 +16,6 @@ class MyInterface {
    * @public
    */
   m_fun__java_lang_Object(t) {}
-
   /**
    * @template T
    * @param {?function(T):T} fn
@@ -29,16 +26,13 @@ class MyInterface {
     MyInterface.$clinit();
     return /**@type {!$LambdaAdaptor<T>} */ (new $LambdaAdaptor(fn));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    MyInterface.$clinit = (() => {});
+    MyInterface.$clinit = () => {};
     MyInterface.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -51,7 +45,6 @@ class MyInterface {
         .$implements__com_google_j2cl_transpiler_readable_genericinterfaceabstractimpl_MyInterface =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -62,18 +55,6 @@ class MyInterface {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_genericinterfaceabstractimpl_MyInterface;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_genericinterfaceabstractimpl_MyInterface;
-  }
-
   /**
    * @public
    */
@@ -81,15 +62,12 @@ class MyInterface {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.genericinterfaceabstractimpl.MyInterface.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     MyInterface,
     'com.google.j2cl.transpiler.readable.genericinterfaceabstractimpl.MyInterface');
 
-
 MyInterface.$markImplementor(/** @type {Function} */ (MyInterface));
-
 
 exports = MyInterface;
 //# sourceMappingURL=MyInterface.js.map

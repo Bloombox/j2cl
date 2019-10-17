@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.intersectiontype.Getable$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.intersectiontype.Getable.$LambdaAdaptor$impl');
-
 
 /**
  * @interface
@@ -17,7 +15,6 @@ class Getable {
    * @public
    */
   m_get__() {}
-
   /**
    * @template T
    * @param {?function():T} fn
@@ -28,16 +25,13 @@ class Getable {
     Getable.$clinit();
     return /**@type {!$LambdaAdaptor<T>} */ (new $LambdaAdaptor(fn));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Getable.$clinit = (() => {});
+    Getable.$clinit = () => {};
     Getable.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -50,7 +44,6 @@ class Getable {
         .$implements__com_google_j2cl_transpiler_readable_intersectiontype_Getable =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -61,18 +54,6 @@ class Getable {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_intersectiontype_Getable;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_intersectiontype_Getable;
-  }
-
   /**
    * @public
    */
@@ -80,14 +61,11 @@ class Getable {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.intersectiontype.Getable.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     Getable, 'com.google.j2cl.transpiler.readable.intersectiontype.Getable');
 
-
 Getable.$markImplementor(/** @type {Function} */ (Getable));
-
 
 exports = Getable;
 //# sourceMappingURL=Getable.js.map

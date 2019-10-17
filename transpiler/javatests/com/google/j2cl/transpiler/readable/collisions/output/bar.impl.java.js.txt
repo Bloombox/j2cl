@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.collisions.bar$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let foo = goog.forwardDeclare('com.google.j2cl.transpiler.readable.collisions.foo$impl');
 let c_g_j2cl_transpiler_readable_collisions_goog = goog.forwardDeclare('com.google.j2cl.transpiler.readable.collisions.goog$impl');
-
 
 class bar extends j_l_Object {
   /**
@@ -15,7 +13,6 @@ class bar extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!bar}
    * @public
@@ -26,18 +23,14 @@ class bar extends j_l_Object {
     $instance.$ctor__com_google_j2cl_transpiler_readable_collisions_bar__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_collisions_bar__() {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_collisions_bar();
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_collisions_bar() {
@@ -51,17 +44,14 @@ class bar extends j_l_Object {
     let delete_1 = 1;
     let undefined_1 = 3;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    bar.$clinit = (() => {});
+    bar.$clinit = () => {};
     bar.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -70,16 +60,6 @@ class bar extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof bar;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, bar);
-  }
-
   /**
    * @public
    */
@@ -89,12 +69,9 @@ class bar extends j_l_Object {
     c_g_j2cl_transpiler_readable_collisions_goog = goog.module.get(
         'com.google.j2cl.transpiler.readable.collisions.goog$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     bar, 'com.google.j2cl.transpiler.readable.collisions.bar');
-
-
 
 exports = bar;
 //# sourceMappingURL=bar.js.map

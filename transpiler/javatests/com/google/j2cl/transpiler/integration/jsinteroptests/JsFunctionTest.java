@@ -19,8 +19,9 @@ import static com.google.j2cl.transpiler.utils.Asserts.assertEquals;
 import static com.google.j2cl.transpiler.utils.Asserts.assertFalse;
 import static com.google.j2cl.transpiler.utils.Asserts.assertNotNull;
 import static com.google.j2cl.transpiler.utils.Asserts.assertSame;
+import static com.google.j2cl.transpiler.utils.Asserts.assertThrows;
+import static com.google.j2cl.transpiler.utils.Asserts.assertThrowsClassCastException;
 import static com.google.j2cl.transpiler.utils.Asserts.assertTrue;
-import static com.google.j2cl.transpiler.utils.Asserts.fail;
 
 import jsinterop.annotations.JsFunction;
 import jsinterop.annotations.JsMethod;
@@ -57,6 +58,7 @@ public class JsFunctionTest {
     testJsFunctionOptimization();
     testJsFunctionWithVarArgs();
     testJsFunctionLambda();
+    testJsFunctionArray();
   }
 
   @JsType(isNative = true, name = "RegExp", namespace = JsPackage.GLOBAL)
@@ -268,39 +270,27 @@ public class JsFunctionTest {
     assertNotNull(c2);
     ElementLikeNativeInterface i = (ElementLikeNativeInterface) createFunction();
     assertNotNull(i);
-    try {
-      MyJsFunctionInterfaceImpl c3 = (MyJsFunctionInterfaceImpl) createFunction();
-      assertNotNull(c3);
-      fail("ClassCastException should be caught.");
-    } catch (ClassCastException cce) {
-      // Expected.
-    }
+    assertThrowsClassCastException(
+        () -> {
+          MyJsFunctionInterfaceImpl unused = (MyJsFunctionInterfaceImpl) createFunction();
+        });
   }
 
   private static void testCast_fromJsObject() {
     ElementLikeNativeInterface obj = (ElementLikeNativeInterface) createObject();
     assertNotNull(obj);
-    try {
-      MyJsFunctionInterface c = (MyJsFunctionInterface) createObject();
-      assertNotNull(c);
-      fail("ClassCastException should be caught.");
-    } catch (ClassCastException cce) {
-      // Expected.
-    }
-    try {
-      MyJsFunctionInterfaceImpl c = (MyJsFunctionInterfaceImpl) createObject();
-      assertNotNull(c);
-      fail("ClassCastException should be caught.");
-    } catch (ClassCastException cce) {
-      // Expected.
-    }
-    try {
-      MyJsFunctionIdentityInterface c = (MyJsFunctionIdentityInterface) createObject();
-      assertNotNull(c);
-      fail("ClassCastException should be caught.");
-    } catch (ClassCastException cce) {
-      // Expected.
-    }
+    assertThrowsClassCastException(
+        () -> {
+          MyJsFunctionInterface unused = (MyJsFunctionInterface) createObject();
+        });
+    assertThrowsClassCastException(
+        () -> {
+          MyJsFunctionInterfaceImpl unused = (MyJsFunctionInterfaceImpl) createObject();
+        });
+    assertThrowsClassCastException(
+        () -> {
+          MyJsFunctionIdentityInterface unused = (MyJsFunctionIdentityInterface) createObject();
+        });
   }
 
   private static void testCast_inJava() {
@@ -315,13 +305,10 @@ public class JsFunctionTest {
     assertNotNull(c4);
     ElementLikeNativeInterface c5 = (ElementLikeNativeInterface) object;
     assertNotNull(c5);
-    try {
-      HTMLElementConcreteNativeJsType c6 = (HTMLElementConcreteNativeJsType) object;
-      assertNotNull(c6);
-      fail("ClassCastException should be caught.");
-    } catch (ClassCastException cce) {
-      // Expected.
-    }
+    assertThrowsClassCastException(
+        () -> {
+          HTMLElementConcreteNativeJsType unused = (HTMLElementConcreteNativeJsType) object;
+        });
   }
 
   private static void testCast_crossCastJavaInstance() {
@@ -350,6 +337,8 @@ public class JsFunctionTest {
     assertTrue(object instanceof MyJsFunctionIdentityInterface);
     assertTrue(object instanceof MyJsFunctionWithOnlyInstanceofReference);
     assertFalse(object instanceof HTMLElementConcreteNativeJsType);
+    Object nullObject = null;
+    assertFalse(nullObject instanceof MyJsFunctionInterface);
   }
 
   private static void testGetClass() {
@@ -552,6 +541,37 @@ public class JsFunctionTest {
     MyJsFunctionInterface jsFunctionInterface = a -> a + 2;
     assertEquals(12, callAsFunction(jsFunctionInterface, 10));
     assertEquals(12, jsFunctionInterface.foo(10));
+  }
+
+  private static void testJsFunctionArray() {
+    MyJsFunctionInterface[] functionArray = new MyJsFunctionInterface[1];
+    functionArray[0] = a -> a + 2;
+
+    assertThrows(
+        ArrayStoreException.class,
+        () -> {
+          Object[] temp = functionArray;
+          // Storing anything other than a function throws.
+          temp[0] = new Integer(1);
+        });
+
+    MyJsFunctionInterface[][] function2dArray = new MyJsFunctionInterface[1][];
+    function2dArray[0] = functionArray;
+
+    assertThrows(
+        ArrayStoreException.class,
+        () -> {
+          Object[][] temp = function2dArray;
+          // Trying to store an integer array as a JsFunction array throws.
+          temp[0] = new Integer[1];
+        });
+
+    assertThrowsClassCastException(
+        () -> {
+          // Casting an integer array to a JsFunction array throws.
+          Object o = new Integer[1];
+          Object temp = (JsFunctionInterface[]) o;
+        });
   }
 
   private static void assertJsTypeDoesntHaveFields(Object obj, String... fields) {

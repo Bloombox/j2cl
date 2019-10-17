@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.overwrittentypevariables.HashFunction.$LambdaAdaptor$impl');
 
-
 const HashFunction = goog.require('com.google.j2cl.transpiler.readable.overwrittentypevariables.HashFunction$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T
@@ -23,10 +21,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_overwrittentypevariables_HashFunction_$LambdaAdaptor__com_google_j2cl_transpiler_readable_overwrittentypevariables_HashFunction_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function(T):?string} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_overwrittentypevariables_HashFunction_$LambdaAdaptor__com_google_j2cl_transpiler_readable_overwrittentypevariables_HashFunction_$JsFunction(
@@ -35,7 +31,6 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_overwrittentypevariables_HashFunction_$LambdaAdaptor =
         fn;
   }
-
   /**
    * @param {T} arg0
    * @return {?string}
@@ -48,17 +43,14 @@ class $LambdaAdaptor extends j_l_Object {
             this.f_$$fn__com_google_j2cl_transpiler_readable_overwrittentypevariables_HashFunction_$LambdaAdaptor,
         $function(arg0));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -67,29 +59,16 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.overwrittentypevariables.HashFunction$$LambdaAdaptor');
 
-
 HashFunction.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=HashFunction$$LambdaAdaptor.js.map

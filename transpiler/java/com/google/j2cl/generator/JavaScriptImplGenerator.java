@@ -16,6 +16,7 @@
 package com.google.j2cl.generator;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Splitter;
@@ -165,15 +166,15 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
     }
     sourceBuilder.closeBrace();
     sourceBuilder.append(";");
-    sourceBuilder.newLines(2);
+    sourceBuilder.newLine();
   }
 
   public void renderClass() {
     renderTypeAnnotation();
     renderClassBody();
     renderClassMetadata();
-    renderStaticFieldDeclarations();
     renderMarkImplementorCalls();
+    renderStaticFieldDeclarations();
     renderNativeSource();
   }
 
@@ -182,7 +183,7 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
 
     // goog.module(...) declaration.
     sourceBuilder.appendln("goog.module('" + typeDeclaration.getImplModuleName() + "');");
-    sourceBuilder.newLines(2);
+    sourceBuilder.newLine();
 
     // goog.require(...) for eager imports.
     Map<String, String> aliasesByPath = new HashMap<>();
@@ -217,8 +218,6 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
     if (!Iterables.isEmpty(lazyImports)) {
       sourceBuilder.newLine();
     }
-
-    sourceBuilder.newLine();
   }
 
   private void renderTypeAnnotation() {
@@ -297,7 +296,7 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
   }
 
   private boolean doesClassExistInJavaScript(DeclaredTypeDescriptor type) {
-    return !type.getTypeDeclaration().isStarOrUnknown() && !type.isJsFunctionInterface();
+    return !type.isStarOrUnknown() && !type.isJsFunctionInterface();
   }
 
   private void renderClassBody() {
@@ -311,17 +310,15 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
     renderTypeMethods();
     renderMarkImplementorMethod();
     renderIsInstanceMethod();
-    renderIsAssignableFromMethod();
     renderCopyMethod();
     renderLoadModules();
     sourceBuilder.closeBrace();
-    sourceBuilder.append(";");
-    sourceBuilder.newLines(2);
+    sourceBuilder.newLine();
   }
 
   private static String getExtendsClause(Type type, GenerationEnvironment environment) {
     DeclaredTypeDescriptor superTypeDescriptor = type.getSuperTypeDescriptor();
-    if (superTypeDescriptor == null || superTypeDescriptor.getTypeDeclaration().isStarOrUnknown()) {
+    if (superTypeDescriptor == null || superTypeDescriptor.isStarOrUnknown()) {
       return "";
     }
     String superTypeName = environment.aliasForType(superTypeDescriptor);
@@ -349,7 +346,7 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
               emitMethodHeader(method);
               statementTranspiler.renderStatement(method.getBody());
             }
-            sourceBuilder.newLines(2);
+            sourceBuilder.newLine();
           });
     }
   }
@@ -406,7 +403,7 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
     }
     String returnTypeName =
         closureTypesGenerator.getClosureTypeString(methodDescriptor.getReturnTypeDescriptor());
-    if (!methodDescriptor.isConstructor()) {
+    if (!methodDescriptor.isConstructor() && needsReturnJsDoc(methodDescriptor)) {
       sourceBuilder.appendln(" * @return {" + returnTypeName + "}");
     }
     sourceBuilder.appendln(" * @" + methodDescriptor.getJsVisibility().jsText);
@@ -414,6 +411,14 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
       sourceBuilder.appendln(" * @deprecated");
     }
     sourceBuilder.appendln(" */");
+  }
+
+  private boolean needsReturnJsDoc(MethodDescriptor methodDescriptor) {
+    return !TypeDescriptors.isPrimitiveVoid(methodDescriptor.getReturnTypeDescriptor())
+        // If there are no @param and no @return, if there is @template jscompiler emits
+        // a generic MISPLACED_ANNOTATION error.
+        || (!methodDescriptor.getTypeParameterTypeDescriptors().isEmpty()
+            && methodDescriptor.getParameterDescriptors().isEmpty());
   }
 
   private void renderMarkImplementorMethod() {
@@ -445,14 +450,21 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
             + ManglingNameUtils.getMangledName(type.getTypeDescriptor())
             + " = true;");
     sourceBuilder.closeBrace();
-    sourceBuilder.newLines(2);
+    sourceBuilder.newLine();
   }
 
   // TODO(b/34928687): Move this to the ast in a normalization pass.
   private void renderIsInstanceMethod() {
-    if (type.isJsOverlayImplementation()
-        && type.getOverlaidTypeDescriptor().isJsFunctionInterface()) {
-      // JsFunction interface overlays do not need $isInstance.
+    DeclaredTypeDescriptor underlyingType =
+        type.isJsOverlayImplementation()
+            ? type.getOverlaidTypeDescriptor()
+            : type.getTypeDescriptor();
+    if (underlyingType.isJsFunctionInterface()) {
+      // JsFunction interfaces use the custom class JavaScriptFunction for casts, instanceof and
+      // class literal purposes. Hence no need to emit $isInstance in the overlay class.
+      return;
+    }
+    if (underlyingType.isNoopCast()) {
       return;
     }
     if (type.containsMethod(MethodDescriptor.IS_INSTANCE_METHOD_NAME)) {
@@ -476,9 +488,6 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
       DeclaredTypeDescriptor overlaidTypeDescriptor = type.getOverlaidTypeDescriptor();
       if (overlaidTypeDescriptor.isJsEnum()) {
         renderIsInstanceOfJsEnumStatement(overlaidTypeDescriptor);
-      } else if (overlaidTypeDescriptor.isInterface()) {
-        // Since instanceof is forbidden this is only used for casting so null check is not needed.
-        sourceBuilder.append("return true;");
       } else {
         renderIsInstanceOfClassStatement(type.getOverlaidTypeDescriptor());
       }
@@ -488,7 +497,7 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
       renderIsInstanceOfClassStatement(type.getTypeDescriptor());
     }
     sourceBuilder.closeBrace();
-    sourceBuilder.newLines(2);
+    sourceBuilder.newLine();
   }
 
   private void renderIsInstanceOfJsEnumStatement(DeclaredTypeDescriptor typeDescriptor) {
@@ -499,7 +508,8 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
               + ".isInstanceOf(instance, "
               + environment.aliasForType(typeDescriptor.getMetadataTypeDeclaration())
               + ");");
-    } else if (typeDescriptor.getJsEnumInfo().hasCustomValue()) {
+    } else {
+      checkState(typeDescriptor.getJsEnumInfo().hasCustomValue());
       DeclaredTypeDescriptor instanceOfValueType =
           AstUtils.getJsEnumValueFieldInstanceCheckType(typeDescriptor.getTypeDeclaration());
       sourceBuilder.append(
@@ -507,9 +517,6 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
               + environment.aliasForType(instanceOfValueType.getTypeDeclaration())
               + ".$isInstance(instance);");
 
-    } else {
-      // Native JsEnum of unknown value type.
-      sourceBuilder.append("return true;");
     }
   }
 
@@ -531,43 +538,6 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
         "return instance != null && !!instance.$is__"
             + ManglingNameUtils.getMangledName(typeDescriptor)
             + ";");
-  }
-
-  // TODO(b/34928687): Move this to the ast in a normalization pass.
-  private void renderIsAssignableFromMethod() {
-    if (type.isJsOverlayImplementation()
-        || type.containsMethod(MethodDescriptor.IS_ASSIGNABLE_FROM_METHOD_NAME)) {
-      return; // Don't render for overlay types or if the method exists.
-    }
-    sourceBuilder.appendLines(
-        "/**",
-        " * @param {"
-            + TypeDescriptors.get().nativeFunction.getQualifiedJsName()
-            + "} classConstructor",
-        " * @return {boolean}",
-        " * @public",
-        " */",
-        "static $isAssignableFrom(classConstructor) ");
-    sourceBuilder.openBrace();
-    sourceBuilder.newLine();
-
-    if (type.isInterface()) { // For interfaces
-      sourceBuilder.append(
-          "return classConstructor != null && !!classConstructor.prototype.$implements__"
-              + ManglingNameUtils.getMangledName(type.getTypeDescriptor())
-              + ";");
-    } else { // For classes
-      BootstrapType.NATIVE_UTIL.getDescriptor();
-      String utilAlias = environment.aliasForType(BootstrapType.NATIVE_UTIL.getDescriptor());
-      sourceBuilder.append(
-          "return "
-              + utilAlias
-              + ".$canCastClass(classConstructor, "
-              + environment.aliasForType(type.getDeclaration())
-              + ");");
-    }
-    sourceBuilder.closeBrace();
-    sourceBuilder.newLines(2);
   }
 
   // TODO(b/34928687): Move this to the ast in a normalization pass.
@@ -594,7 +564,7 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
         "// Marks the object is an instance of this class.",
         "to.$is__" + ManglingNameUtils.getMangledName(type.getTypeDescriptor()) + " = true;");
     sourceBuilder.closeBrace();
-    sourceBuilder.newLines(2);
+    sourceBuilder.newLine();
   }
 
   // TODO(b/67965153): Move this to the ast in a normalization pass.
@@ -603,7 +573,7 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
         && (type.getOverlaidTypeDescriptor().isJsFunctionInterface()
             || type.getOverlaidTypeDescriptor().isInterface())) {
       // JsFunction and Native interface overlays do not need class metadata.
-      sourceBuilder.newLines(2);
+      sourceBuilder.newLine();
       return;
     }
 
@@ -640,7 +610,7 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
       sourceBuilder.appendln(
           utilAlias + ".$setClassMetadata(" + className + ", " + obfuscatableName + ");");
     }
-    sourceBuilder.newLines(2);
+    sourceBuilder.newLine();
   }
 
   private void renderLoadModules() {
@@ -661,19 +631,23 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
     }
 
     sourceBuilder.closeBrace();
-    sourceBuilder.newLines(2);
+    sourceBuilder.newLine();
   }
 
   private void renderStaticFieldDeclarations() {
+    boolean hasFields = false;
     for (Field staticField : type.getStaticFields()) {
       sourceBuilder.emitWithMemberMapping(
           staticField,
           () -> {
             statementTranspiler.renderStatement(
                 AstUtils.declarationStatement(staticField, type.getSourcePosition()));
-            // emit 2 empty lines
-            sourceBuilder.newLines(3);
+            sourceBuilder.newLine();
           });
+      hasFields = true;
+    }
+    if (hasFields) {
+      sourceBuilder.newLine();
     }
   }
 
@@ -696,7 +670,9 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
               + "} */ ("
               + className
               + "));");
+      sourceBuilder.newLine();
     } else { // Not an interface so it is a Class.
+      boolean marksImplementors = false;
       for (TypeDescriptor interfaceTypeDescriptor : type.getSuperInterfaceTypeDescriptors()) {
         if (interfaceTypeDescriptor.isNative()) {
           continue;
@@ -705,9 +681,12 @@ public class JavaScriptImplGenerator extends JavaScriptGenerator {
             interfaceTypeDescriptor.getMetadataConstructorReference();
         renderExpression(markImplementorConstructor);
         sourceBuilder.appendln(".$markImplementor(" + className + ");");
+        marksImplementors = true;
+      }
+      if (marksImplementors) {
+        sourceBuilder.newLine();
       }
     }
-    sourceBuilder.newLines(2);
   }
 
   private void renderNativeSource() {

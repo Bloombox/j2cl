@@ -137,7 +137,6 @@ public abstract class MethodDescriptor extends MemberDescriptor {
   public static final String VALUE_OF_METHOD_NAME = "valueOf"; // Boxed type valueOf() method.
   public static final String VALUE_METHOD_SUFFIX = "Value"; // Boxed type **Value() method.
   public static final String IS_INSTANCE_METHOD_NAME = "$isInstance";
-  public static final String IS_ASSIGNABLE_FROM_METHOD_NAME = "$isAssignableFrom";
   public static final String CREATE_METHOD_NAME = "$create";
   public static final String LOAD_MODULES_METHOD_NAME = "$loadModules";
 
@@ -313,8 +312,8 @@ public abstract class MethodDescriptor extends MemberDescriptor {
 
   @Override
   public boolean isSameMember(MemberDescriptor thatMember) {
-    // TODO(b/69130180): Ideally isSameMember should be not be overridden here and use the
-    // implementation in MemberDescriptor, which relies in comparing the declarations directly.
+    // TODO(b/69130180): Ideally isSameMember should be defined in MemberDescriptor relying on just
+    // comparing the declarations directly.
     // The current codebase does not enforce the invariant and sometimes references to the same
     // member end up with different declarations.
     if (!(thatMember instanceof MethodDescriptor)) {
@@ -359,10 +358,7 @@ public abstract class MethodDescriptor extends MemberDescriptor {
     }
     // To override a package private method one must reside in the same package.
     if (thatVisibility.isPackagePrivate()
-        && !getEnclosingTypeDescriptor()
-            .getTypeDeclaration()
-            .getPackageName()
-            .equals(that.getEnclosingTypeDescriptor().getTypeDeclaration().getPackageName())) {
+        && !getEnclosingTypeDescriptor().isInSamePackage(that.getEnclosingTypeDescriptor())) {
       return false;
     }
 

@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.abstractmethodoverridedefault.AbstractMethodOverrideDefault.C$impl');
 
-
 const A = goog.require('com.google.j2cl.transpiler.readable.abstractmethodoverridedefault.AbstractMethodOverrideDefault.A$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class C extends A {
   /**
@@ -12,7 +10,6 @@ class C extends A {
   constructor() {
     super();
   }
-
   /**
    * @return {!C}
    * @public
@@ -24,41 +21,32 @@ class C extends A {
         .$ctor__com_google_j2cl_transpiler_readable_abstractmethodoverridedefault_AbstractMethodOverrideDefault_C__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_abstractmethodoverridedefault_AbstractMethodOverrideDefault_C__() {
     this.$ctor__com_google_j2cl_transpiler_readable_abstractmethodoverridedefault_AbstractMethodOverrideDefault_A__();
   }
-
   /**
    * @override
-   * @return {void}
    * @public
    */
   m_foo__() {}
-
   /**
    * @override
-   * @return {void}
    * @public
    */
   m_bar__() {
     super.m_bar__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    C.$clinit = (() => {});
+    C.$clinit = () => {};
     C.$loadModules();
     A.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -67,27 +55,14 @@ class C extends A {
   static $isInstance(instance) {
     return instance instanceof C;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, C);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     C,
     'com.google.j2cl.transpiler.readable.abstractmethodoverridedefault.AbstractMethodOverrideDefault$C');
-
-
 
 exports = C;
 //# sourceMappingURL=AbstractMethodOverrideDefault$C.js.map

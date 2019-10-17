@@ -1,9 +1,7 @@
 goog.module('woo.StaticJsMethodsWithClassNamespace$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class StaticJsMethodsWithClassNamespace extends j_l_Object {
   /**
@@ -14,42 +12,33 @@ class StaticJsMethodsWithClassNamespace extends j_l_Object {
     super();
     this.$ctor__com_google_j2cl_transpiler_readable_staticjsmethodswithclassnamespace_StaticJsMethodsWithClassNamespace__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_staticjsmethodswithclassnamespace_StaticJsMethodsWithClassNamespace__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static replacedName() {
     StaticJsMethodsWithClassNamespace.$clinit();
   }
-
   /**
-   * @return {void}
    * @public
    */
   test() {
     StaticJsMethodsWithClassNamespace.replacedName();
     StaticJsMethodsWithClassNamespace.replacedName();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    StaticJsMethodsWithClassNamespace.$clinit = (() => {});
+    StaticJsMethodsWithClassNamespace.$clinit = () => {};
     StaticJsMethodsWithClassNamespace.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -58,28 +47,14 @@ class StaticJsMethodsWithClassNamespace extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof StaticJsMethodsWithClassNamespace;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(
-        classConstructor, StaticJsMethodsWithClassNamespace);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     StaticJsMethodsWithClassNamespace,
     'com.google.j2cl.transpiler.readable.staticjsmethodswithclassnamespace.StaticJsMethodsWithClassNamespace');
-
-
 
 exports = StaticJsMethodsWithClassNamespace;
 //# sourceMappingURL=StaticJsMethodsWithClassNamespace.js.map

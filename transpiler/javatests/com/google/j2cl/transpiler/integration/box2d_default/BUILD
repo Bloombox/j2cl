@@ -1,5 +1,4 @@
 package(
-    default_visibility = ["//transpiler/javatests/com/google/j2cl/transpiler/sizetest:__pkg__"],
     licenses = ["notice"],  # Apache 2.0
 )
 
@@ -18,7 +17,6 @@ integration_test(
     closure_defines = {
         "jre.checks.checkLevel": "NORMAL",
     },
-    tags = ["manual"],
     deps = [
         "//transpiler/javatests/com/google/j2cl/transpiler/integration/box2d:box2d_j2cl",
     ],

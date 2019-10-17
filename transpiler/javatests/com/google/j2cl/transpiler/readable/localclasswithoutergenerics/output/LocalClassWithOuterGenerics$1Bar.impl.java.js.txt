@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.localclasswithoutergenerics.LocalClassWithOuterGenerics.$1Bar$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T
@@ -15,7 +13,6 @@ class $1Bar extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @template T
    * @return {!$1Bar<T>}
@@ -28,33 +25,26 @@ class $1Bar extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_localclasswithoutergenerics_LocalClassWithOuterGenerics_1Bar__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_localclasswithoutergenerics_LocalClassWithOuterGenerics_1Bar__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {$1Bar<T>} other
-   * @return {void}
    * @public
    */
   m_baz__com_google_j2cl_transpiler_readable_localclasswithoutergenerics_LocalClassWithOuterGenerics_1Bar_$pp_com_google_j2cl_transpiler_readable_localclasswithoutergenerics(
       other) {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $1Bar.$clinit = (() => {});
+    $1Bar.$clinit = () => {};
     $1Bar.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -63,27 +53,14 @@ class $1Bar extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $1Bar;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $1Bar);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $1Bar,
     'com.google.j2cl.transpiler.readable.localclasswithoutergenerics.LocalClassWithOuterGenerics$1Bar');
-
-
 
 exports = $1Bar;
 //# sourceMappingURL=LocalClassWithOuterGenerics$1Bar.js.map

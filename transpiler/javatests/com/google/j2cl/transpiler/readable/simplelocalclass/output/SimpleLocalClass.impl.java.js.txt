@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $1InnerClass = goog.forwardDeclare('com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass.$1InnerClass$impl');
 let $1InnerClassWithoutCaptures = goog.forwardDeclare('com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass.$1InnerClassWithoutCaptures$impl');
-
 
 class SimpleLocalClass extends j_l_Object {
   /**
@@ -15,7 +13,6 @@ class SimpleLocalClass extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!SimpleLocalClass}
    * @public
@@ -27,18 +24,14 @@ class SimpleLocalClass extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_simplelocalclass_SimpleLocalClass__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_simplelocalclass_SimpleLocalClass__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {number} p
-   * @return {void}
    * @public
    */
   m_test__int(p) {
@@ -51,31 +44,24 @@ class SimpleLocalClass extends j_l_Object {
         .$create__com_google_j2cl_transpiler_readable_simplelocalclass_SimpleLocalClass(
             this);
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_fun__() {
     let localVar = 1;
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_foo__() {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    SimpleLocalClass.$clinit = (() => {});
+    SimpleLocalClass.$clinit = () => {};
     SimpleLocalClass.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -84,16 +70,6 @@ class SimpleLocalClass extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof SimpleLocalClass;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, SimpleLocalClass);
-  }
-
   /**
    * @public
    */
@@ -103,13 +79,10 @@ class SimpleLocalClass extends j_l_Object {
     $1InnerClassWithoutCaptures = goog.module.get(
         'com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass.$1InnerClassWithoutCaptures$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     SimpleLocalClass,
     'com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass');
-
-
 
 exports = SimpleLocalClass;
 //# sourceMappingURL=SimpleLocalClass.js.map

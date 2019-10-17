@@ -1,12 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber$impl');
 
-
 const Number = goog.require('java.lang.Number$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $Long = goog.forwardDeclare('nativebootstrap.Long$impl');
-let $Primitives = goog.forwardDeclare('vmbootstrap.Primitives$impl');
-
 
 class SubNumber extends Number {
   /**
@@ -15,7 +12,6 @@ class SubNumber extends Number {
   constructor() {
     super();
   }
-
   /**
    * @return {!SubNumber}
    * @public
@@ -27,15 +23,12 @@ class SubNumber extends Number {
         .$ctor__com_google_j2cl_transpiler_readable_devirtualizedsupermethodcall_SubNumber__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_devirtualizedsupermethodcall_SubNumber__() {
     this.$ctor__java_lang_Number__();
   }
-
   /**
    * @override
    * @return {number}
@@ -44,16 +37,14 @@ class SubNumber extends Number {
   m_intValue__() {
     return 0;
   }
-
   /**
    * @override
    * @return {!$Long}
    * @public
    */
   m_longValue__() {
-    return $Primitives.$widenIntToLong(0);
+    return $Long.fromInt(0);
   }
-
   /**
    * @override
    * @return {number}
@@ -62,7 +53,6 @@ class SubNumber extends Number {
   m_floatValue__() {
     return 0.0;
   }
-
   /**
    * @override
    * @return {number}
@@ -71,17 +61,14 @@ class SubNumber extends Number {
   m_doubleValue__() {
     return 0.0;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    SubNumber.$clinit = (() => {});
+    SubNumber.$clinit = () => {};
     SubNumber.$loadModules();
     Number.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -90,29 +77,16 @@ class SubNumber extends Number {
   static $isInstance(instance) {
     return instance instanceof SubNumber;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, SubNumber);
-  }
-
   /**
    * @public
    */
   static $loadModules() {
-    $Primitives = goog.module.get('vmbootstrap.Primitives$impl');
+    $Long = goog.module.get('nativebootstrap.Long$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     SubNumber,
     'com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber');
-
-
 
 exports = SubNumber;
 //# sourceMappingURL=SubNumber.js.map

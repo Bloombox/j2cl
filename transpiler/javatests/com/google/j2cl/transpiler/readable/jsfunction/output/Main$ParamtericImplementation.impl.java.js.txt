@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.jsfunction.Main.ParamtericImplementation$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 const $JavaScriptFunction = goog.require('vmbootstrap.JavaScriptFunction$impl');
-
 
 /**
  * @template T
@@ -16,7 +14,6 @@ class ParamtericImplementation extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @template T
    * @return {function(T):void}
@@ -31,37 +28,30 @@ class ParamtericImplementation extends j_l_Object {
         ParamtericImplementation.prototype.m_call__java_lang_Object, $instance,
         ParamtericImplementation.$copy);
   }
-
   /**
    * @suppress {invalidCasts}
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsfunction_Main_ParamtericImplementation__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @template T
    * @this {?function(T):void}
    * @param {T} t
-   * @return {void}
    * @public
    */
   m_call__java_lang_Object(t) {
     let o = /**@type {T} */ (t);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    ParamtericImplementation.$clinit = (() => {});
+    ParamtericImplementation.$clinit = () => {};
     ParamtericImplementation.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -72,16 +62,6 @@ class ParamtericImplementation extends j_l_Object {
         !!instance
               .$is__com_google_j2cl_transpiler_readable_jsfunction_Main_ParamtericImplementation;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, ParamtericImplementation);
-  }
-
   /**
    * @param {ParamtericImplementation} from
    * @param {?} to
@@ -92,20 +72,16 @@ class ParamtericImplementation extends j_l_Object {
     to.$is__com_google_j2cl_transpiler_readable_jsfunction_Main_ParamtericImplementation =
         true;
   }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     ParamtericImplementation,
     'com.google.j2cl.transpiler.readable.jsfunction.Main$ParamtericImplementation');
 
-
 $JavaScriptFunction.$markImplementor(ParamtericImplementation);
-
 
 exports = ParamtericImplementation;
 //# sourceMappingURL=Main$ParamtericImplementation.js.map

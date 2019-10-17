@@ -13,39 +13,39 @@
       case "one":
 ...        return;
     }] => [switch (InternalPreconditions.m_checkNotNull__java_lang_Object("one")) {
-      case "one":
-...        return;
-    }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
+   case "one":
+...    return;
+  }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [break;] => [break;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [return;] => [return;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [switch ('1') {
       case '1':
 ...        return;
     }] => [switch (49 /* '1' */) {
-      case 49 /* '1' */:
-...        return;
-    }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
+   case 49 /* '1' */:
+...    return;
+  }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [break;] => [break;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [return;] => [return;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [switch (1) {
       case 1:
 ...        return;
     }] => [switch (1) {
-      case 1:
-...        return;
-    }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
+   case 1:
+...    return;
+  }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [break;] => [break;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [return;] => [return;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [switch (Numbers.ONE) {
       case ONE:
 ...        return;
     }] => [switch (Numbers.f_ONE__com_google_j2cl_transpiler_readable_switchstatement_Numbers.ordinal()) {
-      case Numbers.$ordinal$f_ONE__com_google_j2cl_transpiler_readable_switchstatement_Numbers:
-...        return;
-    }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
+   case Numbers.$ordinal$f_ONE__com_google_j2cl_transpiler_readable_switchstatement_Numbers:
+...    return;
+  }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [break;] => [break;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
 [return;] => [return;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.main"
-[testSwitchVariableDeclarations] => [m_testSwitchVariableDeclarations___$p_com_google_j2cl_transpiler_readable_switchstatement_SwitchStatement]
+[testSwitchVariableDeclarations] => [m_testSwitchVariableDeclarations__]
 [testSwitchVariableDeclarations] => [let /** number */ unassigned, /** number */ unassigned2, /** number */ i, /** number */ j, /** number */ b, /** number */ i_1;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [unassigned] => [unassigned] "unassigned"
 [unassigned2] => [unassigned2] "unassigned2"
@@ -53,14 +53,13 @@
 [j] => [j] "j"
 [b] => [b] "b"
 [i] => [i_1] "i"
-[testSwitchVariableDeclarations] => [SwitchStatement.$clinit();] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [switch (3) {
       case 1:
 ...        return;
     }] => [switch (3) {
-      case 1:
-...        return;
-    }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
+   case 1:
+...    return;
+  }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [int i = 0;] => [i = 0;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [int j = 2, b = j + 1;] => [(j = 2, b = j + 1);] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [break;] => [break;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
@@ -71,14 +70,13 @@
       case 5:
 ...        break;
     }] => [switch (5) {
-      case 5:
-...        break;
-    }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
+   case 5:
+...    break;
+  }] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [int i = 1;] => [i_1 = 1;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [break;] => [break;] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [assert false;] => [$Asserts.$assert(false);] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.testSwitchVariableDeclarations"
 [SwitchStatement] => [$clinit]
-[SwitchStatement] => [SwitchStatement.$clinit = (() =>{
-    });] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.<clinit>"
+[SwitchStatement] => [SwitchStatement.$clinit = () =>{};] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.<clinit>"
 [SwitchStatement] => [SwitchStatement.$loadModules();] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.<clinit>"
 [SwitchStatement] => [j_l_Object.$clinit();] "com.google.j2cl.transpiler.readable.switchstatement.SwitchStatement.<clinit>"

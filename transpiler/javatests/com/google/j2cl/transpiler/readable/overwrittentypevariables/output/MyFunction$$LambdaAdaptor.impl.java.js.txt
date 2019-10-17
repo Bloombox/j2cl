@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.overwrittentypevariables.MyFunction.$LambdaAdaptor$impl');
 
-
 const MyFunction = goog.require('com.google.j2cl.transpiler.readable.overwrittentypevariables.MyFunction$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template F, T
@@ -23,10 +21,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_overwrittentypevariables_MyFunction_$LambdaAdaptor__com_google_j2cl_transpiler_readable_overwrittentypevariables_MyFunction_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function(F):T} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_overwrittentypevariables_MyFunction_$LambdaAdaptor__com_google_j2cl_transpiler_readable_overwrittentypevariables_MyFunction_$JsFunction(
@@ -35,7 +31,6 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_overwrittentypevariables_MyFunction_$LambdaAdaptor =
         fn;
   }
-
   /**
    * @param {F} arg0
    * @return {T}
@@ -48,17 +43,14 @@ class $LambdaAdaptor extends j_l_Object {
             this.f_$$fn__com_google_j2cl_transpiler_readable_overwrittentypevariables_MyFunction_$LambdaAdaptor,
         $function(arg0));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -67,29 +59,16 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.overwrittentypevariables.MyFunction$$LambdaAdaptor');
 
-
 MyFunction.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=MyFunction$$LambdaAdaptor.js.map

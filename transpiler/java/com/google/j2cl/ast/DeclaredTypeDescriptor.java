@@ -66,26 +66,34 @@ public abstract class DeclaredTypeDescriptor extends TypeDescriptor
     T get(DeclaredTypeDescriptor typeDescriptor);
   }
 
-  @Override
-  public boolean isUnusableByJsSuppressed() {
-    return getTypeDeclaration().isUnusableByJsSuppressed();
-  }
-
-  public boolean isDeprecated() {
-    return getTypeDeclaration().isDeprecated();
-  }
-
   @Nullable
   public abstract DeclaredTypeDescriptor getEnclosingTypeDescriptor();
 
   public abstract ImmutableList<TypeDescriptor> getTypeArgumentDescriptors();
 
-  public boolean isFinal() {
-    return getTypeDeclaration().isFinal();
+  @Override
+  public boolean isClass() {
+    return getTypeDeclaration().isClass();
   }
 
+  @Override
+  public boolean isInterface() {
+    return getTypeDeclaration().isInterface();
+  }
+
+  @Override
+  public boolean isEnum() {
+    return getTypeDeclaration().isEnum();
+  }
+
+  @Override
   public boolean isFunctionalInterface() {
     return getTypeDeclaration().isFunctionalInterface();
+  }
+
+  @Override
+  public boolean isAnnotatedWithFunctionalInterface() {
+    return getTypeDeclaration().isAnnotatedWithFunctionalInterface();
   }
 
   @Override
@@ -108,9 +116,35 @@ public abstract class DeclaredTypeDescriptor extends TypeDescriptor
     return getTypeDeclaration().isJsEnum();
   }
 
+  public boolean isFinal() {
+    return getTypeDeclaration().isFinal();
+  }
+
   @Override
   public boolean isNative() {
     return getTypeDeclaration().isNative();
+  }
+
+  @Override
+  public abstract boolean isNullable();
+
+  @Override
+  public boolean isStarOrUnknown() {
+    return getTypeDeclaration().isStarOrUnknown();
+  }
+
+  @Override
+  public boolean isNoopCast() {
+    return getTypeDeclaration().isNoopCast();
+  }
+
+  @Override
+  public boolean isUnusableByJsSuppressed() {
+    return getTypeDeclaration().isUnusableByJsSuppressed();
+  }
+
+  public boolean isDeprecated() {
+    return getTypeDeclaration().isDeprecated();
   }
 
   @Override
@@ -118,15 +152,15 @@ public abstract class DeclaredTypeDescriptor extends TypeDescriptor
     return getTypeDeclaration().getJsEnumInfo();
   }
 
-  @Override
-  public abstract boolean isNullable();
-
   public boolean hasJsConstructor() {
     return getTypeDeclaration().hasJsConstructor();
   }
 
-  /* PRIVATE AUTO_VALUE PROPERTIES */
+  public boolean hasTypeArguments() {
+    return !getTypeArgumentDescriptors().isEmpty();
+  }
 
+  /* PRIVATE AUTO_VALUE PROPERTIES */
   @Nullable
   abstract DescriptorFactory<ImmutableMap<String, MethodDescriptor>>
       getDeclaredMethodDescriptorsFactory();
@@ -146,25 +180,6 @@ public abstract class DeclaredTypeDescriptor extends TypeDescriptor
 
   @Nullable
   abstract DescriptorFactory<DeclaredTypeDescriptor> getSuperTypeDescriptorFactory();
-
-  public boolean hasTypeArguments() {
-    return !getTypeArgumentDescriptors().isEmpty();
-  }
-
-  @Override
-  public boolean isClass() {
-    return getTypeDeclaration().isClass();
-  }
-
-  @Override
-  public boolean isInterface() {
-    return getTypeDeclaration().isInterface();
-  }
-
-  @Override
-  public boolean isEnum() {
-    return getTypeDeclaration().isEnum();
-  }
 
   /**
    * Returns a list of the type descriptors of interfaces that are explicitly implemented directly
@@ -276,10 +291,17 @@ public abstract class DeclaredTypeDescriptor extends TypeDescriptor
     return getTypeDeclaration().isSubtypeOf(that.getTypeDeclaration());
   }
 
+  /** Whether the type is in the same package as {@code other}. */
+  public boolean isInSamePackage(DeclaredTypeDescriptor other) {
+    return other
+        .getTypeDeclaration()
+        .getPackageName()
+        .equals(getTypeDeclaration().getPackageName());
+  }
+
   public boolean extendsNativeClass() {
     return getTypeDeclaration().extendsNativeClass();
   }
-
 
   @Override
   @Memoized
@@ -429,13 +451,13 @@ public abstract class DeclaredTypeDescriptor extends TypeDescriptor
 
     // Add all the methods from the super class.
     if (getSuperTypeDescriptor() != null) {
-      AstUtils.updateMethodsBySignature(
+      AstUtils.addInheritedMethodsBySignature(
           methodDescriptorsBySignature, getSuperTypeDescriptor().getMethodDescriptors());
     }
 
     // Finally add the methods that appear in super interfaces.
     for (DeclaredTypeDescriptor implementedInterface : getInterfaceTypeDescriptors()) {
-      AstUtils.updateMethodsBySignature(
+      AstUtils.addInheritedMethodsBySignature(
           methodDescriptorsBySignature, implementedInterface.getMethodDescriptors());
     }
     return methodDescriptorsBySignature;

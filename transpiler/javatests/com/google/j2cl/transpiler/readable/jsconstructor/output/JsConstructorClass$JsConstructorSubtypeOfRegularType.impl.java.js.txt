@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass.JsConstructorSubtypeOfRegularType$impl');
 
-
 const RegularType = goog.require('com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass.RegularType$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let j_l_Object = goog.forwardDeclare('java.lang.Object$impl');
-
 
 class JsConstructorSubtypeOfRegularType extends RegularType {
   /**
@@ -19,12 +17,10 @@ class JsConstructorSubtypeOfRegularType extends RegularType {
     this.$ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_JsConstructorSubtypeOfRegularType__java_lang_Object(
         object);
   }
-
   /**
    * Initialization from constructor
    * 'JsConstructorSubtypeOfRegularType(Object)'.
    * @param {*} object
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_JsConstructorSubtypeOfRegularType__java_lang_Object(
@@ -32,7 +28,6 @@ class JsConstructorSubtypeOfRegularType extends RegularType {
     this.$ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_RegularType__java_lang_Object(
         object);
   }
-
   /**
    * Factory method corresponding to constructor
    * 'JsConstructorSubtypeOfRegularType()'.
@@ -47,25 +42,20 @@ class JsConstructorSubtypeOfRegularType extends RegularType {
         .$ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_JsConstructorSubtypeOfRegularType__();
     return $instance;
   }
-
   /**
    * Initialization from constructor 'JsConstructorSubtypeOfRegularType()'.
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_JsConstructorSubtypeOfRegularType__() {
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    JsConstructorSubtypeOfRegularType.$clinit = (() => {});
+    JsConstructorSubtypeOfRegularType.$clinit = () => {};
     JsConstructorSubtypeOfRegularType.$loadModules();
     RegularType.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -74,30 +64,16 @@ class JsConstructorSubtypeOfRegularType extends RegularType {
   static $isInstance(instance) {
     return instance instanceof JsConstructorSubtypeOfRegularType;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(
-        classConstructor, JsConstructorSubtypeOfRegularType);
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     j_l_Object = goog.module.get('java.lang.Object$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     JsConstructorSubtypeOfRegularType,
     'com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass$JsConstructorSubtypeOfRegularType');
-
-
 
 exports = JsConstructorSubtypeOfRegularType;
 //# sourceMappingURL=JsConstructorClass$JsConstructorSubtypeOfRegularType.js.map

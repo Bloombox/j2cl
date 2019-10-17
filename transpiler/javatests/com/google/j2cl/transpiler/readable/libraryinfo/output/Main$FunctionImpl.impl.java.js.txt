@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.libraryinfo.Main.FunctionImpl$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 const $JavaScriptFunction = goog.require('vmbootstrap.JavaScriptFunction$impl');
-
 
 class FunctionImpl extends j_l_Object {
   /**
@@ -13,7 +11,6 @@ class FunctionImpl extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {function(?string):void}
    * @public
@@ -27,33 +24,26 @@ class FunctionImpl extends j_l_Object {
         FunctionImpl.prototype.m_apply__java_lang_String, $instance,
         FunctionImpl.$copy);
   }
-
   /**
    * @suppress {invalidCasts}
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_libraryinfo_Main_FunctionImpl__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {?string} s
-   * @return {void}
    * @public
    */
   m_apply__java_lang_String(s) {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    FunctionImpl.$clinit = (() => {});
+    FunctionImpl.$clinit = () => {};
     FunctionImpl.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -64,16 +54,6 @@ class FunctionImpl extends j_l_Object {
         !!instance
               .$is__com_google_j2cl_transpiler_readable_libraryinfo_Main_FunctionImpl;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, FunctionImpl);
-  }
-
   /**
    * @param {FunctionImpl} from
    * @param {?} to
@@ -84,20 +64,16 @@ class FunctionImpl extends j_l_Object {
     to.$is__com_google_j2cl_transpiler_readable_libraryinfo_Main_FunctionImpl =
         true;
   }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     FunctionImpl,
     'com.google.j2cl.transpiler.readable.libraryinfo.Main$FunctionImpl');
 
-
 $JavaScriptFunction.$markImplementor(FunctionImpl);
-
 
 exports = FunctionImpl;
 //# sourceMappingURL=Main$FunctionImpl.js.map

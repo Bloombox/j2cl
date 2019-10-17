@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.switchstatement.Numbers$impl');
 
-
 const Enum = goog.require('java.lang.Enum$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -8,7 +7,6 @@ let $Equality = goog.forwardDeclare('nativebootstrap.Equality$impl');
 let $Arrays = goog.forwardDeclare('vmbootstrap.Arrays$impl');
 let $Casts = goog.forwardDeclare('vmbootstrap.Casts$impl');
 let $Enums = goog.forwardDeclare('vmbootstrap.Enums$impl');
-
 
 /**
  * @extends {Enum<Numbers>}
@@ -20,7 +18,6 @@ class Numbers extends Enum {
   constructor() {
     super();
   }
-
   /**
    * @param {?string} $name
    * @param {number} $ordinal
@@ -34,11 +31,9 @@ class Numbers extends Enum {
             $name, $ordinal);
     return $instance;
   }
-
   /**
    * @param {?string} $name
    * @param {number} $ordinal
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_switchstatement_Numbers__java_lang_String__int(
@@ -47,7 +42,6 @@ class Numbers extends Enum {
     this.f_ordinal__java_lang_Enum_ = $ordinal;
     this.$ctor__java_lang_Enum__java_lang_String__int($name, $ordinal);
   }
-
   /**
    * @param {string} name
    * @return {!Numbers}
@@ -57,18 +51,17 @@ class Numbers extends Enum {
     Numbers.$clinit();
     if ($Equality.$same(
             Numbers
-                .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_,
+                .f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_,
             null)) {
       Numbers
-          .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_ =
+          .f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_ =
           $Enums.createMapFromValues(Numbers.m_values__());
     }
     return $Enums.getValueFromNameAndMap(
         name,
         Numbers
-            .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_);
+            .f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_);
   }
-
   /**
    * @return {!Array<!Numbers>}
    * @public
@@ -84,7 +77,6 @@ class Numbers extends Enum {
         ],
         Numbers));
   }
-
   /**
    * Bridge method.
    * @override
@@ -95,7 +87,6 @@ class Numbers extends Enum {
   m_compareTo__java_lang_Object(arg0) {
     return super.compareTo(/**@type {Numbers} */ ($Casts.$to(arg0, Numbers)));
   }
-
   /**
    * @return {!Numbers}
    * @public
@@ -106,20 +97,6 @@ class Numbers extends Enum {
         Numbers
             .$f_ONE__com_google_j2cl_transpiler_readable_switchstatement_Numbers);
   }
-
-  /**
-   * @param {!Numbers} value
-   * @return {void}
-   * @public
-   */
-  static set f_ONE__com_google_j2cl_transpiler_readable_switchstatement_Numbers(
-      value) {
-    (Numbers.$clinit(),
-     Numbers
-         .$f_ONE__com_google_j2cl_transpiler_readable_switchstatement_Numbers =
-         value);
-  }
-
   /**
    * @return {!Numbers}
    * @public
@@ -130,50 +107,11 @@ class Numbers extends Enum {
         Numbers
             .$f_TWO__com_google_j2cl_transpiler_readable_switchstatement_Numbers);
   }
-
   /**
-   * @param {!Numbers} value
-   * @return {void}
-   * @public
-   */
-  static set f_TWO__com_google_j2cl_transpiler_readable_switchstatement_Numbers(
-      value) {
-    (Numbers.$clinit(),
-     Numbers
-         .$f_TWO__com_google_j2cl_transpiler_readable_switchstatement_Numbers =
-         value);
-  }
-
-  /**
-   * @return {Map<?string, !Numbers>}
-   * @public
-   */
-  static get f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_() {
-    return (
-        Numbers.$clinit(),
-        Numbers
-            .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_);
-  }
-
-  /**
-   * @param {Map<?string, !Numbers>} value
-   * @return {void}
-   * @public
-   */
-  static set f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_(
-      value) {
-    (Numbers.$clinit(),
-     Numbers
-         .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_ =
-         value);
-  }
-
-  /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Numbers.$clinit = (() => {});
+    Numbers.$clinit = () => {};
     Numbers.$loadModules();
     Enum.$clinit();
     Numbers
@@ -189,10 +127,9 @@ class Numbers extends Enum {
             Numbers
                 .$ordinal$f_TWO__com_google_j2cl_transpiler_readable_switchstatement_Numbers);
     Numbers
-        .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_ =
+        .f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_ =
         null;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -201,16 +138,6 @@ class Numbers extends Enum {
   static $isInstance(instance) {
     return instance instanceof Numbers;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Numbers);
-  }
-
   /**
    * @public
    */
@@ -220,37 +147,25 @@ class Numbers extends Enum {
     $Casts = goog.module.get('vmbootstrap.Casts$impl');
     $Enums = goog.module.get('vmbootstrap.Enums$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForEnum(
     Numbers, 'com.google.j2cl.transpiler.readable.switchstatement.Numbers');
 
-
 /** @private {!Numbers} */
 Numbers.$f_ONE__com_google_j2cl_transpiler_readable_switchstatement_Numbers;
-
-
 /** @private {!Numbers} */
 Numbers.$f_TWO__com_google_j2cl_transpiler_readable_switchstatement_Numbers;
-
-
-/** @private {Map<?string, !Numbers>} */
+/** @public {Map<?string, !Numbers>} */
 Numbers
-    .$f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_;
-
-
+    .f_namesToValuesMap__com_google_j2cl_transpiler_readable_switchstatement_Numbers_;
 /** @public {number} @const */
 Numbers
     .$ordinal$f_ONE__com_google_j2cl_transpiler_readable_switchstatement_Numbers =
     0;
-
-
 /** @public {number} @const */
 Numbers
     .$ordinal$f_TWO__com_google_j2cl_transpiler_readable_switchstatement_Numbers =
     1;
-
-
 
 exports = Numbers;
 //# sourceMappingURL=Numbers.js.map

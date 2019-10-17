@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.jsasync.Main.BaseInterface$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.jsasync.Main.BaseInterface.$LambdaAdaptor$impl');
 let $Overlay = goog.forwardDeclare('com.google.j2cl.transpiler.readable.jsasync.Main.IThenable.$Overlay$impl');
 let Integer = goog.forwardDeclare('java.lang.Integer$impl');
-
 
 /**
  * @interface
@@ -18,7 +16,6 @@ class BaseInterface {
    * @public
    */
   m_asyncCall__() {}
-
   /**
    * @param {?function():IThenable<Integer>} fn
    * @return {BaseInterface}
@@ -28,16 +25,13 @@ class BaseInterface {
     BaseInterface.$clinit();
     return new $LambdaAdaptor(fn);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    BaseInterface.$clinit = (() => {});
+    BaseInterface.$clinit = () => {};
     BaseInterface.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -50,7 +44,6 @@ class BaseInterface {
         .$implements__com_google_j2cl_transpiler_readable_jsasync_Main_BaseInterface =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -61,18 +54,6 @@ class BaseInterface {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_jsasync_Main_BaseInterface;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_jsasync_Main_BaseInterface;
-  }
-
   /**
    * @public
    */
@@ -80,15 +61,12 @@ class BaseInterface {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.jsasync.Main.BaseInterface.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     BaseInterface,
     'com.google.j2cl.transpiler.readable.jsasync.Main$BaseInterface');
 
-
 BaseInterface.$markImplementor(/** @type {Function} */ (BaseInterface));
-
 
 exports = BaseInterface;
 //# sourceMappingURL=Main$BaseInterface.js.map

@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.interfaces.Main.Interface.$LambdaAdaptor$impl');
 
-
 const Interface = goog.require('com.google.j2cl.transpiler.readable.interfaces.Main.Interface$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T
@@ -23,10 +21,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_interfaces_Main_Interface_$LambdaAdaptor__com_google_j2cl_transpiler_readable_interfaces_Main_Interface_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function():void} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_interfaces_Main_Interface_$LambdaAdaptor__com_google_j2cl_transpiler_readable_interfaces_Main_Interface_$JsFunction(
@@ -35,9 +31,7 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_interfaces_Main_Interface_$LambdaAdaptor =
         fn;
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_interfaceMethod__() {
@@ -47,12 +41,10 @@ class $LambdaAdaptor extends j_l_Object {
       $function();
     }
   }
-
   /**
    * Default method forwarding stub.
    * @override
    * @param {T} arg0
-   * @return {void}
    * @public
    */
   m_defaultMethod__java_lang_Object(arg0) {
@@ -60,18 +52,15 @@ class $LambdaAdaptor extends j_l_Object {
         .m_defaultMethod__$default__com_google_j2cl_transpiler_readable_interfaces_Main_Interface__java_lang_Object(
             this, arg0);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
     Interface.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -80,29 +69,16 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.interfaces.Main$Interface$$LambdaAdaptor');
 
-
 Interface.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=Main$Interface$$LambdaAdaptor.js.map

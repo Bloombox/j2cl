@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.genericconstructor.GenericConstructor$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Error = goog.forwardDeclare('java.lang.Error$impl');
 let Exception = goog.forwardDeclare('java.lang.Exception$impl');
-
 
 /**
  * @template T
@@ -18,7 +16,6 @@ class GenericConstructor extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * Factory method corresponding to constructor 'GenericConstructor(Object,
    * Object)'.
@@ -36,20 +33,17 @@ class GenericConstructor extends j_l_Object {
             s, t);
     return $instance;
   }
-
   /**
    * Initialization from constructor 'GenericConstructor(Object, Object)'.
    * @template S
    * @param {S} s
    * @param {T} t
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_genericconstructor_GenericConstructor__java_lang_Object__java_lang_Object(
       s, t) {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * Factory method corresponding to constructor 'GenericConstructor(Object)'.
    * @template T, T_1
@@ -65,21 +59,17 @@ class GenericConstructor extends j_l_Object {
             t);
     return $instance;
   }
-
   /**
    * Initialization from constructor 'GenericConstructor(Object)'.
    * @template T_1
    * @param {T_1} t
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_genericconstructor_GenericConstructor__java_lang_Object(
       t) {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
@@ -87,17 +77,14 @@ class GenericConstructor extends j_l_Object {
         Exception.$create__(), Error.$create__());
     GenericConstructor.$create__java_lang_Object(Exception.$create__());
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    GenericConstructor.$clinit = (() => {});
+    GenericConstructor.$clinit = () => {};
     GenericConstructor.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -106,16 +93,6 @@ class GenericConstructor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof GenericConstructor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, GenericConstructor);
-  }
-
   /**
    * @public
    */
@@ -123,13 +100,10 @@ class GenericConstructor extends j_l_Object {
     Error = goog.module.get('java.lang.Error$impl');
     Exception = goog.module.get('java.lang.Exception$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     GenericConstructor,
     'com.google.j2cl.transpiler.readable.genericconstructor.GenericConstructor');
-
-
 
 exports = GenericConstructor;
 //# sourceMappingURL=GenericConstructor.js.map

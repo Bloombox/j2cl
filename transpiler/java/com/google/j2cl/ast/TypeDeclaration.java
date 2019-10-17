@@ -30,6 +30,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
+import com.google.common.collect.Streams;
 import com.google.j2cl.ast.TypeDescriptors.BootstrapType;
 import com.google.j2cl.ast.annotations.Visitable;
 import com.google.j2cl.ast.processors.common.Processor;
@@ -44,6 +45,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 /**
@@ -109,7 +111,7 @@ public abstract class TypeDeclaration extends Node
    */
   @Memoized
   public String getQualifiedBinaryName() {
-    return Joiner.on(".").skipNulls().join(getPackageName(), getSimpleBinaryName());
+    return AstUtils.buildQualifiedName(getPackageName(), getSimpleBinaryName());
   }
 
   /** Returns the globally unique qualified name by which this type should be defined/imported. */
@@ -177,11 +179,34 @@ public abstract class TypeDeclaration extends Node
   @Nullable
   public abstract TypeDeclaration getEnclosingTypeDeclaration();
 
+  /** Returns the topmost enclosing type declaration for this type. */
+  public TypeDeclaration getTopEnclosingDeclaration() {
+    TypeDeclaration enclosingTypeDeclaration = getEnclosingTypeDeclaration();
+    return enclosingTypeDeclaration == null
+        ? this
+        : enclosingTypeDeclaration.getTopEnclosingDeclaration();
+  }
+
   public abstract ImmutableList<TypeVariable> getTypeParameterDescriptors();
 
   public abstract Visibility getVisibility();
 
   public abstract Kind getKind();
+
+  /** Returns whether the described type is a class. */
+  public boolean isClass() {
+    return getKind() == Kind.CLASS;
+  }
+
+  /** Returns whether the described type is an interface. */
+  public boolean isInterface() {
+    return getKind() == Kind.INTERFACE;
+  }
+
+  /** Returns whether the described type is an enum. */
+  public boolean isEnum() {
+    return getKind() == Kind.ENUM;
+  }
 
   public boolean isAbstract() {
     return getHasAbstractModifier()
@@ -190,7 +215,11 @@ public abstract class TypeDeclaration extends Node
 
   public abstract boolean isFinal();
 
+  /** Returns whether the described type is a functional interface (JLS 9.8). */
   public abstract boolean isFunctionalInterface();
+
+  /** Returns whether the described type has the @FunctionalInterface annotation. */
+  public abstract boolean isAnnotatedWithFunctionalInterface();
 
   @Memoized
   public boolean isJsFunctionImplementation() {
@@ -229,6 +258,31 @@ public abstract class TypeDeclaration extends Node
     return getJsEnumInfo() != null;
   }
 
+  /** Returns true if the class captures its enclosing instance */
+  public abstract boolean isCapturingEnclosingInstance();
+
+  @Memoized
+  public boolean isExtern() {
+    return isNative() && hasExternNamespace();
+  }
+
+  public boolean isStarOrUnknown() {
+    return getSimpleJsName().equals("*") || getSimpleJsName().equals("?");
+  }
+
+  private boolean hasExternNamespace() {
+    // A native type descriptor is an extern if its namespace is the global namespace or if
+    // it inherited the namespace from its (enclosing) extern type.
+    return JsUtils.isGlobal(getJsNamespace())
+        || (!hasCustomizedJsNamespace()
+            && getEnclosingTypeDeclaration() != null
+            && getEnclosingTypeDeclaration().isExtern());
+  }
+
+  public boolean hasTypeParameters() {
+    return !getTypeParameterDescriptors().isEmpty();
+  }
+
   @Memoized
   public boolean extendsNativeClass() {
     DeclaredTypeDescriptor superTypeDescriptor = getSuperTypeDescriptor();
@@ -246,6 +300,16 @@ public abstract class TypeDeclaration extends Node
   public boolean isJsConstructorSubtype() {
     DeclaredTypeDescriptor superTypeDescriptor = getSuperTypeDescriptor();
     return superTypeDescriptor != null && superTypeDescriptor.hasJsConstructor();
+  }
+
+  /** Whether cast to this type are checked or not. */
+  public boolean isNoopCast() {
+    if (isNative() && isJsEnum() && !getJsEnumInfo().hasCustomValue()) {
+      // Nothing is known about the underlying type of Native JsEnum that don't provide a custom
+      // value
+      return true;
+    }
+    return isNative() && isInterface();
   }
 
   /**
@@ -285,9 +349,7 @@ public abstract class TypeDeclaration extends Node
     String enclosingModuleRelativeName = getEnclosingTypeDeclaration().getModuleRelativeJsName();
     // enclosingModuleRelativeName can only be empty if the type has TypeDescriptors.globalNamespace
     // as an enclosing type. This could only potentially happen in synthetic type descriptors.
-    return enclosingModuleRelativeName.isEmpty()
-        ? getSimpleJsName()
-        : enclosingModuleRelativeName + "." + getSimpleJsName();
+    return AstUtils.buildQualifiedName(enclosingModuleRelativeName, getSimpleJsName());
   }
 
   @Override
@@ -324,51 +386,11 @@ public abstract class TypeDeclaration extends Node
     if (JsUtils.isGlobal(getJsNamespace())) {
       return getModuleRelativeJsName();
     }
-    return getJsNamespace() + "." + getModuleRelativeJsName();
+    return AstUtils.buildQualifiedName(getJsNamespace(), getModuleRelativeJsName());
   }
 
   @Nullable
   abstract String getCustomizedJsNamespace();
-
-  /** Returns true if the class captures its enclosing instance */
-  public abstract boolean isCapturingEnclosingInstance();
-
-  public boolean hasTypeParameters() {
-    return !getTypeParameterDescriptors().isEmpty();
-  }
-
-  /** Returns whether the described type is a class. */
-  public boolean isClass() {
-    return getKind() == Kind.CLASS;
-  }
-
-  /** Returns whether the described type is an interface. */
-  public boolean isInterface() {
-    return getKind() == Kind.INTERFACE;
-  }
-
-  /** Returns whether the described type is an enum. */
-  public boolean isEnum() {
-    return getKind() == Kind.ENUM;
-  }
-
-  @Memoized
-  public boolean isExtern() {
-    return isNative() && hasExternNamespace();
-  }
-
-  private boolean hasExternNamespace() {
-    // A native type descriptor is an extern if its namespace is the global namespace or if
-    // it inherited the namespace from its (enclosing) extern type.
-    return JsUtils.isGlobal(getJsNamespace())
-        || (!hasCustomizedJsNamespace()
-            && getEnclosingTypeDeclaration() != null
-            && getEnclosingTypeDeclaration().isExtern());
-  }
-
-  public boolean isStarOrUnknown() {
-    return getSimpleJsName().equals("*") || getSimpleJsName().equals("?");
-  }
 
   @Memoized
   public TypeDeclaration getMetadataTypeDeclaration() {
@@ -506,9 +528,8 @@ public abstract class TypeDeclaration extends Node
    */
   @Memoized
   public String getQualifiedSourceName() {
-    return Joiner.on(".")
-        .skipNulls()
-        .join(getPackageName(), Joiner.on(".").join(getClassComponents()));
+    return AstUtils.buildQualifiedName(
+        Streams.concat(Stream.of(getPackageName()), getClassComponents().stream()));
   }
 
   @Memoized
@@ -577,13 +598,13 @@ public abstract class TypeDeclaration extends Node
 
     // Add all the methods from the super class.
     if (getSuperTypeDescriptor() != null) {
-      AstUtils.updateMethodsBySignature(
+      AstUtils.addInheritedMethodsBySignature(
           methodDescriptorsBySignature, getSuperTypeDescriptor().getMethodDescriptors());
     }
 
     // Finally add the methods that appear in super interfaces.
     for (DeclaredTypeDescriptor implementedInterface : getInterfaceTypeDescriptors()) {
-      AstUtils.updateMethodsBySignature(
+      AstUtils.addInheritedMethodsBySignature(
           methodDescriptorsBySignature, implementedInterface.getMethodDescriptors());
     }
     return methodDescriptorsBySignature;
@@ -845,6 +866,7 @@ public abstract class TypeDeclaration extends Node
         .setCapturingEnclosingInstance(false)
         .setFinal(false)
         .setFunctionalInterface(false)
+        .setAnnotatedWithFunctionalInterface(false)
         .setJsFunctionInterface(false)
         .setJsType(false)
         .setLocal(false)
@@ -880,6 +902,8 @@ public abstract class TypeDeclaration extends Node
     public abstract Builder setFinal(boolean isFinal);
 
     public abstract Builder setFunctionalInterface(boolean isFunctionalInterface);
+
+    public abstract Builder setAnnotatedWithFunctionalInterface(boolean isAnnotated);
 
     public abstract Builder setJsFunctionInterface(boolean isJsFunctionInterface);
 

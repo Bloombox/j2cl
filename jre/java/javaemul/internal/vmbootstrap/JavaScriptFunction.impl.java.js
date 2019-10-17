@@ -46,22 +46,13 @@ class JavaScriptFunction {
    * @public
    */
   static $isInstance(instance) {
-    return typeof instance == 'function';
-  }
-
-  /**
-   * Returns whether the provided class is or extends this class.
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype.$implements__$$JavaScriptFunction;
+    return (typeof instance == 'function')
+        // This is only needed for array assignability check.
+        || (instance != null && !!instance.$implements__$$JavaScriptFunction);
   }
 }
 
-$Util.$setClassMetadata(JavaScriptFunction, '<native function>');
+$Util.$setClassMetadataForInterface(JavaScriptFunction, '<native function>');
 
 
 JavaScriptFunction.$markImplementor(

@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass.$1Abc$InnerClass$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let SimpleLocalClass = goog.forwardDeclare('com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass$impl');
-
 
 class $1Abc$InnerClass extends j_l_Object {
   /**
@@ -16,7 +14,6 @@ class $1Abc$InnerClass extends j_l_Object {
     /** @public {SimpleLocalClass} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_simplelocalclass_SimpleLocalClass_1Abc$InnerClass;
   }
-
   /**
    * @param {SimpleLocalClass} $outer_this
    * @return {!$1Abc$InnerClass}
@@ -31,10 +28,8 @@ class $1Abc$InnerClass extends j_l_Object {
             $outer_this);
     return $instance;
   }
-
   /**
    * @param {SimpleLocalClass} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_simplelocalclass_SimpleLocalClass_1Abc$InnerClass__com_google_j2cl_transpiler_readable_simplelocalclass_SimpleLocalClass(
@@ -43,17 +38,14 @@ class $1Abc$InnerClass extends j_l_Object {
         $outer_this;
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $1Abc$InnerClass.$clinit = (() => {});
+    $1Abc$InnerClass.$clinit = () => {};
     $1Abc$InnerClass.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -62,27 +54,14 @@ class $1Abc$InnerClass extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $1Abc$InnerClass;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $1Abc$InnerClass);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $1Abc$InnerClass,
     'com.google.j2cl.transpiler.readable.simplelocalclass.SimpleLocalClass$1Abc$InnerClass');
-
-
 
 exports = $1Abc$InnerClass;
 //# sourceMappingURL=SimpleLocalClass$1Abc$InnerClass.js.map

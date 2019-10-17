@@ -15,94 +15,50 @@
  */
 package com.google.j2cl.transpiler.integration.varargs;
 
+import static com.google.j2cl.transpiler.utils.Asserts.assertEquals;
 import static com.google.j2cl.transpiler.utils.Asserts.assertTrue;
 
-/**
- * Class that has a constructor with var arg parameters.
- */
-class Parent {
-  public int value;
+import com.google.j2cl.transpiler.integration.varargs.innerpackage.SubclassWithImplicitConstructor;
+import com.google.j2cl.transpiler.integration.varargs.innerpackage.SuperWithNoPublicConstructors;
+import java.util.ArrayList;
+import java.util.List;
 
-  public Parent(int... args) {
-    if (args != null) {
-      for (int i = 0; i < args.length; i++) {
-        value += args[i];
-      }
-    }
-  }
-
-  public Parent(String f) {
-    // call the vararg-constructor by this() constructor call.
-    this(1);
-  }
-
-  public int sum(int... args) {
-    int sum = 0;
-    if (args != null) {
-      for (int i = 0; i < args.length; i++) {
-        sum += args[i];
-      }
-    }
-    return sum;
-  }
-
-  public static <T> T generics(T... elements) {
-    return elements[0];
-  }
-}
-
-class Child extends Parent {
-  public Child() {
-    // call the vararg-constructor by super() constructor call.
-    super(2);
-  }
-
-  public int sum(int a, int b, int c, int d) {
-    // call the vararg-constructor by super() method call.
-    return super.sum(a, b, c, d);
-  }
-}
-
+/** Tests varargs. */
 public class Main {
-  public int field;
-
-  public Main(int f) {
-    field = f;
+  public static void main(String... args) {
+    testVarargs_method();
+    testVarargs_constructor();
+    testVarargs_superMethodCall();
+    testVarargs_implicitSuperConstructorCall();
+    testVarargs_implicitSuperConstructorCall_implicitParameters();
+    testVarargs_implicitSuperConstructorCall_enum();
+    testVarargs_implicitSuperConstructorCall_genericTypes();
+    testVarargs_implicitSuperConstructorCall_visibility();
+    testVarargs_genericVarargsParameter();
   }
 
-  public int bar(Main a, Main... args) {
-    int result = a.field;
-    if (args != null) {
-      for (int i = 0; i < args.length; i++) {
-        result += args[i].field;
+  private static void testVarargs_constructor() {
+    class Parent {
+      public int value;
+
+      public Parent(int... args) {
+        for (int i = 0; i < args.length; i++) {
+          value += args[i];
+        }
+      }
+
+      public Parent(String f) {
+        // call the vararg-constructor by this() constructor call.
+        this(1);
       }
     }
-    return result;
-  }
 
-  public static void main(String... args) {
-    Main m = new Main(0);
-    Main m1 = new Main(1);
-    Main m2 = new Main(2);
-    Main m3 = new Main(3);
-    Main m4 = new Main(4);
-    int a = m.bar(m1, m2, m3, m4); // varargs with mulitple arguments.
-    assertTrue((a == 10));
-
-    int b = m.bar(m1); // no argument for varargs.
-    assertTrue((b == 1));
-
-    int c = m.bar(m1, m2); // varargs with one element.
-    assertTrue((c == 3));
-
-    int d = m.bar(m1, new Main[] {m2, m3, m4}); // array argument for the varargs.
-    assertTrue((d == 10));
-
-    int e = m.bar(m1, new Main[] {}); // empty array for the varargs.
-    assertTrue((e == 1));
-
-    int f = m.bar(m1, null); // null for the varargs.
-    assertTrue((f == 1));
+    class Child extends Parent {
+      public Child() {
+        // call the vararg-constructor by super() constructor call.
+        super(2);
+      }
+    }
 
     Parent p = new Parent(1, 2, 3); // constructor call with varargs.
     assertTrue((p.value == 6));
@@ -112,11 +68,203 @@ public class Main {
 
     Child cc = new Child(); // constructor call with varargs is invoked by super() constructor call.
     assertTrue((cc.value == 2));
+  }
 
+  private static void testVarargs_genericVarargsParameter() {
+    assertTrue((generics(1, 2) == 1));
+    assertTrue((generics("abc", "def").equals("abc")));
+  }
+
+  private static <T> T generics(T... elements) {
+    return elements[0];
+  }
+
+  private static void testVarargs_superMethodCall() {
+    class Parent {
+      public int sum(int... args) {
+        int sum = 0;
+        for (int i = 0; i < args.length; i++) {
+          sum += args[i];
+        }
+        return sum;
+      }
+    }
+
+    class Child extends Parent {
+      public int sum(int a, int b, int c, int d) {
+        // call the vararg-constructor by super() method call.
+        return super.sum(a, b, c, d);
+      }
+    }
     // method call with varargs is invoked by super() method call.
     assertTrue((new Child().sum(1, 2, 3, 4) == new Parent().sum(1, 2, 3, 4)));
+  }
 
-    assertTrue((Parent.generics(1, 2) == 1));
-    assertTrue((Parent.generics("abc", "def").equals("abc")));
+  private static class SuperWithVarargsConstructors {
+    String which;
+
+    SuperWithVarargsConstructors(Object... args) {
+      which = args.getClass().getComponentType().getSimpleName();
+    }
+
+    SuperWithVarargsConstructors(String... args) {
+      which = args.getClass().getComponentType().getSimpleName();
+    }
+  }
+
+  private static class ChildWithImplicitSuperCall extends SuperWithVarargsConstructors {
+    public ChildWithImplicitSuperCall() {
+      // Implicit super call should call SuperWithVarargsConstructors(String...).
+    }
+  }
+
+  private static void testVarargs_implicitSuperConstructorCall() {
+    assertEquals("String", new ChildWithImplicitSuperCall().which);
+  }
+
+  private static void testVarargs_implicitSuperConstructorCall_implicitParameters() {
+    int captured = 1;
+    class Outer {
+
+      class Parent {
+
+        String which;
+        int value;
+
+        Parent(Object... args) {
+          which = args.getClass().getComponentType().getSimpleName();
+          value = captured;
+        }
+
+        Parent(String... args) {
+          which = args.getClass().getComponentType().getSimpleName();
+          value = captured;
+        }
+      }
+
+      class Child extends Parent {
+
+        public Child() {
+          // Implicit super call should call Parent(String...).
+        }
+      }
+    }
+
+    assertEquals("String", new Outer().new Child().which);
+  }
+
+  private static void testVarargs_implicitSuperConstructorCall_visibility() {
+    class Parent {
+      String which;
+
+      private Parent() {
+        which = "Private";
+      }
+
+      public Parent(Object... args) {
+        which = "Public";
+      }
+    }
+
+    class Child extends Parent {
+      public Child() {
+        // Implicit super call should call Parent().
+      }
+    }
+
+    // private is accessible in the same inner class context.
+    assertEquals("Private", new Child().which);
+    assertEquals("PackagePrivate", new SubclassWithImplicitConstructor().which);
+
+    class SubclassInDifferentPackage extends SuperWithNoPublicConstructors {
+      public SubclassInDifferentPackage() {}
+    }
+    assertEquals("Protected", new SubclassInDifferentPackage().which);
+  }
+
+  private static void testVarargs_implicitSuperConstructorCall_genericTypes() {
+    int captured = 1;
+    class Parent<T extends List<?>, U extends ArrayList<?>> {
+      String which;
+      int value;
+
+      Parent(T... args) {
+        which = args.getClass().getComponentType().getSimpleName();
+        value = captured;
+      }
+
+      Parent(U... args) {
+        which = args.getClass().getComponentType().getSimpleName();
+        value = captured;
+      }
+    }
+
+    class Child extends Parent<List<?>, ArrayList<?>> {
+      public Child() {
+        // Implicit super call should call Parent(U...).
+      }
+    }
+
+    assertEquals("ArrayList", new Child().which);
+  }
+
+  private enum MyEnum {
+    A,
+    B(new Object[0]),
+    C {},
+    D(new Object[0]) {},
+    E(new String[0]) {};
+
+    MyEnum(Object... args) {
+      which = args.getClass().getComponentType().getSimpleName();
+    }
+
+    MyEnum(String... args) {
+      which = args.getClass().getComponentType().getSimpleName();
+    }
+
+    String which;
+  }
+
+  private static void testVarargs_implicitSuperConstructorCall_enum() {
+    assertEquals("String", MyEnum.A.which);
+    assertEquals("Object", MyEnum.B.which);
+    assertEquals("String", MyEnum.C.which);
+    assertEquals("Object", MyEnum.D.which);
+    assertEquals("String", MyEnum.E.which);
+  }
+
+  private static void testVarargs_method() {
+    Integer i1 = new Integer(1);
+    Integer i2 = new Integer(2);
+    Integer i3 = new Integer(3);
+    Integer i = new Integer(4);
+    int a = bar(i1, i2, i3, i); // varargs with mulitple arguments.
+    assertTrue((a == 10));
+
+    int b = bar(i1); // no argument for varargs.
+    assertTrue((b == 1));
+
+    int c = bar(i1, i2); // varargs with one element.
+    assertTrue((c == 3));
+
+    int d = bar(i1, new Integer[] {i2, i3, i}); // array argument for the varargs.
+    assertTrue((d == 10));
+
+    int e = bar(i1, new Integer[] {}); // empty array for the varargs.
+    assertTrue((e == 1));
+
+    int f = bar(i1, null); // null for the varargs.
+    assertTrue((f == 1));
+  }
+
+  public static int bar(Integer a, Integer... args) {
+    int result = a.intValue();
+    if (args != null) {
+      for (int i = 0; i < args.length; i++) {
+        result += args[i].intValue();
+      }
+    }
+    return result;
   }
 }

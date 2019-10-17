@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.localnamecollision.Class$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $Objects = goog.forwardDeclare('vmbootstrap.Objects$impl');
-
 
 class Class extends j_l_Object {
   /**
@@ -14,7 +12,6 @@ class Class extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!Class}
    * @public
@@ -26,33 +23,26 @@ class Class extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_localnamecollision_Class__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_localnamecollision_Class__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_main__() {
     $Objects.m_getClass__java_lang_Object(Class.$create__());
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Class.$clinit = (() => {});
+    Class.$clinit = () => {};
     Class.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -61,28 +51,15 @@ class Class extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Class;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Class);
-  }
-
   /**
    * @public
    */
   static $loadModules() {
     $Objects = goog.module.get('vmbootstrap.Objects$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     Class, 'com.google.j2cl.transpiler.readable.localnamecollision.Class');
-
-
 
 exports = Class;
 //# sourceMappingURL=Class.js.map

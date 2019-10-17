@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.nativejstypes.Main$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -11,7 +10,6 @@ let Class = goog.forwardDeclare('java.lang.Class$impl');
 let $JavaScriptObject = goog.forwardDeclare('vmbootstrap.JavaScriptObject$impl');
 let $Objects = goog.forwardDeclare('vmbootstrap.Objects$impl');
 
-
 class Main extends j_l_Object {
   /**
    * @protected
@@ -19,7 +17,6 @@ class Main extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!Main}
    * @public
@@ -30,15 +27,12 @@ class Main extends j_l_Object {
     $instance.$ctor__com_google_j2cl_transpiler_readable_nativejstypes_Main__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_nativejstypes_Main__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @return {number}
    * @public
@@ -50,7 +44,6 @@ class Main extends j_l_Object {
     foo.y = 5;
     return foo.sum();
   }
-
   /**
    * @return {number}
    * @public
@@ -63,9 +56,7 @@ class Main extends j_l_Object {
     Bar.f = 10;
     return bar.product();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static m_testInnerNativeJsType__() {
@@ -75,9 +66,7 @@ class Main extends j_l_Object {
         new $synthetic_com_google_j2cl_transpiler_readable_nativejstypes_Bar
             .Inner(2);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static m_testGlobalNativeJsType__() {
@@ -85,9 +74,7 @@ class Main extends j_l_Object {
     let header = new Headers();
     header.append('Content-Type', 'text/xml');
   }
-
   /**
-   * @return {void}
    * @public
    */
   static m_testNativeTypeClassLiteral__() {
@@ -95,9 +82,7 @@ class Main extends j_l_Object {
     let o1 = Class.$get($JavaScriptObject);
     o1 = Class.$get(j_l_Object, 1);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static m_testNativeTypeObjectMethods__() {
@@ -108,17 +93,14 @@ class Main extends j_l_Object {
     $Objects.m_equals__java_lang_Object__java_lang_Object(
         bar, j_l_Object.$create__());
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Main.$clinit = (() => {});
+    Main.$clinit = () => {};
     Main.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -127,16 +109,6 @@ class Main extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Main;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Main);
-  }
-
   /**
    * @public
    */
@@ -151,12 +123,9 @@ class Main extends j_l_Object {
     $JavaScriptObject = goog.module.get('vmbootstrap.JavaScriptObject$impl');
     $Objects = goog.module.get('vmbootstrap.Objects$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     Main, 'com.google.j2cl.transpiler.readable.nativejstypes.Main');
-
-
 
 exports = Main;
 //# sourceMappingURL=Main.js.map

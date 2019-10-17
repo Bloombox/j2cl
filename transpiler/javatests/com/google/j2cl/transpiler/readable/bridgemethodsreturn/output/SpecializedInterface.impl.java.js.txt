@@ -1,8 +1,6 @@
 goog.module('com.google.j2cl.transpiler.readable.bridgemethodsreturn.SpecializedInterface$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @interface
@@ -15,23 +13,19 @@ class SpecializedInterface {
    * @public
    */
   m_fun__java_lang_String(s) {}
-
   /**
    * @abstract
    * @return {?string}
    * @public
    */
   m_get__() {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    SpecializedInterface.$clinit = (() => {});
+    SpecializedInterface.$clinit = () => {};
     SpecializedInterface.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -44,7 +38,6 @@ class SpecializedInterface {
         .$implements__com_google_j2cl_transpiler_readable_bridgemethodsreturn_SpecializedInterface =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -55,32 +48,17 @@ class SpecializedInterface {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_bridgemethodsreturn_SpecializedInterface;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_bridgemethodsreturn_SpecializedInterface;
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadataForInterface(
     SpecializedInterface,
     'com.google.j2cl.transpiler.readable.bridgemethodsreturn.SpecializedInterface');
 
-
 SpecializedInterface.$markImplementor(
     /** @type {Function} */ (SpecializedInterface));
-
 
 exports = SpecializedInterface;
 //# sourceMappingURL=SpecializedInterface.js.map

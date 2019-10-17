@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.overridingmethods.SomeInterface$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.overridingmethods.SomeInterface.$LambdaAdaptor$impl');
-
 
 /**
  * @interface
@@ -12,11 +10,9 @@ let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.ov
 class SomeInterface {
   /**
    * @abstract
-   * @return {void}
    * @public
    */
   m_bar__() {}
-
   /**
    * @param {?function():void} fn
    * @return {SomeInterface}
@@ -26,16 +22,13 @@ class SomeInterface {
     SomeInterface.$clinit();
     return new $LambdaAdaptor(fn);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    SomeInterface.$clinit = (() => {});
+    SomeInterface.$clinit = () => {};
     SomeInterface.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -48,7 +41,6 @@ class SomeInterface {
         .$implements__com_google_j2cl_transpiler_readable_overridingmethods_SomeInterface =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -59,18 +51,6 @@ class SomeInterface {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_overridingmethods_SomeInterface;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_overridingmethods_SomeInterface;
-  }
-
   /**
    * @public
    */
@@ -78,15 +58,12 @@ class SomeInterface {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.overridingmethods.SomeInterface.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     SomeInterface,
     'com.google.j2cl.transpiler.readable.overridingmethods.SomeInterface');
 
-
 SomeInterface.$markImplementor(/** @type {Function} */ (SomeInterface));
-
 
 exports = SomeInterface;
 //# sourceMappingURL=SomeInterface.js.map

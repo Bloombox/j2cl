@@ -1,22 +1,18 @@
 goog.module('com.google.j2cl.transpiler.readable.intersectiontype.Serial$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @interface
  */
 class Serial {
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Serial.$clinit = (() => {});
+    Serial.$clinit = () => {};
     Serial.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -29,7 +25,6 @@ class Serial {
         .$implements__com_google_j2cl_transpiler_readable_intersectiontype_Serial =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -40,30 +35,15 @@ class Serial {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_intersectiontype_Serial;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_intersectiontype_Serial;
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadataForInterface(
     Serial, 'com.google.j2cl.transpiler.readable.intersectiontype.Serial');
 
-
 Serial.$markImplementor(/** @type {Function} */ (Serial));
-
 
 exports = Serial;
 //# sourceMappingURL=Serial.js.map

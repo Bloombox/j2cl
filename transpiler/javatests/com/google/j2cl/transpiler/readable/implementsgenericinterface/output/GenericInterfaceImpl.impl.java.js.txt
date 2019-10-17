@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.implementsgenericinterface.GenericInterfaceImpl$impl');
 
-
 const GenericInterface = goog.require('com.google.j2cl.transpiler.readable.implementsgenericinterface.GenericInterface$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Number = goog.forwardDeclare('java.lang.Number$impl');
-
 
 /**
  * @implements {GenericInterface<(Number|number)>}
@@ -18,7 +16,6 @@ class GenericInterfaceImpl extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!GenericInterfaceImpl}
    * @public
@@ -30,25 +27,20 @@ class GenericInterfaceImpl extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_implementsgenericinterface_GenericInterfaceImpl__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_implementsgenericinterface_GenericInterfaceImpl__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    GenericInterfaceImpl.$clinit = (() => {});
+    GenericInterfaceImpl.$clinit = () => {};
     GenericInterfaceImpl.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -57,29 +49,16 @@ class GenericInterfaceImpl extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof GenericInterfaceImpl;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, GenericInterfaceImpl);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     GenericInterfaceImpl,
     'com.google.j2cl.transpiler.readable.implementsgenericinterface.GenericInterfaceImpl');
 
-
 GenericInterface.$markImplementor(GenericInterfaceImpl);
-
 
 exports = GenericInterfaceImpl;
 //# sourceMappingURL=GenericInterfaceImpl.js.map

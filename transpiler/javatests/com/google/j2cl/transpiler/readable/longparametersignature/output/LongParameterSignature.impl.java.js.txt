@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.longparametersignature.LongParameterSignature$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $Long = goog.forwardDeclare('nativebootstrap.Long$impl');
-
 
 class LongParameterSignature extends j_l_Object {
   /**
@@ -14,7 +12,6 @@ class LongParameterSignature extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!LongParameterSignature}
    * @public
@@ -26,32 +23,25 @@ class LongParameterSignature extends j_l_Object {
         .$ctor__com_google_j2cl_transpiler_readable_longparametersignature_LongParameterSignature__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_longparametersignature_LongParameterSignature__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @param {!$Long} foo
-   * @return {void}
    * @public
    */
   m_main__long(foo) {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    LongParameterSignature.$clinit = (() => {});
+    LongParameterSignature.$clinit = () => {};
     LongParameterSignature.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -60,27 +50,14 @@ class LongParameterSignature extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof LongParameterSignature;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, LongParameterSignature);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     LongParameterSignature,
     'com.google.j2cl.transpiler.readable.longparametersignature.LongParameterSignature');
-
-
 
 exports = LongParameterSignature;
 //# sourceMappingURL=LongParameterSignature.js.map

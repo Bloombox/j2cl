@@ -11,13 +11,12 @@
 [intValue] => [m_intValue__]
 [return 0;] => [return 0;] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.intValue"
 [longValue] => [m_longValue__]
-[return (long) 0;] => [return $Primitives.$widenIntToLong(0);] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.longValue"
+[return (long) 0;] => [return $Long.fromInt(0);] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.longValue"
 [floatValue] => [m_floatValue__]
 [return 0;] => [return 0.0;] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.floatValue"
 [doubleValue] => [m_doubleValue__]
 [return 0;] => [return 0.0;] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.doubleValue"
 [SubNumber] => [$clinit]
-[SubNumber] => [SubNumber.$clinit = (() =>{
-    });] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.<clinit>"
+[SubNumber] => [SubNumber.$clinit = () =>{};] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.<clinit>"
 [SubNumber] => [SubNumber.$loadModules();] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.<clinit>"
 [SubNumber] => [Number.$clinit();] "com.google.j2cl.transpiler.readable.devirtualizedsupermethodcall.SubNumber.<clinit>"

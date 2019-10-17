@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.jsfunction.JsFunctionOptimization.$1.$1.$2$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 const $JavaScriptFunction = goog.require('vmbootstrap.JavaScriptFunction$impl');
@@ -8,7 +7,6 @@ const $JavaScriptFunction = goog.require('vmbootstrap.JavaScriptFunction$impl');
 let $1_$1 = goog.forwardDeclare('com.google.j2cl.transpiler.readable.jsfunction.JsFunctionOptimization.$1.$1$impl');
 let $1 = goog.forwardDeclare('com.google.j2cl.transpiler.readable.jsfunction.JsFunctionOptimization.$1.$1.$2.$1$impl');
 let j_l_String = goog.forwardDeclare('java.lang.String$impl');
-
 
 class $2 extends j_l_Object {
   /**
@@ -25,7 +23,6 @@ class $2 extends j_l_Object {
     /** @public {?string} */
     this.$c_x;
   }
-
   /**
    * @param {$1_$1} $outer_this
    * @param {number} $c_r
@@ -44,14 +41,12 @@ class $2 extends j_l_Object {
     return $Util.$makeLambdaFunction(
         $2.prototype.m_m__java_lang_String, $instance, $2.$copy);
   }
-
   /**
    * @suppress {invalidCasts}
    * @param {$1_$1} $outer_this
    * @param {number} $c_r
    * @param {number} $c_var
    * @param {?string} $c_x
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsfunction_JsFunctionOptimization_1_1_2__com_google_j2cl_transpiler_readable_jsfunction_JsFunctionOptimization_1_1__int__int__java_lang_String(
@@ -63,7 +58,6 @@ class $2 extends j_l_Object {
     this.$c_x = $c_x;
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @this {?function(?string):?string}
    * @param {?string} s
@@ -83,17 +77,14 @@ class $2 extends j_l_Object {
                   this)
                 .toString());
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $2.$clinit = (() => {});
+    $2.$clinit = () => {};
     $2.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -104,16 +95,6 @@ class $2 extends j_l_Object {
         !!instance
               .$is__com_google_j2cl_transpiler_readable_jsfunction_JsFunctionOptimization_1_1_2;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $2);
-  }
-
   /**
    * @param {$2} from
    * @param {?} to
@@ -129,7 +110,6 @@ class $2 extends j_l_Object {
     to.$is__com_google_j2cl_transpiler_readable_jsfunction_JsFunctionOptimization_1_1_2 =
         true;
   }
-
   /**
    * @public
    */
@@ -138,15 +118,12 @@ class $2 extends j_l_Object {
         'com.google.j2cl.transpiler.readable.jsfunction.JsFunctionOptimization.$1.$1.$2.$1$impl');
     j_l_String = goog.module.get('java.lang.String$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     $2,
     'com.google.j2cl.transpiler.readable.jsfunction.JsFunctionOptimization$1$1$2');
 
-
 $JavaScriptFunction.$markImplementor($2);
-
 
 exports = $2;
 //# sourceMappingURL=JsFunctionOptimization$1$1$2.js.map

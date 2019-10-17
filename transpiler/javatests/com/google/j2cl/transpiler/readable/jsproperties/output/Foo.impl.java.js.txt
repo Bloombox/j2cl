@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.jsproperties.Foo$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class Foo extends j_l_Object {
   /**
@@ -12,7 +10,6 @@ class Foo extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!Foo}
    * @public
@@ -23,83 +20,52 @@ class Foo extends j_l_Object {
     $instance.$ctor__com_google_j2cl_transpiler_readable_jsproperties_Foo__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsproperties_Foo__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @return {number}
    * @public
    */
   static get a() {
     Foo.$clinit();
-    return Foo.$f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ + 1;
+    return Foo.f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ + 1;
   }
-
   /**
    * @param {number} x
-   * @return {void}
    * @public
    */
   static set a(x) {
     Foo.$clinit();
-    Foo.$f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ = x + 2;
+    Foo.f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ = x + 2;
   }
-
   /**
    * @return {number}
    * @public
    */
   static get abc() {
     Foo.$clinit();
-    return Foo.$f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ + 3;
+    return Foo.f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ + 3;
   }
-
   /**
    * @param {number} x
-   * @return {void}
    * @public
    */
   static set abc(x) {
     Foo.$clinit();
-    Foo.$f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ = x + 4;
+    Foo.f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ = x + 4;
   }
-
   /**
-   * @return {number}
-   * @public
-   */
-  static get f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_() {
-    return (
-        Foo.$clinit(),
-        Foo.$f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_);
-  }
-
-  /**
-   * @param {number} value
-   * @return {void}
-   * @public
-   */
-  static set f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_(value) {
-    (Foo.$clinit(),
-     Foo.$f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ = value);
-  }
-
-  /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Foo.$clinit = (() => {});
+    Foo.$clinit = () => {};
     Foo.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -108,30 +74,16 @@ class Foo extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Foo;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Foo);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     Foo, 'com.google.j2cl.transpiler.readable.jsproperties.Foo');
 
-
-/** @private {number} */
-Foo.$f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ = 0;
-
-
+/** @public {number} */
+Foo.f_f__com_google_j2cl_transpiler_readable_jsproperties_Foo_ = 0;
 
 exports = Foo;
 //# sourceMappingURL=Foo.js.map

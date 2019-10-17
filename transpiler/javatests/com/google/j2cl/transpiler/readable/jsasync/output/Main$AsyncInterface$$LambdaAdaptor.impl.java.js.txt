@@ -1,13 +1,11 @@
 goog.module('com.google.j2cl.transpiler.readable.jsasync.Main.AsyncInterface.$LambdaAdaptor$impl');
 
-
 const AsyncInterface = goog.require('com.google.j2cl.transpiler.readable.jsasync.Main.AsyncInterface$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $Overlay = goog.forwardDeclare('com.google.j2cl.transpiler.readable.jsasync.Main.IThenable.$Overlay$impl');
 let Integer = goog.forwardDeclare('java.lang.Integer$impl');
-
 
 /**
  * @implements {AsyncInterface}
@@ -25,10 +23,8 @@ class $LambdaAdaptor extends j_l_Object {
     this.$ctor__com_google_j2cl_transpiler_readable_jsasync_Main_AsyncInterface_$LambdaAdaptor__com_google_j2cl_transpiler_readable_jsasync_Main_AsyncInterface_$JsFunction(
         fn);
   }
-
   /**
    * @param {?function():IThenable<Integer>} fn
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsasync_Main_AsyncInterface_$LambdaAdaptor__com_google_j2cl_transpiler_readable_jsasync_Main_AsyncInterface_$JsFunction(
@@ -37,7 +33,6 @@ class $LambdaAdaptor extends j_l_Object {
     this.f_$$fn__com_google_j2cl_transpiler_readable_jsasync_Main_AsyncInterface_$LambdaAdaptor =
         fn;
   }
-
   /**
    * @return {IThenable<Integer>}
    * @public
@@ -49,17 +44,14 @@ class $LambdaAdaptor extends j_l_Object {
             this.f_$$fn__com_google_j2cl_transpiler_readable_jsasync_Main_AsyncInterface_$LambdaAdaptor,
         $function());
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    $LambdaAdaptor.$clinit = (() => {});
+    $LambdaAdaptor.$clinit = () => {};
     $LambdaAdaptor.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -68,29 +60,16 @@ class $LambdaAdaptor extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof $LambdaAdaptor;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, $LambdaAdaptor);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     $LambdaAdaptor,
     'com.google.j2cl.transpiler.readable.jsasync.Main$AsyncInterface$$LambdaAdaptor');
 
-
 AsyncInterface.$markImplementor($LambdaAdaptor);
-
 
 exports = $LambdaAdaptor;
 //# sourceMappingURL=Main$AsyncInterface$$LambdaAdaptor.js.map

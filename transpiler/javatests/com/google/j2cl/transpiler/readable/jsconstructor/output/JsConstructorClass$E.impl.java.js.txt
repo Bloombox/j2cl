@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass.E$impl');
 
-
 const C = goog.require('com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass.C$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 class E extends C {
   /**
@@ -17,9 +15,7 @@ class E extends C {
         0;
     this.$ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_E__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_E__() {
@@ -27,26 +23,21 @@ class E extends C {
     this.f_fE__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_E =
         12;
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_E() {
     this.f_fE__com_google_j2cl_transpiler_readable_jsconstructor_JsConstructorClass_E =
         11;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    E.$clinit = (() => {});
+    E.$clinit = () => {};
     E.$loadModules();
     C.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -55,27 +46,14 @@ class E extends C {
   static $isInstance(instance) {
     return instance instanceof E;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, E);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     E,
     'com.google.j2cl.transpiler.readable.jsconstructor.JsConstructorClass$E');
-
-
 
 exports = E;
 //# sourceMappingURL=JsConstructorClass$E.js.map

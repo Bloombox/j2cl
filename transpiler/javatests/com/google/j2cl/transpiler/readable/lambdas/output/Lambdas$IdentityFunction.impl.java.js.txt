@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.lambdas.Lambdas.IdentityFunction$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 const $JavaScriptFunction = goog.require('vmbootstrap.JavaScriptFunction$impl');
-
 
 class IdentityFunction extends j_l_Object {
   /**
@@ -13,7 +11,6 @@ class IdentityFunction extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {function(*):*}
    * @public
@@ -27,16 +24,13 @@ class IdentityFunction extends j_l_Object {
         IdentityFunction.prototype.m_apply__java_lang_Object, $instance,
         IdentityFunction.$copy);
   }
-
   /**
    * @suppress {invalidCasts}
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_lambdas_Lambdas_IdentityFunction__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @this {?function(*):*}
    * @param {*} o
@@ -46,17 +40,14 @@ class IdentityFunction extends j_l_Object {
   m_apply__java_lang_Object(o) {
     return o;
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    IdentityFunction.$clinit = (() => {});
+    IdentityFunction.$clinit = () => {};
     IdentityFunction.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -67,16 +58,6 @@ class IdentityFunction extends j_l_Object {
         !!instance
               .$is__com_google_j2cl_transpiler_readable_lambdas_Lambdas_IdentityFunction;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, IdentityFunction);
-  }
-
   /**
    * @param {IdentityFunction} from
    * @param {?} to
@@ -87,20 +68,16 @@ class IdentityFunction extends j_l_Object {
     to.$is__com_google_j2cl_transpiler_readable_lambdas_Lambdas_IdentityFunction =
         true;
   }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     IdentityFunction,
     'com.google.j2cl.transpiler.readable.lambdas.Lambdas$IdentityFunction');
 
-
 $JavaScriptFunction.$markImplementor(IdentityFunction);
-
 
 exports = IdentityFunction;
 //# sourceMappingURL=Lambdas$IdentityFunction.js.map

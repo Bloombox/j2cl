@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.timing.Timing$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -10,7 +9,6 @@ let j_l_String = goog.forwardDeclare('java.lang.String$impl');
 let ArrayList = goog.forwardDeclare('java.util.ArrayList$impl');
 let $Arrays = goog.forwardDeclare('vmbootstrap.Arrays$impl');
 
-
 class Timing extends j_l_Object {
   /**
    * @protected
@@ -18,7 +16,6 @@ class Timing extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @return {!Timing}
    * @public
@@ -29,15 +26,12 @@ class Timing extends j_l_Object {
     $instance.$ctor__com_google_j2cl_transpiler_readable_timing_Timing__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_timing_Timing__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @return {boolean}
    * @public
@@ -55,17 +49,14 @@ class Timing extends j_l_Object {
     return Objects.m_equal__java_lang_Object__java_lang_Object(
         fooStrings, barStrings);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Timing.$clinit = (() => {});
+    Timing.$clinit = () => {};
     Timing.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -74,16 +65,6 @@ class Timing extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Timing;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Timing);
-  }
-
   /**
    * @public
    */
@@ -93,12 +74,9 @@ class Timing extends j_l_Object {
     j_l_String = goog.module.get('java.lang.String$impl');
     $Arrays = goog.module.get('vmbootstrap.Arrays$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     Timing, 'com.google.j2cl.transpiler.readable.timing.Timing');
-
-
 
 exports = Timing;
 //# sourceMappingURL=Timing.js.map

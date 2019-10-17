@@ -1,12 +1,10 @@
 goog.module('com.google.j2cl.transpiler.readable.qualifiedsupercall.QualifiedSuperCall.InnerClass$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Parent = goog.forwardDeclare('com.google.j2cl.transpiler.readable.qualifiedsupercall.Parent$impl');
 let QualifiedSuperCall = goog.forwardDeclare('com.google.j2cl.transpiler.readable.qualifiedsupercall.QualifiedSuperCall$impl');
-
 
 class InnerClass extends j_l_Object {
   /**
@@ -17,7 +15,6 @@ class InnerClass extends j_l_Object {
     /** @public {QualifiedSuperCall} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_qualifiedsupercall_QualifiedSuperCall_InnerClass;
   }
-
   /**
    * @param {QualifiedSuperCall} $outer_this
    * @return {!InnerClass}
@@ -32,10 +29,8 @@ class InnerClass extends j_l_Object {
             $outer_this);
     return $instance;
   }
-
   /**
    * @param {QualifiedSuperCall} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_qualifiedsupercall_QualifiedSuperCall_InnerClass__com_google_j2cl_transpiler_readable_qualifiedsupercall_QualifiedSuperCall(
@@ -44,26 +39,21 @@ class InnerClass extends j_l_Object {
         $outer_this;
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
     Parent.prototype.m_fun__.call(
         this.f_$outer_this__com_google_j2cl_transpiler_readable_qualifiedsupercall_QualifiedSuperCall_InnerClass);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    InnerClass.$clinit = (() => {});
+    InnerClass.$clinit = () => {};
     InnerClass.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -72,16 +62,6 @@ class InnerClass extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof InnerClass;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, InnerClass);
-  }
-
   /**
    * @public
    */
@@ -89,13 +69,10 @@ class InnerClass extends j_l_Object {
     Parent = goog.module.get(
         'com.google.j2cl.transpiler.readable.qualifiedsupercall.Parent$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     InnerClass,
     'com.google.j2cl.transpiler.readable.qualifiedsupercall.QualifiedSuperCall$InnerClass');
-
-
 
 exports = InnerClass;
 //# sourceMappingURL=QualifiedSuperCall$InnerClass.js.map

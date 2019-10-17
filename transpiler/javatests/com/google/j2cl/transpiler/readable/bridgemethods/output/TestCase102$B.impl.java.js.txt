@@ -1,11 +1,9 @@
 goog.module('com.google.j2cl.transpiler.readable.bridgemethods.TestCase102.B$impl');
 
-
 const BI1 = goog.require('com.google.j2cl.transpiler.readable.bridgemethods.TestCase102.BI1$impl');
 const BI2 = goog.require('com.google.j2cl.transpiler.readable.bridgemethods.TestCase102.BI2$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @abstract
@@ -20,33 +18,26 @@ class B extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_bridgemethods_TestCase102_B__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @abstract
    * @param {B1} value
-   * @return {void}
    * @public
    */
   m_set__java_lang_Object(value) {}
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    B.$clinit = (() => {});
+    B.$clinit = () => {};
     B.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -55,29 +46,16 @@ class B extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof B;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, B);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     B, 'com.google.j2cl.transpiler.readable.bridgemethods.TestCase102$B');
 
-
 BI1.$markImplementor(B);
 BI2.$markImplementor(B);
-
 
 exports = B;
 //# sourceMappingURL=TestCase102$B.js.map

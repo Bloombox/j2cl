@@ -1,10 +1,8 @@
 goog.module('com.google.j2cl.transpiler.readable.jsmethod.JsMethodExample.I$impl');
 
-
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let $LambdaAdaptor = goog.forwardDeclare('com.google.j2cl.transpiler.readable.jsmethod.JsMethodExample.I.$LambdaAdaptor$impl');
-
 
 /**
  * @interface
@@ -13,11 +11,9 @@ class I {
   /**
    * @abstract
    * @param {?string} s
-   * @return {void}
    * @public
    */
   m(s) {}
-
   /**
    * @param {?function(?string):void} fn
    * @return {I}
@@ -27,16 +23,13 @@ class I {
     I.$clinit();
     return new $LambdaAdaptor(fn);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    I.$clinit = (() => {});
+    I.$clinit = () => {};
     I.$loadModules();
   }
-
   /**
    * @param {Function} classConstructor
    * @public
@@ -49,7 +42,6 @@ class I {
         .$implements__com_google_j2cl_transpiler_readable_jsmethod_JsMethodExample_I =
         true;
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -60,18 +52,6 @@ class I {
         !!instance
               .$implements__com_google_j2cl_transpiler_readable_jsmethod_JsMethodExample_I;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return classConstructor != null &&
-        !!classConstructor.prototype
-              .$implements__com_google_j2cl_transpiler_readable_jsmethod_JsMethodExample_I;
-  }
-
   /**
    * @public
    */
@@ -79,14 +59,11 @@ class I {
     $LambdaAdaptor = goog.module.get(
         'com.google.j2cl.transpiler.readable.jsmethod.JsMethodExample.I.$LambdaAdaptor$impl');
   }
-};
-
+}
 $Util.$setClassMetadataForInterface(
     I, 'com.google.j2cl.transpiler.readable.jsmethod.JsMethodExample$I');
 
-
 I.$markImplementor(/** @type {Function} */ (I));
-
 
 exports = I;
 //# sourceMappingURL=JsMethodExample$I.js.map

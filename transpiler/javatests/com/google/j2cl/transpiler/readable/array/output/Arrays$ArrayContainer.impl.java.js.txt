@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.array.Arrays.ArrayContainer$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T
@@ -17,38 +15,31 @@ class ArrayContainer extends j_l_Object {
     /** @public {Array<T>} */
     this.f_data__com_google_j2cl_transpiler_readable_array_Arrays_ArrayContainer;
   }
-
   /**
    * @template T
    * @return {!ArrayContainer<T>}
    * @public
    */
   static $create__() {
-    ArrayContainer.$clinit();
     let $instance = new ArrayContainer();
     $instance
         .$ctor__com_google_j2cl_transpiler_readable_array_Arrays_ArrayContainer__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_array_Arrays_ArrayContainer__() {
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    ArrayContainer.$clinit = (() => {});
+    ArrayContainer.$clinit = () => {};
     ArrayContainer.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -57,27 +48,14 @@ class ArrayContainer extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof ArrayContainer;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, ArrayContainer);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     ArrayContainer,
     'com.google.j2cl.transpiler.readable.array.Arrays$ArrayContainer');
-
-
 
 exports = ArrayContainer;
 //# sourceMappingURL=Arrays$ArrayContainer.js.map

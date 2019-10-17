@@ -1,13 +1,11 @@
 goog.module('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.N$impl');
 
-
 const M = goog.require('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.M$impl');
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
 let Main = goog.forwardDeclare('com.google.j2cl.transpiler.readable.bridgejsmethod.Main$impl');
 let B = goog.forwardDeclare('com.google.j2cl.transpiler.readable.bridgejsmethod.Main.B$impl');
-
 
 /**
  * @abstract
@@ -22,10 +20,8 @@ class N extends j_l_Object {
     /** @public {Main} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_N;
   }
-
   /**
    * @param {Main} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_bridgejsmethod_Main_N__com_google_j2cl_transpiler_readable_bridgejsmethod_Main(
@@ -34,14 +30,12 @@ class N extends j_l_Object {
         $outer_this;
     this.$ctor__java_lang_Object__();
   }
-
   /**
    * @abstract
    * @return {B}
    * @public
    */
   getB() {}
-
   /**
    * Bridge method for exposing non-JsMethod.
    * @override
@@ -51,17 +45,14 @@ class N extends j_l_Object {
   m_getB__() {
     return this.getB();
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    N.$clinit = (() => {});
+    N.$clinit = () => {};
     N.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -70,28 +61,15 @@ class N extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof N;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, N);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     N, 'com.google.j2cl.transpiler.readable.bridgejsmethod.Main$N');
 
-
 M.$markImplementor(N);
-
 
 exports = N;
 //# sourceMappingURL=Main$N.js.map

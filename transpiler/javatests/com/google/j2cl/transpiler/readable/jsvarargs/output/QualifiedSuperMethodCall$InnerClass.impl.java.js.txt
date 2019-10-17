@@ -1,6 +1,5 @@
 goog.module('com.google.j2cl.transpiler.readable.jsvarargs.QualifiedSuperMethodCall.InnerClass$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
 
@@ -9,7 +8,6 @@ let QualifiedSuperMethodCall = goog.forwardDeclare('com.google.j2cl.transpiler.r
 let InternalPreconditions = goog.forwardDeclare('javaemul.internal.InternalPreconditions$impl');
 let $Arrays = goog.forwardDeclare('vmbootstrap.Arrays$impl');
 let $int = goog.forwardDeclare('vmbootstrap.primitives.$int$impl');
-
 
 class InnerClass extends j_l_Object {
   /**
@@ -20,7 +18,6 @@ class InnerClass extends j_l_Object {
     /** @public {QualifiedSuperMethodCall} */
     this.f_$outer_this__com_google_j2cl_transpiler_readable_jsvarargs_QualifiedSuperMethodCall_InnerClass;
   }
-
   /**
    * @param {QualifiedSuperMethodCall} $outer_this
    * @return {!InnerClass}
@@ -35,10 +32,8 @@ class InnerClass extends j_l_Object {
             $outer_this);
     return $instance;
   }
-
   /**
    * @param {QualifiedSuperMethodCall} $outer_this
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_jsvarargs_QualifiedSuperMethodCall_InnerClass__com_google_j2cl_transpiler_readable_jsvarargs_QualifiedSuperMethodCall(
@@ -47,9 +42,7 @@ class InnerClass extends j_l_Object {
         $outer_this;
     this.$ctor__java_lang_Object__();
   }
-
   /**
-   * @return {void}
    * @public
    */
   m_test__() {
@@ -70,17 +63,14 @@ class InnerClass extends j_l_Object {
         this.f_$outer_this__com_google_j2cl_transpiler_readable_jsvarargs_QualifiedSuperMethodCall_InnerClass,
         1, ...InternalPreconditions.m_checkNotNull__java_lang_Object(ints));
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    InnerClass.$clinit = (() => {});
+    InnerClass.$clinit = () => {};
     InnerClass.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -89,16 +79,6 @@ class InnerClass extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof InnerClass;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, InnerClass);
-  }
-
   /**
    * @public
    */
@@ -110,13 +90,10 @@ class InnerClass extends j_l_Object {
     $Arrays = goog.module.get('vmbootstrap.Arrays$impl');
     $int = goog.module.get('vmbootstrap.primitives.$int$impl');
   }
-};
-
+}
 $Util.$setClassMetadata(
     InnerClass,
     'com.google.j2cl.transpiler.readable.jsvarargs.QualifiedSuperMethodCall$InnerClass');
-
-
 
 exports = InnerClass;
 //# sourceMappingURL=QualifiedSuperMethodCall$InnerClass.js.map

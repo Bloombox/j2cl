@@ -1,9 +1,7 @@
 goog.module('com.google.j2cl.transpiler.readable.collisions.Other$impl');
 
-
 const j_l_Object = goog.require('java.lang.Object$impl');
 const $Util = goog.require('nativebootstrap.Util$impl');
-
 
 /**
  * @template T
@@ -15,7 +13,6 @@ class Other extends j_l_Object {
   constructor() {
     super();
   }
-
   /**
    * @template T
    * @return {!Other<T>}
@@ -27,16 +24,13 @@ class Other extends j_l_Object {
     $instance.$ctor__com_google_j2cl_transpiler_readable_collisions_Other__();
     return $instance;
   }
-
   /**
-   * @return {void}
    * @public
    */
   $ctor__com_google_j2cl_transpiler_readable_collisions_Other__() {
     this.$ctor__java_lang_Object__();
     this.$init__com_google_j2cl_transpiler_readable_collisions_Other();
   }
-
   /**
    * @template T_2
    * @return {T_2}
@@ -47,26 +41,21 @@ class Other extends j_l_Object {
     let o = /**@type {Other<T_2>} */ (null);
     return null;
   }
-
   /**
-   * @return {void}
    * @private
    */
   $init__com_google_j2cl_transpiler_readable_collisions_Other() {
     let T_1 = 3;
     let o = /**@type {Other<T>} */ (null);
   }
-
   /**
-   * @return {void}
    * @public
    */
   static $clinit() {
-    Other.$clinit = (() => {});
+    Other.$clinit = () => {};
     Other.$loadModules();
     j_l_Object.$clinit();
   }
-
   /**
    * @param {?} instance
    * @return {boolean}
@@ -75,26 +64,13 @@ class Other extends j_l_Object {
   static $isInstance(instance) {
     return instance instanceof Other;
   }
-
-  /**
-   * @param {Function} classConstructor
-   * @return {boolean}
-   * @public
-   */
-  static $isAssignableFrom(classConstructor) {
-    return $Util.$canCastClass(classConstructor, Other);
-  }
-
   /**
    * @public
    */
   static $loadModules() {}
-};
-
+}
 $Util.$setClassMetadata(
     Other, 'com.google.j2cl.transpiler.readable.collisions.Other');
-
-
 
 exports = Other;
 //# sourceMappingURL=Other.js.map
